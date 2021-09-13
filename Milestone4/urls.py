@@ -21,5 +21,5 @@ from accounts.views import register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-     url(r'^register/$', register)
+     url(r'^register/$', register, name="register")
 ]
