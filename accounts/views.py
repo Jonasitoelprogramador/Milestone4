@@ -21,5 +21,6 @@ def register(request):
                 
 
     else:
+        form = UserCreationForm()
         messages.error(request, "unable to log you in at this time!")
-    return HttpResponse("va fan culo")
+    return render(request, 'accounts/index.html', {'form': form})
