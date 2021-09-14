@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 # Create your views here.
 def register(request):
@@ -10,17 +11,11 @@ def register(request):
         user_form = UserCreationForm(request.POST)
         if user_form.is_valid():
             user_form.save()
+        else:
+            print(user_form.errors)
     
-    user = authenticate(request.POST.get('email'),
-                                     password=request.POST.get('password1'))
     
-    if user:
-                login(request, user)
-                messages.success(request, "You have successfully registered")
-                return HttpResponse("butt bois beer")
-                
-
-    else:
-        form = UserCreationForm()
-        messages.error(request, "unable to log you in at this time!")
+    #else:
+        #messages.error(request, "unable to log you in at this time!")
+    form = UserCreationForm()
     return render(request, 'accounts/index.html', {'form': form})
