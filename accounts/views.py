@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .forms import UserLoginForm
@@ -14,7 +14,7 @@ def register(request):
             user_form.save()
             return HttpResponse("beery butt men")
         else:
-            return HttpResponse("unable to log you in at this time!")
+            return HttpResponse("unable to register you at this time!")
     form = UserCreationForm()
     return render(request, 'accounts/register.html', {'form': form})
 
@@ -24,13 +24,13 @@ def login(request):
     if request.method == 'POST':
         user_form = UserLoginForm(request.POST)
         if user_form.is_valid():
-            user = authenticate(request.POST['username_or_email'],
-                                    password=request.POST['password'])
+            print(request.POST)
+            user = authenticate(request, username=request.POST['username_or_email'], password=request.POST['password'])
 
             if user:
-                login(request, user)
+                auth_login(request, user)
                 return HttpResponse("logged in")
             else:
-                return HttpResponse("login details incorrect")
+               return HttpResponse("login details incorrect")
     form = UserLoginForm()
     return render(request, 'accounts/register.html', {'form': form})
