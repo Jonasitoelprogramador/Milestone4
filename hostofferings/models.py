@@ -1,7 +1,7 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django_countries.fields import CountryField
-from accounts.models import users
+from django.contrib.auth.models import User
 
 # Create your models here.
 class offering(models.Model):
@@ -13,7 +13,7 @@ class offering(models.Model):
     work_details = models.TextField()
     email = models.EmailField(max_length=20)
     phonenumber = PhoneNumberField()
-    host = models.ForeignKey(users, on_delete=models.CASCADE)
+    host = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
     def __str__(self):

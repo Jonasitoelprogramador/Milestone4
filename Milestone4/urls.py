@@ -17,6 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 from accounts.views import register, login, profile, logout
+from hostofferings.views import add_offering
 
 
 urlpatterns = [
@@ -24,5 +25,6 @@ urlpatterns = [
     url(r'^register/$', register, name="register"),
     url(r'^login/$', login, name='login'),
     url(r'^profile/$', profile, name='profile'),
-    url(r'^logout/$', logout, name='logout')
+    url(r'^logout/$', logout, name='logout'),
+    url(r'^add_offering/$', add_offering, name='add_offering')
 ]
