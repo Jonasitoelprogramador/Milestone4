@@ -1,9 +1,10 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .forms import UserLoginForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def register(request):
@@ -33,4 +34,14 @@ def login(request):
             else:
                return HttpResponse("login details incorrect")
     form = UserLoginForm()
-    return render(request, 'accounts/register.html', {'form': form})
+    return render(request, 'accounts/login.html', {'form': form})
+
+
+@login_required()
+def profile(request):
+    return render(request, 'accounts/profile.html')
+
+
+def logout(request):
+    auth_logout(request)
+    return HttpResponse('logged out')
