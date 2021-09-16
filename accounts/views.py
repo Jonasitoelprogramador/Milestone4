@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib import messages
@@ -41,8 +41,10 @@ def login(request):
 @login_required()
 def profile(request):
     return render(request, 'accounts/profile.html')
+    #try catch statement/if/else for 404 error
 
 
 def logout(request):
     auth_logout(request)
-    return HttpResponse('logged out')
+    #return HttpResponse('logged out')
+    return redirect(request, 'accounts/login.html')
