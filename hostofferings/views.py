@@ -10,8 +10,9 @@ def add_offering(request):
     if request.method == "POST":
         form = offeringForm(request.POST)
         if form.is_valid():
-            form.host = request.user
-            form.save()
+            offering = form.save(commit=False)
+            offering.host = request.user
+            offering.save()
             return HttpResponse("added!")
         else:
             return HttpResponse("data not valid")
