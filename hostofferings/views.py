@@ -30,6 +30,7 @@ def all_offerings(request):
 @login_required()
 def offering_details(request, pk):
     offering_details = get_object_or_404(offering, pk=pk)
-    return render(request, 'hostofferings/offering_details.html', {offering_details: 'offering_details'})
+    print(offering_details)
+    return render(request, 'hostofferings/offering_details.html', {'offering_details': offering_details})
     
     
