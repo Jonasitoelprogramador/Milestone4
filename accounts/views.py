@@ -15,7 +15,8 @@ def register(request):
             user_form.save()
             return HttpResponse("beery butt men")
         else:
-            return HttpResponse("unable to register you at this time!")
+            print(user_form.errors.values())
+            return HttpResponse(user_form.errors.values())
     form = UserCreationForm()
     return render(request, 'accounts/register.html', {'form': form})
 

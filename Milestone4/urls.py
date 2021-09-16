@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 from accounts.views import register, login, profile, logout
-from hostofferings.views import add_offering
+from hostofferings.views import add_offering, all_offerings, offering_details
 
 
 urlpatterns = [
@@ -26,5 +26,7 @@ urlpatterns = [
     url(r'^login/$', login, name='login'),
     url(r'^profile/$', profile, name='profile'),
     url(r'^logout/$', logout, name='logout'),
-    url(r'^add_offering/$', add_offering, name='add_offering')
+    url(r'^add_offering/$', add_offering, name='add_offering'),
+    url(r'^all_offerings/$', all_offerings, name='all_offerings'),
+    url(r'^offering_details/(?P<pk>\d+)/$', offering_details, name="offering_details")
 ]
