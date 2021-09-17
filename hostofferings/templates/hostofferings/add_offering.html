@@ -1,6 +1,5 @@
 <form action="{% url 'add_offering' %}" method="post">
     {% csrf_token %}
     {{ form }}
-    {{ name }}
     <input type="submit" value="Submit">
 </form>
