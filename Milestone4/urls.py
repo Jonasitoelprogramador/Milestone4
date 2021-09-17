@@ -13,22 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path
-from accounts.views import register, login, profile, logout
-from hostofferings.views import add_offering, all_offerings, offering_details, delete_offering, edit_offering
+from accounts import urls as urls_accounts
+from hostofferings import urls as urls_hostofferings
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^register/$', register, name="register"),
-    url(r'^login/$', login, name='login'),
-    url(r'^profile/$', profile, name='profile'),
-    url(r'^logout/$', logout, name='logout'),
-    url(r'^add_offering/$', add_offering, name='add_offering'),
-    url(r'^all_offerings/$', all_offerings, name='all_offerings'),
-    url(r'^offering_details/(?P<pk>\d+)/$', offering_details, name="offering_details"),
-    url(r'^delete/(?P<pk>\d+)/$', delete_offering, name='delete_offering'),
-    url(r'^edit_offering/(?P<pk>\d+)/$', edit_offering, name='edit_offering')
+    url(r'^accounts/', include(urls_accounts)),
+    url(r'^hostofferings/$', include(urls_hostofferings)),
 ]

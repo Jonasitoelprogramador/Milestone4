@@ -1,8 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
-from django.contrib.auth.forms import UserCreationForm
+from .forms import HostForm
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
-from django.contrib import messages
-from django.contrib.auth.models import User
 from .forms import UserLoginForm
 from django.contrib.auth.decorators import login_required
 from urllib.error import HTTPError
@@ -48,3 +46,4 @@ def logout(request):
     auth_logout(request)
     return HttpResponse('logged out')
     #return redirect(request, 'accounts/login.html')
+
