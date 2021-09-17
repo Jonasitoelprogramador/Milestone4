@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from .forms import UserLoginForm
 from django.contrib.auth.decorators import login_required
+from urllib.error import HTTPError
 
 # Create your views here.
 def register(request):
@@ -33,7 +34,7 @@ def login(request):
                 auth_login(request, user)
                 return HttpResponse("logged in")
             else:
-               return HttpResponse("login details incorrect")
+                return HttpResponse("login details incorrect")
     form = UserLoginForm()
     return render(request, 'accounts/login.html', {'form': form})
 
@@ -41,10 +42,9 @@ def login(request):
 @login_required()
 def profile(request):
     return render(request, 'accounts/profile.html')
-    #try catch statement/if/else for 404 error
-
+    
 
 def logout(request):
     auth_logout(request)
-    #return HttpResponse('logged out')
-    return redirect(request, 'accounts/login.html')
+    return HttpResponse('logged out')
+    #return redirect(request, 'accounts/login.html')
