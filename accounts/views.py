@@ -5,20 +5,21 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from urllib.error import HTTPError
-from .forms import HostCreationForm
+#from .forms import HostCreationForm
 
 # Create your views here.
 def register(request):
     """A view that manages the registration form"""
+    form = UserCreationForm()
     if request.method == 'POST':
-        user_form = UserCreationForm(request.POST)
+        #user_form = UserCreationForm(request.POST)
+        #Host.objects.create(username="fdsewfdwe", password="dewhfirewh", nationality="erreferf")
         if user_form.is_valid():
             user_form.save()
             return HttpResponse("registered!")
         else:
             print(user_form.errors.values())
             return HttpResponse(user_form.errors.values())
-    form = UserCreationForm()
     return render(request, 'accounts/register.html', {'form': form})
 
 
