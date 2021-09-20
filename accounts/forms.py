@@ -1,7 +1,5 @@
 from django import forms
 from .models import Host, Worker
-from django.contrib.auth.forms import UserCreationForm
-from django.core.exceptions import ValidationError
 
 
 class UserLoginForm(forms.Form):

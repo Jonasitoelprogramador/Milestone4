@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from urllib.error import HTTPError
+from .forms import HostCreationForm
 
 # Create your views here.
 def register(request):
@@ -47,3 +48,16 @@ def logout(request):
     auth_logout(request)
     return HttpResponse('logged out')
     #return redirect(request, 'accounts/login.html')
+
+
+def addHost(request):
+    if request.method == 'POST':
+        user_form = HostCreationForm(request.POST)
+        if user_form.is_valid():
+            user_form.save()
+            return HttpResponse("host user added!")
+        else:
+            print(user_form.errors.values())
+            return HttpResponse(user_form.errors.values())
+    form = HostCreationForm()
+    return render(request, 'accounts/add_host.html', {'form': form})
