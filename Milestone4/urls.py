@@ -23,5 +23,5 @@ from hostofferings import urls as urls_hostofferings
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^accounts/', include(urls_accounts)),
-    url(r'^hostofferings/$', include(urls_hostofferings)),
+    url(r'^hostofferings/', include(urls_hostofferings)),
 ]
