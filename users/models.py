@@ -25,12 +25,3 @@ class Worker(models.Model):
     def __str__(self):
         return self.user
 
-@receiver(post_save, Sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Host.objects.create(user=instance)
-
-
-@receiver(post_save, Sender=User)
-def save_user_profile(instance, **kwargs):
-    instance.profile.save()
