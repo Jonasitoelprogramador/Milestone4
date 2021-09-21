@@ -1,6 +1,7 @@
-from django import forms
+from django.forms import forms, ModelForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from users.models import Host
 
 
 class ExtendedUserCreationForm(UserCreationForm):
@@ -19,6 +20,12 @@ class ExtendedUserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class HostCreationForm(ModelForm):
+    class Meta:
+        model = Host
+        fields = ('nationality', 'first_language', 'location')
 
         
         
