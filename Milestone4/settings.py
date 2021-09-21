@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'django_countries',
-    'hostofferings'
+    'hostofferings',
+    'users'
 ]
 
 MIDDLEWARE = [
