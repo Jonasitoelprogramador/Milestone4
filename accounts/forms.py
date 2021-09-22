@@ -21,7 +21,7 @@
 from django.forms import forms, ModelForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from users.models import Host
+from users.models import Host, Worker
 
 
 class ExtendedUserCreationForm(UserCreationForm):
@@ -46,3 +46,10 @@ class HostCreationForm(ModelForm):
     class Meta:
         model = Host
         fields = ('nationality', 'first_language', 'location')
+
+
+class WorkerCreationForm(ModelForm):
+    class Meta:
+        model = Worker
+        fields = ('first_language', 'desired_language', 'work_experience_category', 'work_experience')
+

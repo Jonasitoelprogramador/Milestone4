@@ -1,9 +1,10 @@
 from .views import register, login, profile, logout  #addHost
 from django.conf.urls import url
+from django.urls import path
 
 urlpatterns = [     
-    url(r'^register/$', register, name="register"),
-    url(r'^login/$', login, name='login'),
-    url(r'^profile/$', profile, name='profile'),
-    url(r'^logout/$', logout, name='logout')]
+    path('register/<user_type>/', register, name="register"),
+    url('login/', login, name='login'),
+    url('profile/', profile, name='profile'),
+    url('logout/', logout, name='logout')]
   #  url(r'^add_host/$', addHost, name='add_host')

@@ -1,6 +1,7 @@
-<form action="{% url 'register' %}" method="post">
+<form action="{% url 'register' user_type='jim' %}" method="post">
     {% csrf_token %}
     {{ form }}
+    {{ host_form }}
     {{ name }}
     <input type="submit" value="Submit">
 </form>

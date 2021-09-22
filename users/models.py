@@ -9,10 +9,10 @@ class Host(models.Model):
     nationality = models.CharField(max_length=100, default='British')
     first_language = models.CharField(max_length=100, default='British')
     location = models.CharField(max_length=100, default='Britain')
-
+    
     def __str__(self):
-        return self.user
-
+        return self.user.username
+    
 
 class Worker(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

@@ -5,11 +5,12 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from urllib.error import HTTPError
-from .models import ExtendedUserCreationForm
-from .forms import HostCreationForm
+
+from .forms import HostCreationForm, ExtendedUserCreationForm
 
 # Create your views here.
-def register(request):
+def register(request, user_type):
+    print(user_type)
     """A view that manages the registration form"""
     form = ExtendedUserCreationForm()
     host_form = HostCreationForm()
@@ -17,13 +18,17 @@ def register(request):
         user_form = ExtendedUserCreationForm(request.POST)
         host_form = HostCreationForm(request.POST)
         #Host.objects.create(username="fdsewfdwe", password="dewhfirewh", nationality="erreferf")
-        if user_form.is_valid():
-            user_form.save()
+        if user_form.is_valid() and host_form.is_valid():
+            user = user_form.save()
+            host = host_form.save(commit=False)
+            host.user = user
+            host.save()
+
             return HttpResponse("registered!")
         else:
             print(user_form.errors.values())
             return HttpResponse(user_form.errors.values())
-    return render(request, 'accounts/register.html', {'form': form})
+    return render(request, 'accounts/register.html', {'form': form, 'host_form': host_form})
 
 
 def login(request):
