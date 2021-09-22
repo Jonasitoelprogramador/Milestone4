@@ -4,7 +4,7 @@ from django.urls import path
 
 urlpatterns = [     
     path('register/<user_type>/', register, name="register"),
-    url('login/', login, name='login'),
-    url('profile/', profile, name='profile'),
-    url('logout/', logout, name='logout')]
+    path('login/', login, name='login'),
+    path('profile/', profile, name='profile'),
+    path('logout/', logout, name='logout')]
   #  url(r'^add_host/$', addHost, name='add_host')
