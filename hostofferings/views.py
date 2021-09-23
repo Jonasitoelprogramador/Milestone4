@@ -9,10 +9,11 @@ from .models import offering
 @login_required()  
 def add_offering(request):
     if request.method == "POST":
+        print(request.user)
         form = OfferingForm(request.POST)
         if form.is_valid():
             offering = form.save(commit=False)
-            offering.host = request.user
+            offering.host = request.user.host
             offering.save()
             return HttpResponse("added!")
         else:

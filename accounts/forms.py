@@ -53,3 +53,7 @@ class WorkerCreationForm(ModelForm):
         model = Worker
         fields = ('first_language', 'desired_language', 'work_experience_category', 'work_experience')
 
+
+#class UserLoginForm(forms.Form):
+#    username_or_email = forms.CharField()
+#    password = forms.CharField(widget=forms.PasswordInput)

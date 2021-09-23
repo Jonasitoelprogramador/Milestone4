@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from urllib.error import HTTPError
 from .forms import HostCreationForm, ExtendedUserCreationForm, WorkerCreationForm
-
+from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
 def register(request, user_type):
@@ -20,11 +20,10 @@ def register(request, user_type):
     form = ExtendedUserCreationForm()
     if request.method == 'POST':
         user_form = ExtendedUserCreationForm(request.POST)
-        if user_type == 'host':
-            print(profile_form)   
+        if user_type == 'host':  
             profile_form = HostCreationForm(request.POST)
         elif user_type == 'worker':
-            profile_form = WorkerCreationForm()
+            profile_form = WorkerCreationForm(request.POST)
 #Host.objects.create(username="fdsewfdwe", password="dewhfirewh", nationality="erreferf")
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
@@ -42,17 +41,17 @@ def register(request, user_type):
 def login(request):
     """A view that manages the login form"""
     if request.method == 'POST':
-        user_form = UserLoginForm(request.POST)
-        if user_form.is_valid():
-            print(request.POST)
-            user = authenticate(request, username=request.POST['username_or_email'], password=request.POST['password'])
-
-            if user:
-                auth_login(request, user)
-                return HttpResponse("logged in")
-            else:
-                return HttpResponse("login details incorrect")
-    form = UserLoginForm()
+        print('hellothen')
+        user_form = AuthenticationForm(request.POST)
+        #if user_form.is_valid():
+        print(request.POST)
+        user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
+        if user:
+            auth_login(request, user)
+            return HttpResponse("logged in")
+        else:
+            return HttpResponse("login details incorrect")
+    form = AuthenticationForm()
     return render(request, 'accounts/login.html', {'form': form})
 
 
