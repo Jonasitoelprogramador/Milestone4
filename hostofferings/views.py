@@ -13,9 +13,12 @@ def add_offering(request):
         form = OfferingForm(request.POST)
         if form.is_valid():
             offering = form.save(commit=False)
-            offering.host = request.user.host
-            offering.save()
-            return HttpResponse("added!")
+            try:
+                offering.host = request.user.host
+                offering.save()
+                return HttpResponse("added!")
+            except:
+                return HttpResponse("Cannot add an offering as a worker")
         else:
             return HttpResponse("data not valid")
     else:

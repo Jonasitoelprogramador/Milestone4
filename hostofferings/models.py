@@ -8,5 +8,5 @@ class offering(models.Model):
     host = models.ForeignKey(Host, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.work_category
+        return self.host
 
