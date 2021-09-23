@@ -5,8 +5,8 @@ from users.models import Host
 class offering(models.Model):
     work_category = models.CharField(max_length=100)
     work_details = models.TextField()
-    host = models.ForeignKey(Host, on_delete=models.CASCADE, null=True)
+    host = models.ForeignKey(Host, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.work_category
 
