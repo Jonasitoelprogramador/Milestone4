@@ -1,4 +1,4 @@
-from hostofferings.views import add_offering, all_offerings, offering_details, delete_offering, edit_offering
+from .views import add_offering, all_offerings, offering_details, delete_offering, edit_offering
 from django.conf.urls import url
 
 urlpatterns = [ 

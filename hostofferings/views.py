@@ -3,6 +3,7 @@ from .forms import OfferingForm
 from django.contrib.auth.decorators import login_required
 from .models import offering
 from django.apps import apps
+from .models import Host
 
 # Create your views here.
 
@@ -29,10 +30,15 @@ def add_offering(request):
 
 @login_required()
 def all_offerings(request):
-    offerings = offering.objects.all()
-    hostModel = apps.get_model('users', 'Host')
-    hosts = hostModel.objects.all()
-    print(hosts)
+    #host_model = apps.get_model('users', 'Host')
+    hosts = Host.objects.all()
+    #for offering1 in offerings:
+     #   print(offering1.work_category)
+    #print(hosts)
+    for host in hosts:
+        offerings = offering.objects.filter(host=host)
+        print(host)
+        print(offerings)
     return render(request, "hostofferings/offering_marketplace.html", {'offerings': offerings, 'hosts': hosts})
 
 

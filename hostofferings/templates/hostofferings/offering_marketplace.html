@@ -1,5 +1,5 @@
 {% for offering in offerings %}
-{% for offering.host in hosts %}
+{% for host in hosts %}
 {% if offering.host == host.user %}
 {{host.user}}
 {{offering.host}}
