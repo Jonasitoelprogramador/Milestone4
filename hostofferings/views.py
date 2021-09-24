@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from .forms import OfferingForm
 from django.contrib.auth.decorators import login_required
 from .models import offering
+from django.apps import apps
 
 # Create your views here.
 
@@ -29,7 +30,10 @@ def add_offering(request):
 @login_required()
 def all_offerings(request):
     offerings = offering.objects.all()
-    return render(request, "hostofferings/offering_marketplace.html", {'offerings': offerings})
+    hostModel = apps.get_model('users', 'Host')
+    hosts = hostModel.objects.all()
+    print(hosts)
+    return render(request, "hostofferings/offering_marketplace.html", {'offerings': offerings, 'hosts': hosts})
 
 
 @login_required()

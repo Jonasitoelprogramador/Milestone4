@@ -1,3 +1,10 @@
 {% for offering in offerings %}
-<h4>{{offering.work_details}}</h4>
+{% for offering.host in hosts %}
+{% if offering.host == host.user %}
+{{host.user}}
+{{offering.host}}
+{{offering.work_category}}
+{{offering.work_details}}
+{% endif %}
+{% endfor %}
 {% endfor %}
