@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from accounts import urls as urls_accounts
 from hostofferings import urls as urls_hostofferings
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -25,3 +27,7 @@ urlpatterns = [
     path('accounts/', include(urls_accounts)),
     path('hostofferings/', include(urls_hostofferings)),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)

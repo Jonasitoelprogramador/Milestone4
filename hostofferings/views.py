@@ -14,7 +14,7 @@ from itertools import chain
 def add_offering(request):
     if request.method == "POST":
         print(request.user)
-        form = OfferingForm(request.POST)
+        form = OfferingForm(request.POST, request.FILES)
         if form.is_valid():
             offering = form.save(commit=False)
             try:
@@ -47,11 +47,6 @@ def all_offerings(request):
     it = iter(result_list)
     zipped_tuples = zip(it, it)
     tuples = list(zipped_tuples)
-    print(tuples)
-    final_list = []
-    for t in tuples:
-        final_list = [t[0].user.username] + [t[0].nationality] + [t[0].first_language] + [t[0].location] + final_list 
-    print(final_list)
     return render(request, "hostofferings/offering_marketplace.html", {'offerings': tuples})
 
 

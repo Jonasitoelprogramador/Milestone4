@@ -5,5 +5,5 @@ from .models import offering
 class OfferingForm(forms.ModelForm):
     class Meta:
         model = offering
-        fields = ('work_category', 'work_details') 
+        fields = ('work_category', 'work_details', 'offering_image') 
 
