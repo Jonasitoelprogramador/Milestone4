@@ -44,9 +44,15 @@ def all_offerings(request):
         for o in offerings_list:
             host_and_offering = [host] + [o]
             result_list += host_and_offering
-        print(result_list)
-        #result_list += offerings_list
-    return render(request, "hostofferings/offering_marketplace.html", {'offerings': result_list})
+    it = iter(result_list)
+    zipped_tuples = zip(it, it)
+    tuples = list(zipped_tuples)
+    print(tuples)
+    final_list = []
+    for t in tuples:
+        final_list = [t[0].user.username] + [t[0].nationality] + [t[0].first_language] + [t[0].location] + final_list 
+    print(final_list)
+    return render(request, "hostofferings/offering_marketplace.html", {'offerings': tuples})
 
 
 @login_required()

@@ -1,3 +1,4 @@
-{% for offering in offerings %}
-{{offering.host}}
+
+{% for host, offering in offerings %}
+  <p>{{host.user.username}} {{host.nationality}} {{host.first_language}} {{host.location}} {{offering.work_category}} {{offering.work_details}}</p>
 {% endfor %}
