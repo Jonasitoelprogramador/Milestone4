@@ -27,7 +27,7 @@ def add_offering(request):
             return HttpResponse("data not valid")
     else:
         form = OfferingForm()
-    return render(request, 'hostofferings/index.html')
+    return render(request, 'hostofferings/home.html')
 #'hostofferings/add_offering.html', {'form': form}
 
 @login_required()
