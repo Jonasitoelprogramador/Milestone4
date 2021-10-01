@@ -96,3 +96,28 @@ body {
 .green {
     color: green !important;
 }
+
+#circle-container {
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-width: 1px;
+  border-radius: 50%;
+}
+
+#circle-cover-bg {
+  background: url("../media/images/default.jpg" )
+}
+
+<img src='{% static "../media/images/default.jpg" %}'>
+
+
+.mx-auto {
+  margin: auto;
+}
+
+img { 
+  object-fit: cover;
+}
