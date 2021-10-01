@@ -27,8 +27,8 @@ def add_offering(request):
             return HttpResponse("data not valid")
     else:
         form = OfferingForm()
-    return render(request, 'hostofferings/home.html')
-#'hostofferings/add_offering.html', {'form': form}
+    return render(request, 'hostofferings/add_offering.html', {'form': form})
+
 
 @login_required()
 def all_offerings(request):
@@ -80,3 +80,7 @@ def edit_offering(request, pk):
         form = OfferingForm(instance=offer)
     return render(request, 'hostofferings/add_offering.html', {'form': form})
 
+
+@login_required()
+def marketplace(request):
+    return render(request, 'hostofferings/home.html')

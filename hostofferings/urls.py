@@ -1,4 +1,4 @@
-from .views import add_offering, all_offerings, offering_details, delete_offering, edit_offering
+from .views import add_offering, all_offerings, offering_details, delete_offering, edit_offering, marketplace
 from django.conf.urls import url
 
 urlpatterns = [ 
@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^all_offerings/$', all_offerings, name='all_offerings'),
     url(r'^offering_details/(?P<pk>\d+)/$', offering_details, name="offering_details"),
     url(r'^delete/(?P<pk>\d+)/$', delete_offering, name='delete_offering'),
-    url(r'^edit_offering/(?P<pk>\d+)/$', edit_offering, name='edit_offering')]
+    url(r'^edit_offering/(?P<pk>\d+)/$', edit_offering, name='edit_offering'),
+    url(r'^marketplace/$', marketplace, name='marketplace')]

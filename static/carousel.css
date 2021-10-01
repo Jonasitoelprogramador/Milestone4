@@ -97,7 +97,7 @@ body {
     color: green !important;
 }
 
-#circle-container {
+.circle-container {
   width: 200px;
   height: 200px;
   padding: 20px;
@@ -107,7 +107,7 @@ body {
   border-radius: 50%;
 }
 
-#circle-cover-bg {
+.circle-cover-bg {
   background: url("../media/images/default.jpg" )
 }
 
