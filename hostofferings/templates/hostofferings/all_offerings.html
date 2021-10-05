@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+{% block content %}
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      {% for host, offering in offerings %}
+      <div class="col-lg-4">
+        <div class="mx-auto circle-container">
+          <div style="background: url({{image}}) no-repeat center center;" class="circle-cover-bg"></div>
+        </div>
+        <h2 class="green">{{host.user.username}} {{host.first_language}} {{offering.id}} </h2>
+        <p>{{offering.work_details}}</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      {% endfor %}
+    </div><!-- /.row -->
+{% endblock %}
+

@@ -45,7 +45,8 @@ def all_offerings(request):
     zipped_tuples = zip(it, it)
     tuples = list(zipped_tuples)
     image = '/media/images/default.jpg'
-    return render(request, 'hostofferings/home.html', {'image': image})
+    print(tuples)
+    return render(request, "hostofferings/all_offerings.html", {'offerings': tuples, 'image': image})
 
 
 @login_required()
