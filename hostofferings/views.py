@@ -4,7 +4,8 @@ from django.contrib.auth.decorators import login_required
 from .models import offering
 from django.apps import apps
 from .models import Host
-from itertools import chain
+from django.conf.urls import url
+
 
 
 # Create your views here.
@@ -32,11 +33,7 @@ def add_offering(request):
 
 @login_required()
 def all_offerings(request):
-    #host_model = apps.get_model('users', 'Host')
     hosts = Host.objects.all()
-    #for offering1 in offerings:
-     #   print(offering1.work_category)
-    #print(hosts) 
     result_list = []
     for host in hosts:
         offerings = offering.objects.filter(host=host)
@@ -47,7 +44,8 @@ def all_offerings(request):
     it = iter(result_list)
     zipped_tuples = zip(it, it)
     tuples = list(zipped_tuples)
-    return render(request, "hostofferings/offering_marketplace.html", {'offerings': tuples})
+    image = url('/media/images/default.jpg')
+    return render(request, "hostofferings/offering_marketplace.html", {'offerings': tuples, 'image': image})
 
 
 @login_required()

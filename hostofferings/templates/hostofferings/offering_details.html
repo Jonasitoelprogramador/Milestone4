@@ -1,7 +1,16 @@
 
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
 <h4>{{offering_details.host}}</h4>
-<h4>{{offering_details}}</h4>
+<h4>{{offering_details.host.user.email}}</h4>
+<h4>{{offering_details.host.first_language}}</h4>
+<h4>{{offering_details.host.nationality}}</h4>
+<h4>{{offering_details.host.location}}</h4>
+<h4>{{offering_details.work_category}}</h4>
 <h4>{{offering_details.work_details}}</h4>
+{% endblock %}
 
 
 

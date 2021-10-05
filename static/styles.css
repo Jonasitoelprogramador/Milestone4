@@ -1,0 +1,31 @@
+.circle-cover-bg {
+    height: 100%;
+    border-radius: 50%;
+}
+
+.inline {
+    display: inline;
+}
+
+.green {
+    color: green !important;
+}
+
+.circle-container {
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-width: 1px;
+  border-radius: 50%;
+}
+
+
+.mx-auto {
+  margin: auto;
+}
+
+img { 
+  object-fit: cover;
+}
