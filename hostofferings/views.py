@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import offering
 from django.apps import apps
 from .models import Host
-from django.conf.urls import url
+
 
 
 
@@ -44,8 +44,8 @@ def all_offerings(request):
     it = iter(result_list)
     zipped_tuples = zip(it, it)
     tuples = list(zipped_tuples)
-    image = url('/media/images/default.jpg')
-    return render(request, "hostofferings/offering_marketplace.html", {'offerings': tuples, 'image': image})
+    image = '/media/images/default.jpg'
+    return render(request, 'hostofferings/home.html', {'image': image})
 
 
 @login_required()
