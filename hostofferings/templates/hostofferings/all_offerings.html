@@ -12,7 +12,7 @@
       {% for host, offering in offerings %}
       <div class="col-lg-4">
         <div class="mx-auto circle-container">
-          <div style="background: url('/media/images/{{offering.random_identifier}}') no-repeat center center;" class="circle-cover-bg"></div>
+          <div style="background-image: url('/media/images/{{offering.random_identifier}}'); background-size: contain;" class="circle-cover-bg"></div>
         </div>
         <h2 class="green">{{host.user.username}} {{host.first_language}} </h2>
         <p>{{offering.work_details}}</p>

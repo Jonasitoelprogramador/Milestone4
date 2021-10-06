@@ -7,7 +7,7 @@ import string
 import os.path
 
 
-def path_and_rename(instance, filename):
+def path_time(instance, filename):
     extension = os.path.splitext(filename)[1]
     instance.random_identifier = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(16))
     instance.random_identifier = instance.random_identifier + extension
@@ -21,7 +21,7 @@ class offering(models.Model):
     work_category = models.CharField(max_length=100)
     work_details = models.TextField()
     host = models.ForeignKey(Host, on_delete=models.CASCADE)
-    offering_image = models.ImageField(upload_to=path_and_rename, default='default.jpg')
+    offering_image = models.ImageField(upload_to=path_time, default='default.jpg')
     random_identifier = models.CharField(max_length=100)
 
     def __str__(self):
