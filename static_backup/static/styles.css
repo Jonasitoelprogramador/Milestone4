@@ -46,3 +46,8 @@ img {
   width: 1422px !important;
   height: 388px !important;
 }
+
+.register-form {
+  width: 600px;
+  margin: 50px auto;
+}
