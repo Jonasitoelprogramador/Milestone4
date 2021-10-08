@@ -30,8 +30,36 @@
                         <form method="POST" class="register-form" id="register-form" action="{% url 'register' '{post_paramater}' %}">
                             {% csrf_token %}
                             <div class="form-group">
+                                <label for="nationality_first"><i class="zmdi zmdi-account material-icons-name">Labelling</i></label>
+                                <div>{% if post_paramater == 'host' %}
+                                    {{profile_form.nationality}} 
+                                {% else %}  
+                                    {{profile_form.first_language}}
+                                {% endif %}</div>   
+                            </div>
+                            <div class="form-group">
+                                <label for="first_language_desired"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                {% if post_paramater == 'host' %}
+                                    {{profile_form.first_language}}  
+                                {% else %} 
+                                    {{profile_form.desired_language}} 
+                                {% endif %}     
+                            </div>
+                            <div class="form-group">
+                                <label for="location_experience"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                {% if post_paramater == 'host' %}
+                                    {{profile_form.location}}  
+                                {% else %} 
+                                    {{profile_form.work_experience_category}}
+                                {% endif %}  
+                            </div>
+                            <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                {{form.username}}
+                                {{profile_form.work_experience}}   
+                            </div>
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                {{form.username}}   
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>

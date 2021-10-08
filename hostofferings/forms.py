@@ -10,5 +10,4 @@ class OfferingForm(forms.ModelForm):
         widgets = {
             'work_category': forms.TextInput(attrs={'class': 'input3', 'type': "text", 'name': "work_category", 'placeholder': "Fruit Picking"}),
             'work_details': forms.Textarea(attrs={'class': 'input3', 'type': "text", 'name': "work_details", 'placeholder': "Short description of the work involved"}),
-            #'offering_image': forms.ImageField(widget=forms.ImageField(attrs={'class': 'input3', 'type': "image", 'name': "image"})),
         }

@@ -18,7 +18,8 @@
 #         model = Worker
 #         fields = ('email', 'username', 'password', 'nationality', 'first_language', 'desired_language', 'work_experience_category', 'work_experience') 
 
-from django.forms import forms, ModelForm
+from django.forms import ModelForm
+from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from users.models import Host, Worker
@@ -47,11 +48,24 @@ class HostCreationForm(ModelForm):
         model = Host
         fields = ('nationality', 'first_language', 'location')
 
+        widgets = {
+            'nationality': forms.TextInput(attrs={'id':"nationality_first", 'placeholder': "Fruit Picking"}),
+            'first_language': forms.TextInput(attrs={'id':"first_language_desired", 'placeholder': "Fruit Picking"}),
+            'location': forms.TextInput(attrs={'id':"location_experience", 'placeholder': "Fruit Picking"}),
+        }
+
 
 class WorkerCreationForm(ModelForm):
     class Meta:
         model = Worker
         fields = ('first_language', 'desired_language', 'work_experience_category', 'work_experience')
+
+        widgets = {
+            'first_language': forms.TextInput(attrs={'id':"nationality_first", 'placeholder': "Fruit Picking"}),
+            'desired_language': forms.TextInput(attrs={'id':"first_language_desired", 'placeholder': "Fruit Picking"}),
+            'work_experience_category': forms.TextInput(attrs={'id':"location_experience", 'placeholder': "Fruit Picking"}),
+            'work_experience': forms.TextInput(attrs={'id': "work_experience", 'placeholder': "I worked on a farm for 3 months..."}),
+        }
 
 
 #class UserLoginForm(forms.Form):
