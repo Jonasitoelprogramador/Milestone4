@@ -7,10 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
 
-    <!-- JS -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/main.js"></script>
-
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
@@ -53,39 +49,6 @@
                                 <label for="re-pass">Re-type Password</label>
                                 {{form.password2}}
                             </div>
-                            <div class="form-group">
-                                <div>{% if post_paramater == 'host' %}
-                                    <label for="nationality_first">Nationality</label>
-                                    {{profile_form.nationality}} 
-                                {% else %}  
-                                    <label for="nationality_first">First Language</label>
-                                    {{profile_form.first_language}}
-                                {% endif %}</div>   
-                                </div>
-                                <div class="form-group">
-                                {% if post_paramater == 'host' %}
-                                    <label for="first_language_desired">First Language</label>
-                                    {{profile_form.first_language}}  
-                                {% else %} 
-                                    <label for="first_language_desired">Desired Language</label>
-                                    {{profile_form.desired_language}} 
-                                {% endif %}     
-                                </div>
-                                <div class="form-group">
-                                {% if post_paramater == 'host' %}
-                                    <label for="location_experience">Location</label>
-                                    {{profile_form.location}}  
-                                {% else %} 
-                                    <label for="location_experience">Work Experience Category</label>
-                                    {{profile_form.work_experience_category}}
-                                {% endif %}  
-                                </div>
-                                <div class="form-group">
-                                {% if profile_form.work_experience %}
-                                <label for="name">Work Experience</label>
-                                {{profile_form.work_experience}} 
-                                {% endif %}  
-                                </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signup-step-1" id="signup-step-1" class="form-submit" value="Register"/>
                             </div>
@@ -100,4 +63,5 @@
         </section>
     </div>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+<script src="../../static/accounts/js/scripts.js"></script>
 </html>

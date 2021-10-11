@@ -10,7 +10,6 @@ from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
 def register(request, user_type):
-    print(user_type)
     """A view that manages the registration form"""
     if user_type == 'host':
         profile_form = HostCreationForm()

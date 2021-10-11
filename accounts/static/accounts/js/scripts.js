@@ -1,8 +1,10 @@
-/*var signup_1 = document.getElementbyId("signup-step-1");
+var signup_1 = document.getElementById("signup-step-1");
 signup_1.addEventListener("click", next_input)
+console.log('hello');
 
-function next_input() {
-    This needs to hold the submit until the next form has been filled out
+
+function next_input(e) {
+    //This needs to hold the submit until the next form has been filled out
     var register_form = document.getElementbyId("register_form");
     register_form.innerHTML = 
 `<div class="form-group">
