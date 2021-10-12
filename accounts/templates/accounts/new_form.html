@@ -1,16 +1,6 @@
-window.onload = function(){
-var signup_1 = document.getElementById("signup-step-1");
-signup_1.addEventListener("click", next_input)}
-
-
-function next_input(e) {
-    //This needs to hold the submit until the next form has been filled out
-    e.preventDefault();
-    var register_form = document.getElementById("register-form");
-    register_form.innerHTML = `<div class='form-group'>
+`<div class='form-group'>
     <div>{% if post_paramater == 'host' %}
-        <label for='nationality_first'>Nationality</label>
-        ${nationality}
+        <label for='nationality_first'>Nationality</label> 
     {% else %} 
         <label for='nationality_first'>First Language</label>
         {{profile_form.first_language}}
@@ -43,4 +33,3 @@ function next_input(e) {
     <div class='form-group form-button'>
     <input type='submit' name='signup-step-2' id='signup-step-2' class='form-submit' value='Register'/>
     </div>`
-}
