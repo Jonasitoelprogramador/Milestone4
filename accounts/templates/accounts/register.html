@@ -29,7 +29,8 @@
                             <div id="profile-inputs">
                                 <div class="form-group">
                                     <label for="name">Username</label>
-                                    {{form.username}}   
+                                    {{form.username}}
+                                    <!--<input id="username-input">-->
                                 </div>  
                                 <div class="form-group">
                                     <label for="email">Email</label>
@@ -113,6 +114,9 @@
         <input type='submit' name='signup-step-2' id='signup-step-2' class='form-submit' value='Register'/>
         </div>`
         var profile_inputs = document.getElementById("profile-inputs");
-        profile_inputs.hidden = true;
+        profile_inputs.style.opacity = "0.0";
+        /*var username = document.getElementById('username-input')
+        username_value = username.value
+        console.log(username_value)*/
     }
 </script>
