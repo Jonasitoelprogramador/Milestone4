@@ -1,7 +1,7 @@
 window.onload = function(){
 var signup_1 = document.getElementById("signup-step-1");
 signup_1.addEventListener("click", next_input)}
-
+var nationality = "hello"
 
 function next_input(e) {
     //This needs to hold the submit until the next form has been filled out
@@ -10,6 +10,7 @@ function next_input(e) {
     register_form.innerHTML = `<div class='form-group'>
     <div>{% if post_paramater == 'host' %}
         <label for='nationality_first'>Nationality</label>
+        {{profile_form.nationality}}
         ${nationality}
     {% else %} 
         <label for='nationality_first'>First Language</label>
