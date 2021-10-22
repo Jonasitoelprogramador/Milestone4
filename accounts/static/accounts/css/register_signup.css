@@ -1,5 +1,5 @@
 /* @extend display-flex; */
-display-flex, .display-flex, .display-flex-center, .signup-content, .signin-content, .social-login, .socials {
+display-flex, .display-flex, .display-flex-center, .signin-content, .social-login, .socials {
   display: flex;
   display: -webkit-flex; }
 
@@ -213,7 +213,11 @@ body {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
   -o-border-radius: 20px;
-  -ms-border-radius: 20px; }
+  -ms-border-radius: 20px;
+  /*----------my additions---------*/
+  display: flex;
+  flex-direction: column;
+}
 
 .display-flex {
   justify-content: space-between;
@@ -252,15 +256,8 @@ body {
 .signup {
   margin-bottom: 20px; }
 
-.signup-content {
-  padding: 75px 0; }
-
 .signup-form, .signup-image, .signin-form, .signin-image {
-  width: 50%;
   overflow: hidden; }
-
-.signup-image {
-  margin: 0 55px; }
 
 .form-title {
   margin-bottom: 33px; }
@@ -302,11 +299,6 @@ figure {
   font-size: 13px;
   color: #222; }
 
-.signup-form {
-  margin-left: 75px;
-  margin-right: 75px;
-  padding-left: 34px; }
-
 .register-form {
   width: 100%; }
 
@@ -314,8 +306,6 @@ figure {
   position: relative;
   margin-bottom: 25px;
   overflow: hidden; }
-  .form-group:last-child {
-    margin-bottom: 0px; }
 
 input {
   width: 100%;
@@ -529,7 +519,7 @@ label.valid {
     margin-right: 0px;
     padding-left: 0px;
     /* box-sizing: border-box; */
-    padding: 0 30px; }
+ }
 
   .signin-image {
     margin-left: 0px;
@@ -580,4 +570,26 @@ label.valid {
 
 /*# sourceMappingURL=style.css.map */
 
+/*------------------my additions-----------------*/
 
+
+#profile-inputs {
+  flex: 1;
+}
+
+#host-worker-inputs {
+  flex: 1;
+}
+
+@media only screen and (min-width: 600px) {
+  .container {
+    flex-direction: row;
+  }
+ 
+}
+
+@media only screen and (min-width: 415px) {
+  .signup-form {
+  padding: 0 30px;
+  }
+}

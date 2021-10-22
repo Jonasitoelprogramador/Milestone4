@@ -20,12 +20,12 @@
     <div class="main" style="background-image: url('../../static/accounts/images/testing_photo.jpg;)">
         <!-- Sign up form -->
         <section class="signup">
-            <div class="container">
-                <div class="signup-content">
-                    <div class="signup-form">
-                        <h2 class="form-title">Sign up</h2>
-                        <form method="POST" class="register-form" id="register-form" action="{% url 'register' post_paramater %}">
-                            {% csrf_token %}
+            <div class="signup-content">
+                <div class="signup-form">
+                    <h2 class="form-title">Sign up</h2>
+                    <form method="POST" class="register-form" id="register-form" action="{% url 'register' post_paramater %}">
+                        {% csrf_token %}
+                        <div class="container">
                             <div id="profile-inputs">
                                 <div class="form-group">
                                     <label for="name">Username</label>
@@ -52,17 +52,51 @@
                                     <label for="re-pass">Re-type Password</label>
                                     {{form.password2}}
                                 </div>
-                                <div class="form-group form-button" id="next-button">
-                                    <input type="button" name="signup-step-1" id="signup-step-1" class="form-submit" value="Next"/>
+                            </div>
+                            <div id="host-worker-inputs">
+                                <div class='form-group'>
+                                {% if post_paramater == 'host' %}
+                                    <label for='nationality_first'>Nationality</label>
+                                    {{profile_form.nationality}}
+                                {% else %} 
+                                    <label for='nationality_first'>First Language</label>
+                                    {{profile_form.first_language}}
+                                {% endif %}
+                                </div>   
+                                <div class='form-group'>
+                                {% if post_paramater == 'host' %}
+                                    <label for="first_language_desired">First Language</label>
+                                    {{profile_form.first_language}}  
+                                {% else %} 
+                                    <label for='first_language_desired'>Desired Language</label>
+                                    {{profile_form.desired_language}} 
+                                {% endif %}     
+                                </div>
+                                <div class="form-group">
+                                {% if post_paramater == 'host' %}
+                                    <label for='location_experience'>Location</label>
+                                    {{profile_form.location}}  
+                                {% else %} 
+                                    <label for='location_experience'>Work Experience Category</label>
+                                    {{profile_form.work_experience_category}}
+                                {% endif %}  
+                                </div>
+                                <div class='form-group'>
+                                    {% if profile_form.work_experience %}
+                                        <label for='name'>Work Experience</label>
+                                        {{profile_form.work_experience}} 
+                                    {% endif %}  
+                                </div>
+                                <div class='form-group form-button'>
+                                    <input type='submit' name='signup-step-2' id='signup-step-2' class='form-submit' value='Register'/>
+                                </div>
+                                <div>
+                                    <a href="#" class="signup-image-link">I am already member</a>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="signup-image">
-                        <figure><img src="{% static 'accounts/images/signin-image.jpg' %}" alt="sing up image"></figure>
-                        <a href="#" class="signup-image-link">I am already member</a>
-                    </div>
-                </div>
+                        </div>
+                    </form>    
+                </div>  
             </div>
         </section>
     </div>
@@ -75,6 +109,7 @@
 
         
     function next_input() {
+        console.log("hello")
         //This needs to hold the submit until the next form has been filled out
         var register_form = document.getElementById("register-form");
         register_form.innerHTML += `<div class='form-group'>
@@ -113,10 +148,5 @@
         <div class='form-group form-button'>
         <input type='submit' name='signup-step-2' id='signup-step-2' class='form-submit' value='Register'/>
         </div>`
-        var profile_inputs = document.getElementById("profile-inputs");
-        profile_inputs.style.opacity = "0.0";
-        /*var username = document.getElementById('username-input')
-        username_value = username.value
-        console.log(username_value)*/
     }
 </script>
