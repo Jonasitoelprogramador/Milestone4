@@ -14,10 +14,10 @@
     <!-- Main css -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" /> 
-    <link rel="stylesheet" href="{% static '/css/register_signup.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/register_signup.css' %}" />
 </head>
 <body>
-    <img src="{% static '/ima/testing_photo.jpg' %}">
+    <img src="{% static '/images/testing_photo.jpg' %}">
     <div class="main">
         <!-- Sign up form -->
         <section class="signup">
@@ -101,53 +101,6 @@
             </div>
         </section>
     </div>
+<script src="{% static '/js/scripts.js' %}"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
-<script>
-    window.onload = function(){
-        var signup_1 = document.getElementById("signup-step-1");
-        signup_1.addEventListener("click", next_input)}
-
-        
-    function next_input() {
-        console.log("hello")
-        //This needs to hold the submit until the next form has been filled out
-        var register_form = document.getElementById("register-form");
-        register_form.innerHTML += `<div class='form-group'>
-        <div>{% if post_paramater == 'host' %}
-            <label for='nationality_first'>Nationality</label>
-            {{profile_form.nationality}}
-        {% else %} 
-            <label for='nationality_first'>First Language</label>
-            {{profile_form.first_language}}
-        {% endif %}</div>   
-        </div>
-        <div class='form-group'>
-        {% if post_paramater == 'host' %}
-            <label for="first_language_desired">First Language</label>
-            {{profile_form.first_language}}  
-        {% else %} 
-            <label for='first_language_desired'>Desired Language</label>
-            {{profile_form.desired_language}} 
-        {% endif %}     
-        </div>
-        <div class="form-group">
-        {% if post_paramater == 'host' %}
-            <label for='location_experience'>Location</label>
-            {{profile_form.location}}  
-        {% else %} 
-            <label for='location_experience'>Work Experience Category</label>
-            {{profile_form.work_experience_category}}
-        {% endif %}  
-        </div>
-        <div class='form-group'>
-        {% if profile_form.work_experience %}
-        <label for='name'>Work Experience</label>
-        {{profile_form.work_experience}} 
-        {% endif %}  
-        </div>
-        <div class='form-group form-button'>
-        <input type='submit' name='signup-step-2' id='signup-step-2' class='form-submit' value='Register'/>
-        </div>`
-    }
-</script>
