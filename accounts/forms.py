@@ -8,20 +8,25 @@ from users.models import Host, Worker
 
 
 class ExtendedUserCreationForm(UserCreationForm):
+    password1 = forms.CharField(
+            label="Password",
+            widget=forms.PasswordInput(attrs={'class':'background-translucent', 'type':'password'}),
+        )
+    password2 = forms.CharField(
+        label="Confirm password",
+        widget=forms.PasswordInput(attrs={'class':'background-translucent', 'type':'password'}),
+    )
 
     class Meta:
         model = User
         fields = ("username", "email", "first_name", "last_name", "password1", "password2")
 
-    widgets = {
-            'username': forms.TextInput(attrs={'id':"username1", 'class': 'background-translucent'}),
-            'email': forms.TextInput(attrs={'id':"first_language_desired", 'placeholder': "Fruit Picking", 'class': 'background-translucent'}),
-            'first_name': forms.TextInput(attrs={'id':"location_experience", 'placeholder': "Fruit Picking", 'class': 'background-translucent'}),
-            'last_name': forms.TextInput(attrs={'id': "work_experience", 'placeholder': "I worked on a farm for 3 months...", 'class': 'background-translucent'}),
-            'password1': forms.TextInput(attrs={'id': "work_experience", 'placeholder': "I worked on a farm for 3 months...", 'class': 'background-translucent'}),
-            'password2': forms.TextInput(attrs={'id': "work_experience", 'placeholder': "I worked on a farm for 3 months...", 'class': 'background-translucent'}),
-        }
-
+        widgets = {
+                'username': forms.TextInput(attrs={'id':"username", 'class': 'background-translucent'}),
+                'email': forms.TextInput(attrs={'id':"email", 'class': 'background-translucent'}),
+                'first_name': forms.TextInput(attrs={'id':"first_name", 'class': 'background-translucent'}),
+                'last_name': forms.TextInput(attrs={'id': "last_name", 'class': 'background-translucent'}),
+            }
 
     def save(self, commit=True):
         user = super().save(commit=True)
