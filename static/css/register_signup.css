@@ -1,7 +1,7 @@
 /*----code taken from https://bootsnipp.com/snippets/A36DP--------*/
 
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
 
 
 a:focus, a:active {
@@ -73,8 +73,9 @@ h2 {
   font-size: 36px; }
 
 .main {
-  background: #f8f8f8;
-  padding: 30px 0; }
+  padding: 30px 0;
+  background-color: aqua;
+}
 
 .clear {
   clear: both; }
@@ -89,7 +90,7 @@ body {
 
 .container {
   width: 900px;
-  background: #fff;
+  background-color: #fff;
   margin: 0 auto;
   box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
@@ -104,6 +105,7 @@ body {
   /*----------my additions---------*/
   display: flex;
   flex-direction: column;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .display-flex {
@@ -147,7 +149,9 @@ body {
   overflow: hidden; }
 
 .form-title {
-  margin-bottom: 33px; }
+  margin-bottom: 33px;
+  font-family: 'Zen Kurenaido', sans-serif;
+}
 
 .signup-image {
   margin-top: 45px; }
@@ -490,6 +494,15 @@ label.valid {
   }
 }
 
-#signup {
-  font-family: 'Rampart One', cursive;
+.signup {
+  font-family: 'Zen Kurenaido', sans-serif;
+}
+
+.image-div {
+  background-image: "url{% static '/images/testing_photo.jpg' %}";
+  background-color: red;
+}
+
+.background-translucent {
+  background: rgba(255, 255, 255, 0.0);
 }
