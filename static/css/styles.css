@@ -29,6 +29,15 @@ body {
   background-position: center;
 }
 
+#globe {
+  width: 130px;
+  height: 130px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 30px;
+}
+
 .green {
   color: green !important;
 }
@@ -41,9 +50,22 @@ img {
   object-fit: cover;
 }
 
+.link-list-left {
+  margin-left: 22rem;
+}
+
+.link-list-right {
+  margin-left: 110px;
+}
+
 .mx-auto {
   margin: auto;
 }
+
+.navbar {
+  background-color: #a4b0c0;
+}
+
 
 .register-container {
   width: 1422px !important;
