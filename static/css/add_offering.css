@@ -1,9 +1,6 @@
+/*---------CSS for add_offerings page--------------------*/
 
-
-
-
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
+/*-----------The below CSS is taken from https://colorlib.com/wp/template/contact-form-v3/--------------*/
 
 @font-face {
   font-family: Poppins-Regular;
@@ -592,6 +589,8 @@ textarea.input3 {
   color: #555555;
   line-height: 1.2;
 }
+
+/*--------End of borrowed section-------------*/
 
 
 

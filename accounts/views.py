@@ -80,7 +80,7 @@ def login(request):
         user_form = AuthenticationForm(request.POST)
         #if user_form.is_valid():
         print(request.POST)
-        user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
+        user = authenticate(request, username=request.POST['your_name'], password=request.POST['your_pass'])
         if user:
             auth_login(request, user)
             return HttpResponse("logged in")

@@ -1,5 +1,6 @@
-/* GLOBAL STYLES
--------------------------------------------------- */
+/*-----------CSS for the all_offerings page------------------*/
+/*---------This section is extra css classes taken from https://getbootstrap.com/docs/4.0/examples/------*/
+
 /* Padding below the footer and lighter body text */
 
 body {
@@ -89,3 +90,10 @@ body {
   }
 }
 
+/*-------------End of borrowed section------------------*/
+
+@media only screen and (min-width: 600px) {
+  .width-control {
+    
+  }
+}

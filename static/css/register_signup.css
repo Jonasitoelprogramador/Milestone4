@@ -88,7 +88,7 @@ body {
   font-weight: 400;
   font-family: Poppins; }
 
-.container {
+.reg-container {
   width: 900px;
   background-color: #fff;
   margin: 0 auto;
@@ -386,11 +386,11 @@ label.valid {
   margin-top: 10px; }
 
 @media screen and (max-width: 1200px) {
-  .container {
+  .reg-container {
     width: calc( 100% - 30px);
     max-width: 100%; } }
 @media screen and (min-width: 1024px) {
-  .container {
+  .reg-container {
     max-width: 1200px; } }
 @media screen and (max-width: 768px) {
   .signup-content, .signin-content {
@@ -475,7 +475,7 @@ label.valid {
 }
 
 @media only screen and (min-width: 600px) {
-  .container {
+  .reg-container {
     flex-direction: row;
   }
   #profile-inputs {
@@ -505,4 +505,8 @@ label.valid {
 
 .background-translucent {
   background: rgba(255, 255, 255, 0.0);
+}
+
+.padding-bottom-30 {
+  padding-bottom: 30px;
 }

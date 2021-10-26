@@ -21,10 +21,10 @@
         <section class="signup">
             <div class="signup-content">
                 <div class="signup-form">
-                    <h2 class="form-title">Sign up</h2>
+                    <h2 class="form-title text-center">Sign up</h2>
                     <form method="POST" class="register-form" id="register-form" action="{% url 'register' post_paramater %}">
                         {% csrf_token %}
-                        <div class="container">
+                        <div class="reg-container">
                             <div id="profile-inputs">
                                 <div class="form-group">
                                     <label for="name">Username</label>
@@ -85,10 +85,10 @@
                                         {{profile_form.work_experience}} 
                                     {% endif %}  
                                 </div>
-                                <div class='form-group form-button'>
+                                <div class='form-group form-button text-center'>
                                     <input type='submit' name='signup-step-2' id='signup-step-2' class='form-submit' value='Register'/>
                                 </div>
-                                <div>
+                                <div class="padding-bottom-30">
                                     <a href="#" class="signup-image-link">I am already member</a>
                                 </div>
                             </div>
