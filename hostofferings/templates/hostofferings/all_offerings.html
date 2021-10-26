@@ -10,13 +10,13 @@
     <!-- Three columns of text below the carousel -->
     <div class="row">
       {% for host, offering in offerings %}
-      <div class="col-lg-4">
+      <div class="col-sm-6 col-md-4 each-offering">
         <div class="mx-auto circle-container-sm">
           <div style="background-image: url('/media/images/{{offering.random_identifier}}')" class="circle-cover-bg"></div>
         </div>
-        <h2 class="green">{{host.user.username}} {{host.first_language}}</h2>
-        <p>{{offering.work_details}}</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <h2 class="green text-center">{{host.user.username}} {{host.first_language}}</h2>
+        <p class="text-center">{{offering.work_details}}</p>
+        <p class="text-center"><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
       </div>
       {% endfor %}
     </div><!-- /.row -->
