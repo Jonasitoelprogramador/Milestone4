@@ -1,7 +1,10 @@
 /*---------CSS code used throughout the prpject (alphabetical)---------------*/
 body {
   overflow-x: hidden;
+  padding-top: 0;
+  height: auto;
 }
+
 
 .circle-container-bg {
   width: 400px;
@@ -29,17 +32,21 @@ body {
   background-position: center;
 }
 
+
 #globe {
-  width: 130px;
-  height: 130px;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 30px;
+  width: 60px;
+  height: 60px;
 }
 
 .green {
   color: green !important;
+}
+
+.hero-div {
+  height: 90vh;
+  width: 100%;
+  background: url('/static/images/testing_photo.jpg');
+  background-size: cover;
 }
 
 .inline {
@@ -50,20 +57,16 @@ img {
   object-fit: cover;
 }
 
-.link-list-left {
-  margin-left: 22rem;
-}
-
-.link-list-right {
-  margin-left: 110px;
-}
-
 .mx-auto {
   margin: auto;
 }
 
 .navbar {
   background-color: #a4b0c0;
+}
+
+#nav-home {
+  margin-left: 20px;
 }
 
 
