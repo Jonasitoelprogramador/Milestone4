@@ -1,24 +1,24 @@
 
 {% extends "base.html" %}
 {% load static %}
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
-            {% block content %}
-                <div class="mx-auto circle-container-bg">
-                    <div style="background-image: url('/media/images/{{offering_details.random_identifier}}')" class="circle-cover-bg"></div>
-                </div>
-                <h4>{{offering_details.host}}</h4>
-                <h4>{{offering_details.host.user.email}}</h4>
-                <h4>{{offering_details.host.first_language}}</h4>
-                <h4>{{offering_details.host.nationality}}</h4>
-                <h4>{{offering_details.host.location}}</h4>
-                <h4>{{offering_details.work_category}}</h4>
-                <h4>{{offering_details.work_details}}</h4>
-            {% endblock %}
+
+<div>
+    {% block content %}
+        <div class="mx-auto circle-container-bg">
+            <div style="background-image: url('/media/images/{{offering_details.random_identifier}}')" class="circle-cover-bg"></div>
         </div>
-    </div>
+        <div class="details">
+            <h4 class="wrapable">{{offering_details.host}}</h4>
+            <h4 class="wrapable">{{offering_details.host.user.email}}</h4>
+            <h4 class="wrapable">{{offering_details.host.first_language}}</h4>
+            <h4 class="wrapable">{{offering_details.host.nationality}}</h4>
+            <h4 class="wrapable">{{offering_details.host.location}}</h4>
+            <h4 class="wrapable">{{offering_details.work_category}}</h4>
+            <h4 class="wrapable">{{offering_details.work_details}}</h4>
+        </div>
+    {% endblock %}
 </div>
+   
 
 
 
