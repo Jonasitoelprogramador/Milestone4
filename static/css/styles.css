@@ -19,11 +19,6 @@ body {
   border-radius: 50%;
 }
 
-.wrapable {
-  flex-wrap: wrap;
-  word-wrap: break-word;
-}
-
 #globe {
   width: 60px;
   height: 60px;
@@ -31,6 +26,10 @@ body {
 
 .green {
   color: green !important;
+}
+
+.header-style {
+  height: 76px;
 }
 
 .hero-div {
@@ -71,12 +70,17 @@ img {
   height: 388px !important;
 }
 
+.wrapable {
+  flex-wrap: wrap;
+  word-wrap: break-word;
+}
+
 /*------------offering details---------------------------*/
 
 .circle-container-bg {
   width: 250px;
   height: 250px;
-  margin-top: 90px;
+  margin-top: 30px;
 }
 
 .circle-cover-bg {
@@ -110,6 +114,7 @@ hr {
   margin-bottom: 00.3rem;
 }
 
+
 @media only screen and (min-width: 320px) {
   .circle-container-bg {
     width: 300px;
@@ -142,6 +147,11 @@ hr {
   .circle-container-bg {
     width: auto;
     margin: auto;
+    margin-top: 30px;
+  }
+
+  .details {
+    width: auto;
   }
 }
 

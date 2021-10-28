@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import offering
 from django.apps import apps
 from .models import Host
+import random
 
 
 
@@ -52,8 +53,25 @@ def all_offerings(request):
 @login_required()
 def offering_details(request, pk):
     offering_details = get_object_or_404(offering, pk=pk)
-    print(offering_details)
-    return render(request, 'hostofferings/offering_details.html', {'offering_details': offering_details})
+    hosts = Host.objects.all()
+    result_list = []
+    for host in hosts:
+        offerings = offering.objects.filter(host=host)
+        offerings_list = list(offerings)
+        for o in offerings_list:
+            host_and_offering = [host] + [o]
+            result_list += host_and_offering
+    it = iter(result_list)
+    zipped_tuples = zip(it, it)
+    tuples = list(zipped_tuples)
+    lst = []
+    i = 1
+    while i < 4:
+        ran_num = random.randint(0, len(tuples)-1)
+        lst.append(tuples[ran_num])
+        i += 1
+    image = '/media/images/default.jpg'
+    return render(request, 'hostofferings/offering_details.html', {'offering_details': offering_details, 'offerings': lst, 'image': image})
 
 
 @login_required() 
