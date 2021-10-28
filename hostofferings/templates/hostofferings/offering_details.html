@@ -8,13 +8,33 @@
             <div style="background-image: url('/media/images/{{offering_details.random_identifier}}')" class="circle-cover-bg"></div>
         </div>
         <div class="details">
-            <h4 class="wrapable">{{offering_details.host}}</h4>
-            <h4 class="wrapable">{{offering_details.host.user.email}}</h4>
-            <h4 class="wrapable">{{offering_details.host.first_language}}</h4>
-            <h4 class="wrapable">{{offering_details.host.nationality}}</h4>
-            <h4 class="wrapable">{{offering_details.host.location}}</h4>
-            <h4 class="wrapable">{{offering_details.work_category}}</h4>
-            <h4 class="wrapable">{{offering_details.work_details}}</h4>
+            <i class="fas fa-user-alt"></i>
+            <p class="inline"><strong>Name</strong></p>
+            <p class="wrapable">{{offering_details.host}}</p>
+            <hr>
+            <i class="fas fa-envelope"></i>
+            <p class="inline"><strong>Email</strong></p>
+            <p class="wrapable">{{offering_details.host.user.email}}</p>
+            <hr>
+            <i class="fas fa-language"></i>
+            <p class="inline"><strong>Fist Language</strong></p>
+            <p class="wrapable">{{offering_details.host.first_language}}</p>
+            <hr>
+            <i class="fas fa-globe-europe"></i>
+            <p class="inline"><strong>Nationality</strong></p>
+            <p class="wrapable">{{offering_details.host.nationality}}</p>
+            <hr>
+            <i class="fas fa-map-marker-alt"></i>
+            <p class="inline"><strong>Location</strong></p>
+            <p class="wrapable">{{offering_details.host.location}}</p>
+            <hr>
+            <i class="fas fa-hands-helping"></i>
+            <p class="inline"><strong>Work Category</strong></p>
+            <p class="wrapable">{{offering_details.work_category}}</p>
+            <hr>
+            <i class="fas fa-info"></i>
+            <p class="inline"><strong>Work Details</strong></p>
+            <p class="wrapable">{{offering_details.work_details}}</p>
         </div>
     {% endblock %}
 </div>
