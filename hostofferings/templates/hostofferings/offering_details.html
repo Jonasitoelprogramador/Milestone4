@@ -2,42 +2,49 @@
 {% extends "base.html" %}
 {% load static %}
 
-<div>
     {% block content %}
-        <div class="mx-auto circle-container-bg">
-            <div style="background-image: url('/media/images/{{offering_details.random_identifier}}')" class="circle-cover-bg"></div>
-        </div>
-        <div class="details">
-            <i class="fas fa-user-alt"></i>
-            <p class="inline"><strong>Name</strong></p>
-            <p class="wrapable">{{offering_details.host}}</p>
-            <hr>
-            <i class="fas fa-envelope"></i>
-            <p class="inline"><strong>Email</strong></p>
-            <p class="wrapable">{{offering_details.host.user.email}}</p>
-            <hr>
-            <i class="fas fa-language"></i>
-            <p class="inline"><strong>Fist Language</strong></p>
-            <p class="wrapable">{{offering_details.host.first_language}}</p>
-            <hr>
-            <i class="fas fa-globe-europe"></i>
-            <p class="inline"><strong>Nationality</strong></p>
-            <p class="wrapable">{{offering_details.host.nationality}}</p>
-            <hr>
-            <i class="fas fa-map-marker-alt"></i>
-            <p class="inline"><strong>Location</strong></p>
-            <p class="wrapable">{{offering_details.host.location}}</p>
-            <hr>
-            <i class="fas fa-hands-helping"></i>
-            <p class="inline"><strong>Work Category</strong></p>
-            <p class="wrapable">{{offering_details.work_category}}</p>
-            <hr>
-            <i class="fas fa-info"></i>
-            <p class="inline"><strong>Work Details</strong></p>
-            <p class="wrapable">{{offering_details.work_details}}</p>
-        </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="mx-auto circle-container-bg">
+                    <div style="background-image: url('/media/images/{{offering_details.random_identifier}}')" class="circle-cover-bg"></div>
+                </div>
+            </div> 
+            <div class="col-12 col-md-6">
+                <div class="details">
+                    <i class="fas fa-user-alt"></i>
+                    <p class="inline"><strong>Name</strong></p>
+                    <p class="wrapable">{{offering_details.host}}</p>
+                    <hr>
+                    <i class="fas fa-envelope"></i>
+                    <p class="inline"><strong>Email</strong></p>
+                    <p class="wrapable">{{offering_details.host.user.email}}</p>
+                    <hr>
+                    <i class="fas fa-language"></i>
+                    <p class="inline"><strong>Fist Language</strong></p>
+                    <p class="wrapable">{{offering_details.host.first_language}}</p>
+                    <hr>
+                    <i class="fas fa-globe-europe"></i>
+                    <p class="inline"><strong>Nationality</strong></p>
+                    <p class="wrapable">{{offering_details.host.nationality}}</p>
+                    <hr>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p class="inline"><strong>Location</strong></p>
+                    <p class="wrapable">{{offering_details.host.location}}</p>
+                    <hr>
+                    <i class="fas fa-hands-helping"></i>
+                    <p class="inline"><strong>Work Category</strong></p>
+                    <p class="wrapable">{{offering_details.work_category}}</p>
+                    <hr>
+                    <i class="fas fa-info"></i>
+                    <p class="inline"><strong>Work Details</strong></p>
+                    <p class="wrapable">{{offering_details.work_details}}</p>
+                </div>
+            </div>
+        </div>   
+    </div>
     {% endblock %}
-</div>
+
    
 
 

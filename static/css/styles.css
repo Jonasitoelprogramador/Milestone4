@@ -9,6 +9,7 @@ body {
   height: auto;
 }
 
+
 .circle-container-sm {
   width: 200px;
   height: 200px;
@@ -72,13 +73,18 @@ img {
 
 /*------------offering details---------------------------*/
 
+.circle-container-bg {
+  width: 250px;
+  height: 250px;
+  margin-top: 90px;
+}
+
 .circle-cover-bg {
   height: 100%;
   border-radius: 10%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  margin-top: 90px;
 }
 
 .details {
@@ -104,10 +110,46 @@ hr {
   margin-bottom: 00.3rem;
 }
 
+@media only screen and (min-width: 320px) {
+  .circle-container-bg {
+    width: 300px;
+    height: 300px;
+  }
+}
+
 @media only screen and (min-width: 450px) {
   .circle-container-bg {
     width: 400px;
     height: 400px;
   }
 }
+
+@media only screen and (min-width: 500px) {
+  .details {
+    width: 500px;
+    margin: auto;
+  }
+}
+
+@media only screen and (min-width: 660px) {
+  .circle-container-bg {
+    width: 600px;
+    height: 400px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .circle-container-bg {
+    width: auto;
+    margin: auto;
+  }
+}
+
+/*@media only screen and (min-width: 775px) {
+  .circle-container-bg {
+    margin: 100px;
+    margin-left: 30px !important
+  }
+}*/
+
 
