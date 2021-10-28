@@ -9,16 +9,21 @@
                 <div class="mx-auto circle-container-bg">
                     <div style="background-image: url('/media/images/{{offering_details.random_identifier}}')" class="circle-cover-bg"></div>
                 </div>
-                {% for host, offering in offerings %}
-                    <div class="col-sm-6 col-md-4 each-offering">
-                    <div class="mx-auto circle-container-sm">
-                        <div style="background-image: url('/media/images/{{offering.random_identifier}}')" class="circle-cover-bg"></div>
-                    </div>
-                    <h2 class="green text-center">{{host.user.username}} {{host.first_language}}</h2>
-                    <p class="text-center">{{offering.work_details}}</p>
-                    <p class="text-center"><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-                    </div>
-                {% endfor %}
+                <div class="more-offerings">More Offerings</div>
+                <div>
+                    {% for host, offering in offerings %}
+                        <div class="each-offering">
+                            <div class="circle-container-details">
+                                <div style="background-image: url('/media/images/{{offering.random_identifier}}')" class="circle-cover-bg"></div>
+                            </div>
+                            <div class="text-details">
+                                <p class="text-center">{{host.user.username}}</p>
+                                <p class="text-center">{{host.location}}</p>
+                                <p class="text-center"><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div> 
             <div class="col-12 col-md-6">
                 <div class="details">

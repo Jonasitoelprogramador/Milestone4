@@ -10,15 +10,6 @@ body {
 }
 
 
-.circle-container-sm {
-  width: 200px;
-  height: 200px;
-  border-style: solid;
-  border-color: #cccccc;
-  border-width: 1px;
-  border-radius: 50%;
-}
-
 #globe {
   width: 60px;
   height: 60px;
@@ -83,6 +74,18 @@ img {
   margin-top: 30px;
 }
 
+.circle-container-details {
+  width: 150px;
+  height: 150px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-width: 1px;
+  border-radius: 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .circle-cover-bg {
   height: 100%;
   border-radius: 10%;
@@ -111,9 +114,24 @@ img {
 
 hr {
   margin-top: 0.3rem;
-  margin-bottom: 00.3rem;
+  margin-bottom: 0.3rem;
 }
 
+.more-offerings {
+  text-align: center;
+  margin: 12px auto;
+  font-family: 'Arvo', serif;
+  font-size: 1.5rem;
+}
+
+.text-details {
+  width: 150px;
+}
+
+.text-details p {
+  font-family: 'Arvo', serif;
+  font-size: 1rem;
+}
 
 @media only screen and (min-width: 320px) {
   .circle-container-bg {
