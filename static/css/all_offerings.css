@@ -94,19 +94,23 @@ body {
 
 .each-offering {
   margin-bottom: 32px;
-  width: 150px;
   display: inline-block;
 }
 
-.each-offering p {
-  margin-bottom: 10px;
-  word-break: break-all;
-  white-space: normal;
+.each-offering p a {
+  margin-top: 7px;
 }
 
-.each-offering h2 {
-  margin-bottom: 10px;
+.each-offering p {
+  word-break: break-all;
+  white-space: normal;
+  font-family: 'Arvo', serif;
+  font-size: 1.2rem;
+}
+
+.each-offering h4 {
   margin-top: 10px;
+  font-family: 'Arvo', serif;
 }
 
 .circle-container-sm {

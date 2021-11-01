@@ -2,13 +2,20 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
 
-/*---------General CSS----------------------------------------*/
+/*---------General CSS (CSS that occurs in more than one page))----------------------------------------*/
 body {
   overflow-x: hidden;
   padding-top: 0;
   height: auto;
 }
 
+.circle-cover-bg {
+  height: 100%;
+  border-radius: 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 #globe {
   width: 60px;
@@ -24,10 +31,11 @@ body {
 }
 
 .hero-div {
-  height: 90vh;
+  height: 30vh;
   width: 100%;
   background: url('/static/images/testing_photo.jpg');
   background-size: cover;
+  margin-bottom: 40px;
 }
 
 .inline {
@@ -50,11 +58,24 @@ img {
   background-color: #a4b0c0;
 }
 
-
 #nav-home {
   margin-left: 20px;
 }
 
+.text-details {
+  width: 150px;
+}
+
+.text-details p, p a {
+  font-family: 'Arvo', serif;
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.text-details p a {
+  background-color: #a4b0c0;
+  border-color: #a4b0c0;
+}
 
 .register-container {
   width: 1422px !important;
@@ -80,14 +101,6 @@ img {
   border-style: solid;
   border-color: #cccccc;
   border-width: 1px;
-  border-radius: 10%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.circle-cover-bg {
-  height: 100%;
   border-radius: 10%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -128,15 +141,6 @@ hr {
   margin: 12px auto;
   font-family: 'Arvo', serif;
   font-size: 1.5rem;
-}
-
-.text-details {
-  width: 150px;
-}
-
-.text-details p {
-  font-family: 'Arvo', serif;
-  font-size: 1rem;
 }
 
 @media only screen and (min-width: 320px) {

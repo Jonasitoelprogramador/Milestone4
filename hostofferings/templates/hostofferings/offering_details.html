@@ -44,7 +44,7 @@
                     <div class="more-offerings">More Offerings</div>
                         <div class="details-container">
                             {% for host, offering in offerings %}
-                                <div class="each-offering">
+                                <div>
                                     <div class="circle-container-details">
                                         <div style="background-image: url('/media/images/{{offering.random_identifier}}')" class="circle-cover-bg"></div>
                                     </div>
@@ -96,8 +96,8 @@
         var detailsColumn = document.getElementById("details-column");
 
         // Create a condition that targets viewports at least 768px wide
-        const mediaQuery1 = window.matchMedia('(min-width:'+ String(753 + getScrollBarWidth())+'px)');
-        const mediaQuery2 = window.matchMedia('(max-width: '+ String(752 + getScrollBarWidth())+'px)');
+        const mediaQuery1 = window.matchMedia('(min-width: 768px)');
+        const mediaQuery2 = window.matchMedia('(max-width: 767px)');
 
         function handleTabletChange1(e) {
         // Check if the media query is true
