@@ -102,15 +102,21 @@ img {
   padding: 20px;
 }
 
-.details p {
-  font-family: 'Arvo', serif;
-  font-size: 1.5rem;
-} 
+.details-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 
 .details i {
   margin: 0 0.2rem;
   font-size: 1.5rem;
 }
+
+.details p {
+  font-family: 'Arvo', serif;
+  font-size: 1.5rem;
+} 
 
 hr {
   margin-top: 0.3rem;

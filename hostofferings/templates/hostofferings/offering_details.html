@@ -5,27 +5,12 @@
     {% block content %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6" id="picture-column">
                 <div class="mx-auto circle-container-bg">
                     <div style="background-image: url('/media/images/{{offering_details.random_identifier}}')" class="circle-cover-bg"></div>
                 </div>
-                <div class="more-offerings">More Offerings</div>
-                <div>
-                    {% for host, offering in offerings %}
-                        <div class="each-offering">
-                            <div class="circle-container-details">
-                                <div style="background-image: url('/media/images/{{offering.random_identifier}}')" class="circle-cover-bg"></div>
-                            </div>
-                            <div class="text-details">
-                                <p class="text-center">{{host.user.username}}</p>
-                                <p class="text-center">{{host.location}}</p>
-                                <p class="text-center"><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div> 
-            <div class="col-12 col-md-6">
+            </div>
+            <div class="col-12 col-md-6" id="details-column">
                 <div class="details">
                     <i class="fas fa-user-alt"></i>
                     <p class="inline"><strong>Name</strong></p>
@@ -55,6 +40,24 @@
                     <p class="inline"><strong>Work Details</strong></p>
                     <p class="wrapable">{{offering_details.work_details}}</p>
                 </div>
+                <div id="movable-div">
+                    <div class="more-offerings">More Offerings</div>
+                        <div class="details-container">
+                            {% for host, offering in offerings %}
+                                <div class="each-offering">
+                                    <div class="circle-container-details">
+                                        <div style="background-image: url('/media/images/{{offering.random_identifier}}')" class="circle-cover-bg"></div>
+                                    </div>
+                                    <div class="text-details">
+                                        <p class="text-center">{{host.user.username}}</p>
+                                        <p class="text-center">{{host.location}}</p>
+                                        <p class="text-center"><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>  
             </div>
         </div>   
     </div>
