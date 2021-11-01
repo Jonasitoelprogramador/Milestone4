@@ -99,6 +99,9 @@ body {
 
 .each-offering p a {
   margin-top: 7px;
+  font-family: 'Arvo', serif;
+  background-color: #a4b0c0;
+  border-color: #a4b0c0;
 }
 
 .each-offering p {
@@ -119,5 +122,7 @@ body {
   border-style: solid;
   border-color: #cccccc;
   border-width: 1px;
-  border-radius: 50%;
+  border-radius: 10%;
 }
+
+med

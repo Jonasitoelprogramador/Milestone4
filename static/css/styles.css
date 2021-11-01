@@ -22,16 +22,12 @@ body {
   height: 60px;
 }
 
-.green {
-  color: green !important;
-}
-
 .header-style {
   height: 76px;
 }
 
 .hero-div {
-  height: 30vh;
+  height: 40vh;
   width: 100%;
   background: url('/static/images/testing_photo.jpg');
   background-size: cover;
@@ -60,6 +56,10 @@ img {
 
 #nav-home {
   margin-left: 20px;
+}
+
+.padding-top-7 {
+  padding-top: 7px;
 }
 
 .text-details {
@@ -162,6 +162,9 @@ hr {
     width: 500px;
     margin: auto;
   }
+  .hero-div {
+    height: 55vh;
+  }
 }
 
 @media only screen and (min-width: 660px) {
@@ -177,10 +180,14 @@ hr {
     margin: auto;
     margin-top: 30px;
   }
-
   .details {
     width: auto;
   }
+}
+
+@media only screen and (min-width: 830px) {
+  .hero-div {
+    height: 75vh;
 }
 
 /*@media only screen and (min-width: 775px) {
