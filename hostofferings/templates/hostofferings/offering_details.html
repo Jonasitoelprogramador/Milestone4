@@ -61,7 +61,71 @@
             </div>
         </div>   
     </div>
+
+    <script>
+        /*Calculates width of scroll bar.  Taken from http://www.alexandre-gomes.com/?p=115*/
+        function getScrollBarWidth () {
+            var inner = document.createElement('p');
+            inner.style.width = "100%";
+            inner.style.height = "200px";
+
+            var outer = document.createElement('div');
+            outer.style.position = "absolute";
+            outer.style.top = "0px";
+            outer.style.left = "0px";
+            outer.style.visibility = "hidden";
+            outer.style.width = "200px";
+            outer.style.height = "150px";
+            outer.style.overflow = "hidden";
+            outer.appendChild (inner);
+
+            document.body.appendChild (outer);
+            var w1 = inner.offsetWidth;
+            outer.style.overflow = 'scroll';
+            var w2 = inner.offsetWidth;
+            if (w1 == w2) w2 = outer.clientWidth;
+
+            document.body.removeChild (outer);
+
+            return (w1 - w2);
+        };
+        /*End of borrowed section*/
+
+        var movableDiv = document.getElementById("movable-div");
+        var picColumn = document.getElementById("picture-column");
+        var detailsColumn = document.getElementById("details-column");
+
+        // Create a condition that targets viewports at least 768px wide
+        const mediaQuery1 = window.matchMedia('(min-width:'+ String(753 + getScrollBarWidth())+'px)');
+        const mediaQuery2 = window.matchMedia('(max-width: '+ String(752 + getScrollBarWidth())+'px)');
+
+        function handleTabletChange1(e) {
+        // Check if the media query is true
+        if (e.matches) {
+            // Then 
+            picColumn.appendChild(movableDiv)
+        }
+        }
+
+        function handleTabletChange2(e) {
+        // Check if the media query is true
+        if (e.matches) {
+            // Then 
+            detailsColumn.appendChild(movableDiv)
+        }
+        }
+
+        // Register event listener
+        mediaQuery1.addEventListener("change", handleTabletChange1);
+        mediaQuery2.addEventListener("change", handleTabletChange2);
+
+        // Initial check
+        handleTabletChange1(mediaQuery1)
+
+
+    </script>
     {% endblock %}
+
 
    
 
