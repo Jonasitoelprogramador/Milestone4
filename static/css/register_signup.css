@@ -175,7 +175,8 @@ figure {
     background: darkblue; }
 
 #signin {
-  margin-top: 16px; }
+
+}
 
 .signup-image-link {
   font-size: 14px;
@@ -483,12 +484,6 @@ label.valid {
   }
 }
 
-@media only screen and (min-width: 415px) {
-  .signup-form {
-  padding: 0 30px;
-  }
-}
-
 .signup {
   font-family: 'Arvo', serif;
 }
@@ -533,16 +528,16 @@ label.valid {
 }
 
 .login-section {
-  width: 40vw;
+  width: 250px;
   margin: auto;
   margin-top: 155px;
+  text-align: center;
 }
 
 .form-flex {
   display: flex;
   flex-direction: column;
-  margin: auto;
-  width: 420px;
+  justify-content: space-between;
 }
 
 .register-form {
@@ -553,18 +548,25 @@ label.valid {
   display: inline-block;
 } 
 
-.sign-in-title {
+.signin-title {
   display: inline-block;
   color: #fff;
 }
 
 @media only screen and (min-width: 680px) {
   .login-section {
-    margin: auto;
+    margin-right: 50px;
     margin-top: 0;
+    width: 450px;
+    text-align: right;
   }
+
 
   .form-flex {
     flex-direction: row;
   }
+}
+
+.form-group label {
+  color: #fff;
 }
