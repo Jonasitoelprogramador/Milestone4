@@ -187,9 +187,6 @@ figure {
   font-size: 13px;
   color: #222; }
 
-.register-form {
-  width: 100%; }
-
 .form-group {
   position: relative;
   margin-bottom: 25px;
@@ -524,8 +521,8 @@ label.valid {
 
 .main-log {
   padding: 30px 0;
-  background: url('/static/images/testing_photo.jpg');
-  background-size: cover;
+  background: url('/static/images/desert_cropped.jpg');
+  background-position: cover;
   height: 100%;
 }
 
@@ -534,9 +531,22 @@ label.valid {
 }
 
 .login-section {
-  width: 60vw;
+  width: 40vw;
 }
 
 .form-flex {
   display: flex;
+  justify-content: space-between;
+}
+
+.register-form {
+  width: 100%; }
+
+.login-form {
+  width: 100%;
+  display: inline-block;
+} 
+
+.sign-in-title {
+  display: inline-block;
 }
