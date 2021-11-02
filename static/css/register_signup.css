@@ -517,13 +517,15 @@ label.valid {
   padding: 30px 0;
   background: url('/static/images/testing_photo.jpg');
   background-size: cover;
+  background-position: center;
 }
 
 .main-log {
   padding: 30px 0;
   background: url('/static/images/desert_cropped.jpg');
-  background-position: cover;
   height: 100%;
+  background-size: cover;
+  background-position: center;
 }
 
 .login-inputs {
@@ -532,11 +534,15 @@ label.valid {
 
 .login-section {
   width: 40vw;
+  margin: auto;
+  margin-top: 155px;
 }
 
 .form-flex {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  margin: auto;
+  width: 420px;
 }
 
 .register-form {
@@ -549,4 +555,16 @@ label.valid {
 
 .sign-in-title {
   display: inline-block;
+  color: #fff;
+}
+
+@media only screen and (min-width: 680px) {
+  .login-section {
+    margin: auto;
+    margin-top: 0;
+  }
+
+  .form-flex {
+    flex-direction: row;
+  }
 }
