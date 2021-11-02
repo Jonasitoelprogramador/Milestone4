@@ -1,7 +1,6 @@
 /*----code taken from https://bootsnipp.com/snippets/A36DP--------*/
 
-
-@import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
 
 
 a:focus, a:active {
@@ -69,13 +68,9 @@ h2 {
   padding: 0;
   font-weight: bold;
   color: #222;
-  font-family: Poppins;
+  font-family: 'Arvo', serif;
   font-size: 36px; }
 
-.main {
-  padding: 30px 0;
-  background-color: aqua;
-}
 
 .clear {
   clear: both; }
@@ -86,7 +81,9 @@ body {
   color: #222;
   background: #f8f8f8;
   font-weight: 400;
-  font-family: Poppins; }
+  font-family: 'Arvo', serif;
+  height: 100vh;
+}
 
 .reg-container {
   width: 900px;
@@ -105,7 +102,7 @@ body {
   /*----------my additions---------*/
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .display-flex {
@@ -150,7 +147,7 @@ body {
 
 .form-title {
   margin-bottom: 33px;
-  font-family: 'Zen Kurenaido', sans-serif;
+  font-family: 'Arvo', serif;
 }
 
 .signup-image {
@@ -162,7 +159,7 @@ figure {
 
 .form-submit {
   display: inline-block;
-  background: #6dabe4;
+  background: #a4b0c0;
   color: #fff;
   border-bottom: none;
   width: auto;
@@ -175,7 +172,7 @@ figure {
   margin-top: 25px;
   cursor: pointer; }
   .form-submit:hover {
-    background: #4292dc; }
+    background: darkblue; }
 
 #signin {
   margin-top: 16px; }
@@ -196,14 +193,15 @@ figure {
 .form-group {
   position: relative;
   margin-bottom: 25px;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 input {
   width: 100%;
   display: block;
   border: none;
   border-bottom: 1px solid #999;
-  font-family: Poppins;
+  font-family: 'Arvo', serif;
   box-sizing: border-box; }
   input::-webkit-input-placeholder {
     color: #999; }
@@ -495,7 +493,14 @@ label.valid {
 }
 
 .signup {
-  font-family: 'Zen Kurenaido', sans-serif;
+  font-family: 'Arvo', serif;
+}
+
+#signup-button {
+  background-color: #a4b0c0;
+}
+#signup-button:hover{
+  background-color: darkblue;
 }
 
 .image-div {
@@ -509,4 +514,29 @@ label.valid {
 
 .padding-bottom-30 {
   padding-bottom: 30px;
+}
+
+.main-reg {
+  padding: 30px 0;
+  background: url('/static/images/testing_photo.jpg');
+  background-size: cover;
+}
+
+.main-log {
+  padding: 30px 0;
+  background: url('/static/images/testing_photo.jpg');
+  background-size: cover;
+  height: 100%;
+}
+
+.login-inputs {
+  border-radius: 5px;
+}
+
+.login-section {
+  width: 60vw;
+}
+
+.form-flex {
+  display: flex;
 }
