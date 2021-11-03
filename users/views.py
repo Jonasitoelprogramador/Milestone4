@@ -20,6 +20,8 @@ def hostProfile(request):
     for x in tuples:
         if x[0] == request.user: 
             return x
-    return render(request, 'users/host_profile.html', {'host': x})
+    hoster = x[0]
+    offer = x[1]
+    return render(request, 'users/host_profile.html', {'host': hoster, 'offer': offer})
 
 
