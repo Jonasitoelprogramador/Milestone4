@@ -10,8 +10,6 @@ import random
 
 
 # Create your views here.
-
-
 @login_required()  
 def add_offering(request):
     if request.method == "POST":

@@ -174,10 +174,6 @@ figure {
   .form-submit:hover {
     background: darkblue; }
 
-#signin {
-
-}
-
 .signup-image-link {
   font-size: 14px;
   color: #222;
@@ -553,12 +549,17 @@ label.valid {
   color: #fff;
 }
 
-@media only screen and (min-width: 680px) {
+@media only screen and (min-width: 800px) {
   .login-section {
     margin-right: 50px;
     margin-top: 0;
     width: 450px;
     text-align: right;
+  }
+  
+  #already-account {
+    text-align: right;
+    padding-right: 25px;
   }
 
 
@@ -567,6 +568,10 @@ label.valid {
   }
 }
 
-.form-group label {
+.login-group label {
+  color: #fff;
+}
+
+#already-account {
   color: #fff;
 }
