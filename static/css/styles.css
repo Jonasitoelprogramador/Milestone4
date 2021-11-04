@@ -199,11 +199,10 @@ hr {
 
 /*--------------Host/Worker Profile ---------------------*/
 
-.profile-container {
-  width: 600px;
-  margin-left: 10vw;
-  border-radius: 2%;
-  padding: 5px 10px;
+.host-worker-profile-image {
+  width: 100px;
+  width: 100px;
+  display: block;
 }
 
 .profile-background {
@@ -213,9 +212,23 @@ hr {
   background-position: center;
 }
 
-.host-worker-profile-image {
-  width: 100px;
-  width: 100px;
-  display: block;
+.profile-container {
+  width: 75vw;
+  margin: auto;
+  border-radius: 2%;
+  padding: 5px 10px;
+  background-color: seashell;
+  border: seashell solid 2px;
+  margin-bottom: 200px;
 }
+
+.profile-title {
+  font-family: 'Arvo', serif;;
+}
+
+.profile-title-div {
+  padding-top: 30px;
+}
+
+
 

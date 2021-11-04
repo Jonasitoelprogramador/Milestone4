@@ -3,38 +3,46 @@
 
 {% block content %}
         <div class="profile-background">
+                <div class="text-center profile-title-div">
+                        <h1 class="profile-title">Your Profile</h1>
+                </div>
                 <div class="profile-container ">
                         <div class="details">
-                                <i class="fas fa-user-alt"></i>
-                                <p class="inline"><strong>Username</strong></p>
-                                <p class="wrapable">{{host}}</p>
-                                <hr>
-                                <i class="fas fa-envelope"></i>
-                                <p class="inline"><strong>Email</strong></p>
-                                <p class="wrapable">{{host.user.email}}</p>
-                                <hr>
-                                <i class="fas fa-language"></i>
-                                <p class="inline"><strong>Fist Language</strong></p>
-                                <p class="wrapable">{{host.first_language}}</p>
-                                <hr>
-                                <i class="fas fa-globe-europe"></i>
-                                <p class="inline"><strong>Nationality</strong></p>
-                                <p class="wrapable">{{host.nationality}}</p>
-                                <hr>
-                                <i class="fas fa-map-marker-alt"></i>
-                                <p class="inline"><strong>Location</strong></p>
-                                <p class="wrapable">{{host.location}}</p>
-                                <hr>
-                                <i class="fas fa-hands-helping"></i>
-                                <p class="inline"><strong>Work Category</strong></p>
-                                <p class="wrapable">{{offer.work_category}}</p>
-                                <hr>
-                                <i class="fas fa-info"></i>
-                                <p class="inline"><strong>Work Details</strong></p>
-                                <p class="wrapable">{{offer.work_details}}</p>
-                                <i class="fas fa-info"></i>
-                                <p class="inline"><strong>Image</strong></p>    
-                                <image src='/media/images/{{offer.random_identifier}}' class="host-worker-profile-image">
+                                <div class="row">
+                                        <div class="col-sm-6">
+                                                <i class="fas fa-user-alt"></i>
+                                                <p class="inline"><strong>Username</strong></p>
+                                                <p class="wrapable">{{host}}</p>
+                                                <hr>
+                                                <i class="fas fa-envelope"></i>
+                                                <p class="inline"><strong>Email</strong></p>
+                                                <p class="wrapable">{{host.user.email}}</p>
+                                                <hr>
+                                                <i class="fas fa-language"></i>
+                                                <p class="inline"><strong>Fist Language</strong></p>
+                                                <p class="wrapable">{{host.first_language}}</p>
+                                                <hr>
+                                                <i class="fas fa-globe-europe"></i>
+                                                <p class="inline"><strong>Nationality</strong></p>
+                                                <p class="wrapable">{{host.nationality}}</p>
+                                        </div>    
+                                        <div class="col-sm-6">   
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <p class="inline"><strong>Location</strong></p>
+                                                <p class="wrapable">{{host.location}}</p>
+                                                <hr>
+                                                <i class="fas fa-hands-helping"></i>
+                                                <p class="inline"><strong>Work Category</strong></p>
+                                                <p class="wrapable">{{offer.work_category}}</p>
+                                                <hr>
+                                                <i class="fas fa-info"></i>
+                                                <p class="inline"><strong>Work Details</strong></p>
+                                                <p class="wrapable">{{offer.work_details}}</p>
+                                                <i class="fas fa-info"></i>
+                                                <p class="inline"><strong>Image</strong></p>    
+                                                <image src='/media/images/{{offer.random_identifier}}' class="host-worker-profile-image">
+                                        </div> 
+                                </div>
                         </div>
                 </div>
         </div>
