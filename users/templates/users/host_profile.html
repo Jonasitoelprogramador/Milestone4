@@ -9,7 +9,7 @@
                 <div class="profile-container ">
                         <div class="details">
                                 <div class="row">
-                                        <div class="col-sm-6">
+                                        <div class="col-12 col-md-6">
                                                 <i class="fas fa-user-alt"></i>
                                                 <p class="inline"><strong>Username</strong></p>
                                                 <p class="wrapable">{{host}}</p>
@@ -26,7 +26,7 @@
                                                 <p class="inline"><strong>Nationality</strong></p>
                                                 <p class="wrapable">{{host.nationality}}</p>
                                         </div>    
-                                        <div class="col-sm-6">   
+                                        <div class="col-12 col-md-6">   
                                                 <i class="fas fa-map-marker-alt"></i>
                                                 <p class="inline"><strong>Location</strong></p>
                                                 <p class="wrapable">{{host.location}}</p>
@@ -38,10 +38,14 @@
                                                 <i class="fas fa-info"></i>
                                                 <p class="inline"><strong>Work Details</strong></p>
                                                 <p class="wrapable">{{offer.work_details}}</p>
-                                                <i class="fas fa-info"></i>
+                                                <hr>
+                                                <i class="fas fa-image"></i>
                                                 <p class="inline"><strong>Image</strong></p>    
                                                 <image src='/media/images/{{offer.random_identifier}}' class="host-worker-profile-image">
                                         </div> 
+                                </div>
+                                <div class="profile-edit">
+                                        <a class="btn btn-secondary" href="#" role="button">Edit</a>
                                 </div>
                         </div>
                 </div>

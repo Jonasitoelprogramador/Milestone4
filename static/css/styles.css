@@ -189,6 +189,7 @@ hr {
   .hero-div {
     height: 75vh;
 }
+}
 
 /*@media only screen and (min-width: 775px) {
   .circle-container-bg {
@@ -201,8 +202,9 @@ hr {
 
 .host-worker-profile-image {
   width: 100px;
-  width: 100px;
   display: block;
+  margin-top: 5px;
+  border-radius: 10%;
 }
 
 .profile-background {
@@ -210,6 +212,7 @@ hr {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  padding-bottom: 100px;
 }
 
 .profile-container {
@@ -219,7 +222,13 @@ hr {
   padding: 5px 10px;
   background-color: seashell;
   border: seashell solid 2px;
-  margin-bottom: 200px;
+  margin-bottom: 250px;
+  margin-top: 20px;
+}
+
+.profile-edit {
+  margin-top: 20px;
+  text-align: center;
 }
 
 .profile-title {
@@ -230,5 +239,10 @@ hr {
   padding-top: 30px;
 }
 
+@media (max-width:660px) and (min-width:480px) {
+  hr {
+    width: fit-content;
+  }
+}
 
 
