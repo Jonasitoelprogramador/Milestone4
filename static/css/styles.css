@@ -191,12 +191,6 @@ hr {
 }
 }
 
-/*@media only screen and (min-width: 775px) {
-  .circle-container-bg {
-    margin: 100px;
-    margin-left: 30px !important
-  }
-}*/
 
 /*--------------Host/Worker Profile ---------------------*/
 
@@ -226,13 +220,21 @@ hr {
   margin-top: 20px;
 }
 
-.profile-edit {
+.profile-edit a {
   margin-top: 20px;
+  text-align: center;
+  font-family: 'Arvo', serif;
+  font-size: 1.4rem;
+  background-color:  #a4b0c0;
+  border:  #a4b0c0;
+}
+
+.profile-edit {
   text-align: center;
 }
 
 .profile-title {
-  font-family: 'Arvo', serif;;
+  font-family: 'Arvo', serif;
 }
 
 .profile-title-div {
