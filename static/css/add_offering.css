@@ -187,17 +187,6 @@ iframe {
   margin-bottom: 27px;
 }
 
-.input3 {
-  display: block;
-  width: 100%;
-  background: transparent;
-  font-family: Poppins-Regular;
-  font-size: 15px;
-  color: #fff;
-  line-height: 1.2;
-  padding: 0 5px;
-}
-
 .focus-input3 {
   position: absolute;
   display: block;

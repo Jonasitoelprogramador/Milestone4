@@ -2,10 +2,13 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Host
 from hostofferings.models import offering
+from hostofferings.forms import OfferingForm
+from .forms import HostForm
 
 
 @login_required()
 def hostProfile(request):
+    offeringform =  OfferingForm()
     hosts = Host.objects.all()
     result_list = []
     for host in hosts:
@@ -22,6 +25,10 @@ def hostProfile(request):
             return x
     hoster = x[0]
     offer = x[1]
-    return render(request, 'users/host_profile.html', {'host': hoster, 'offer': offer})
+    for h in hosts:
+        if request.user == h.user:
+            d = {'nationality': h.nationality, 'first_language': h.first_language, 'location': h.location}
+    filled_form = HostForm(initial=d)
+    return render(request, 'users/host_profile.html', {'host': hoster, 'offer': offer, "filled_form": filled_form})
 
 
