@@ -12,7 +12,7 @@
                                         <div class="col-12 col-md-6">
                                                 <i class="fas fa-user-alt"></i>
                                                 <p class="inline"><strong>Username</strong></p>
-                                                <p class="wrapable">{{host}}</p>
+                                                <p class="wrapable">{{host.user}}</p>
                                                 <hr>
                                                 <i class="fas fa-envelope"></i>
                                                 <p class="inline"><strong>Email</strong></p>
@@ -45,7 +45,8 @@
                                         </div> 
                                 </div>
                                 {{host_filled_form}}
-                                {{offering_filled_form}}xw
+                                {{offering_filled_form}}
+                                {{user_filled_form.email}}
                                 <div class="profile-edit">
                                         <a class="btn btn-secondary" href="#" role="button">Edit</a>
                                 </div>

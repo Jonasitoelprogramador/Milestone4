@@ -2,21 +2,17 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Host
 from hostofferings.models import offering
+from django.contrib.auth.models import User
 from hostofferings.forms import OfferingForm
 from .forms import HostForm
-import pathlib
-from PIL import Image
-import os
-# from constants import MEDIA_FILEPATH
-
-MEDIA_FILEPATH = pathlib.Path(__file__).parents[1].resolve() / "media"
-
+from accounts.forms import ExtendedUserCreationForm
 
 
 @login_required()
 def hostProfile(request):
     hosts = Host.objects.all()
     offeringz = offering.objects.all()
+    userz = User.objects.all()
     result_list = []
     for host in hosts:
         offerings = offering.objects.filter(host=host)
@@ -40,6 +36,11 @@ def hostProfile(request):
         if request.user == o.host.user:
             offDict = {'work_category': o.work_category, 'work_details': o.work_details}
     offering_filled_form = OfferingForm(initial=offDict)
-    return render(request, 'users/host_profile.html', {'host': hoster, 'offer': offer, "host_filled_form": host_filled_form, 'offering_filled_form': offering_filled_form})
+    for u in userz:
+        if request.user == u:
+            userDict = {'email': u.email}
+    user_filled_form = ExtendedUserCreationForm(initial=userDict)
+    return render(request, 'users/host_profile.html', {'host': hoster, 'offer': offer, "host_filled_form": host_filled_form,
+    'offering_filled_form': offering_filled_form, 'user_filled_form': user_filled_form})
 
 
