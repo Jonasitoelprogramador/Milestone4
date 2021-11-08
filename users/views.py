@@ -4,12 +4,19 @@ from .models import Host
 from hostofferings.models import offering
 from hostofferings.forms import OfferingForm
 from .forms import HostForm
+import pathlib
+from PIL import Image
+import os
+# from constants import MEDIA_FILEPATH
+
+MEDIA_FILEPATH = pathlib.Path(__file__).parents[1].resolve() / "media"
+
 
 
 @login_required()
 def hostProfile(request):
-    offeringform =  OfferingForm()
     hosts = Host.objects.all()
+    offeringz = offering.objects.all()
     result_list = []
     for host in hosts:
         offerings = offering.objects.filter(host=host)
@@ -27,8 +34,12 @@ def hostProfile(request):
     offer = x[1]
     for h in hosts:
         if request.user == h.user:
-            d = {'nationality': h.nationality, 'first_language': h.first_language, 'location': h.location}
-    filled_form = HostForm(initial=d)
-    return render(request, 'users/host_profile.html', {'host': hoster, 'offer': offer, "filled_form": filled_form})
+            hostDict = {'nationality': h.nationality, 'first_language': h.first_language, 'location': h.location}
+    host_filled_form = HostForm(initial=hostDict)
+    for o in offeringz:
+        if request.user == o.host.user:
+            offDict = {'work_category': o.work_category, 'work_details': o.work_details}
+    offering_filled_form = OfferingForm(initial=offDict)
+    return render(request, 'users/host_profile.html', {'host': hoster, 'offer': offer, "host_filled_form": host_filled_form, 'offering_filled_form': offering_filled_form})
 
 
