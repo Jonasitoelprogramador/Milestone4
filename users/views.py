@@ -10,6 +10,9 @@ from accounts.forms import ExtendedUserCreationForm
 
 @login_required()
 def hostProfile(request):
+    if request.method == 'POST':
+        print(request.POST)
+         
     hosts = Host.objects.all()
     offeringz = offering.objects.all()
     userz = User.objects.all()
