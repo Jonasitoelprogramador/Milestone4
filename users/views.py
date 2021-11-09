@@ -40,19 +40,27 @@ def hostProfileEdit(request):
             if request.method == 'POST':
                 hostyForm = HostForm(request.POST, instance = h)
                 saveForm(hostyForm)
-                return render(request, 'users/host_profile_edit.html')  
-                break
             else:    
                 hostDict = {'nationality': h.nationality, 'first_language': h.first_language, 'location': h.location}
-    host_filled_form = HostForm(initial=hostDict)
+                host_filled_form = HostForm(initial=hostDict)
     for o in offeringz:
         if request.user == o.host.user:
-            offDict = {'work_category': o.work_category, 'work_details': o.work_details}
-    offering_filled_form = OfferingForm(initial=offDict)
+            if request.method == 'POST':
+                offeryForm = OfferingForm(request.POST, instance = o)
+                saveForm(offeryForm)
+            else:
+                offDict = {'work_category': o.work_category, 'work_details': o.work_details}
+                offering_filled_form = OfferingForm(initial=offDict)
     for u in userz:
         if request.user == u:
-            userDict = {'email': u.email}
-    user_filled_form = ExtendedUserCreationForm(initial=userDict)
+            if request.method == 'POST':
+                print(request.POST)
+                useryForm = ExtendedUserCreationForm(request.POST, instance = u)
+                saveForm(useryForm)
+                return render(request, 'users/host_profile_edit.html')
+            else:
+                userDict = {'email': u.email}
+                user_filled_form = ExtendedUserCreationForm(initial=userDict)
     return render(request, 'users/host_profile_edit.html', {"host_filled_form": host_filled_form, 
             'offering_filled_form': offering_filled_form, 'user_filled_form': user_filled_form})
 
@@ -65,4 +73,5 @@ def saveForm(formToSave):
         if counter == 3:
             counter = 0
             return render(request, 'users/host_profile_edit.html')
+
 
