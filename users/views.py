@@ -41,8 +41,8 @@ def hostProfileEdit(request):
                     print(h)
                #     return h
         hostyForm = HostForm(request.POST, instance = h)
-        #if hostyform.is_valid():
-        hostyForm.save()
+        if hostyForm.is_valid():
+            hostyForm.save()
          #   render(request, 'users/host_profile.html')
     #else:
     for h in hosts:
