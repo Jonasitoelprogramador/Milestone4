@@ -9,13 +9,8 @@ from accounts.forms import ExtendedUserCreationForm
 
 
 @login_required()
-def hostProfile(request):
-    if request.method == 'POST':
-        print(request.POST)
-         
-    hosts = Host.objects.all()
-    offeringz = offering.objects.all()
-    userz = User.objects.all()
+def hostProfile(request):  
+    hosts = Host.objects.all() 
     result_list = []
     for host in hosts:
         offerings = offering.objects.filter(host=host)
@@ -31,6 +26,25 @@ def hostProfile(request):
             return x
     hoster = x[0]
     offer = x[1]
+    return render(request, 'users/host_profile.html', {'host': hoster, 'offer': offer})
+
+
+@login_required()
+def hostProfileEdit(request):
+    offeringz = offering.objects.all()
+    userz = User.objects.all()
+    result_list = []
+    hosts = Host.objects.all()
+    if request.method == 'POST':
+        for h in hosts:
+                if request.user == h.user:
+                    print(h)
+               #     return h
+        hostyForm = HostForm(request.POST, instance = h)
+        #if hostyform.is_valid():
+        hostyForm.save()
+         #   render(request, 'users/host_profile.html')
+    #else:
     for h in hosts:
         if request.user == h.user:
             hostDict = {'nationality': h.nationality, 'first_language': h.first_language, 'location': h.location}
@@ -43,7 +57,5 @@ def hostProfile(request):
         if request.user == u:
             userDict = {'email': u.email}
     user_filled_form = ExtendedUserCreationForm(initial=userDict)
-    return render(request, 'users/host_profile.html', {'host': hoster, 'offer': offer, "host_filled_form": host_filled_form,
+    return render(request, 'users/host_profile_edit.html', {"host_filled_form": host_filled_form,
     'offering_filled_form': offering_filled_form, 'user_filled_form': user_filled_form})
-
-

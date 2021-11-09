@@ -44,13 +44,6 @@
                                                         <image src='/media/images/{{offer.random_identifier}}' class="host-worker-profile-image">
                                                 </div> 
                                         </div> 
-                                <form method="POST">
-                                        {% csrf_token %}    
-                                        {{host_filled_form}}
-                                        {{offering_filled_form}}
-                                        {{user_filled_form.email}}
-                                        <input type="submit">
-                                </form>
                                 <div class="profile-edit">
                                         <a class="btn btn-secondary" href="#" role="button">Edit</a>
                                 </div>
