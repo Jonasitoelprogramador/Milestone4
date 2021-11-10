@@ -63,9 +63,9 @@ def hostProfileEdit(request):
                 return render(request, 'users/host_profile_edit.html')
             else:
                 userDict = {'email': u.email}
-                user_filled_form = UserEmailForm(initial=userDict)
+                user_email_filled_form = UserEmailForm(initial=userDict)
     return render(request, 'users/host_profile_edit.html', {"host_filled_form": host_filled_form, 
-            'offering_filled_form': offering_filled_form, 'user_filled_form': user_filled_form})
+            'offering_filled_form': offering_filled_form, 'user_email_filled_form': user_email_filled_form})
 
 
 def saveForm(formToSave):
