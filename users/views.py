@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 from hostofferings.forms import OfferingForm
 from .forms import HostForm
 from accounts.forms import ExtendedUserCreationForm
+from django.forms.models import model_to_dict
+from copy import copy
+from django.contrib.auth import authenticate
 
 
 @login_required()
@@ -55,7 +58,7 @@ def hostProfileEdit(request):
         if request.user == u:
             if request.method == 'POST':
                 print(request.POST)
-                useryForm = ExtendedUserCreationForm(request.POST, instance = u)
+                useryForm = ExtendedUserCreationForm(UPOST(request.POST, u), instance = u)
                 saveForm(useryForm)
                 return render(request, 'users/host_profile_edit.html')
             else:
@@ -73,5 +76,20 @@ def saveForm(formToSave):
         if counter == 3:
             counter = 0
             return render(request, 'users/host_profile_edit.html')
+    else:
+        print("not valid")
 
+
+#This is based on stack overflow: https://stackoverflow.com/questions/8216353/django-update-one-field-using-modelform
+def UPOST(post, obj):
+    '''Updates request's POST dictionary with values from object, for update purposes'''
+    post = copy(post)
+    for k,v in model_to_dict(obj).items():
+        if k == "username": post[k] = v
+        if k == "first_name": post[k] = v
+        if k == "last_name": post[k] = v
+    if authenticate(username=post["username"], password=post["password1"]):
+        post["password2"] = post["password1"]
+    print(post)
+    return post
 
