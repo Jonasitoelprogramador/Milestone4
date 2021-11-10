@@ -5,10 +5,10 @@ from hostofferings.models import offering
 from django.contrib.auth.models import User
 from hostofferings.forms import OfferingForm
 from .forms import HostForm
-from accounts.forms import ExtendedUserCreationForm
+from accounts.forms import UserEmailForm
 from django.forms.models import model_to_dict
 from copy import copy
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 
 
 @login_required()
@@ -58,12 +58,12 @@ def hostProfileEdit(request):
         if request.user == u:
             if request.method == 'POST':
                 print(request.POST)
-                useryForm = ExtendedUserCreationForm(UPOST(request.POST, u), instance = u)
+                useryForm = UserEmailForm(request.POST, instance = u)
                 saveForm(useryForm)
                 return render(request, 'users/host_profile_edit.html')
             else:
                 userDict = {'email': u.email}
-                user_filled_form = ExtendedUserCreationForm(initial=userDict)
+                user_filled_form = UserEmailForm(initial=userDict)
     return render(request, 'users/host_profile_edit.html', {"host_filled_form": host_filled_form, 
             'offering_filled_form': offering_filled_form, 'user_filled_form': user_filled_form})
 
@@ -73,9 +73,6 @@ def saveForm(formToSave):
     if formToSave.is_valid():
         formToSave.save()
         counter += 1
-        if counter == 3:
-            counter = 0
-            return render(request, 'users/host_profile_edit.html')
     else:
         print("not valid")
 
@@ -89,6 +86,7 @@ def UPOST(post, obj):
         if k == "first_name": post[k] = v
         if k == "last_name": post[k] = v
     if authenticate(username=post["username"], password=post["password1"]):
+        login(post, post["username"])
         post["password2"] = post["password1"]
     print(post)
     return post

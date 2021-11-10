@@ -38,6 +38,12 @@ class ExtendedUserCreationForm(UserCreationForm):
         return user
 
 
+class UserEmailForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ("email",)
+
+
 class HostCreationForm(ModelForm):
     class Meta:
         model = Host
@@ -62,7 +68,3 @@ class WorkerCreationForm(ModelForm):
             'work_experience': forms.TextInput(attrs={'id': "work_experience", 'placeholder': "I worked on a farm for 3 months...", 'class': 'background-translucent'}),
         }
 
-
-#class UserLoginForm(forms.Form):
-#    username_or_email = forms.CharField()
-#    password = forms.CharField(widget=forms.PasswordInput)
