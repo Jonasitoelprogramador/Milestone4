@@ -5,36 +5,36 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from urllib.error import HTTPError
-from .forms import HostCreationForm, ExtendedUserCreationForm, WorkerCreationForm
+from .forms import ExtendedUserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
-def register(request, user_type):
-    """A view that manages the registration form"""
-    if user_type == 'host':
-        profile_form = HostCreationForm()
-        post_paramater = 'host'
-    elif user_type == 'worker':
-        profile_form = WorkerCreationForm()
-        post_paramater = 'worker'
-    form = ExtendedUserCreationForm()
-    if request.method == 'POST':
-        user_form = ExtendedUserCreationForm(request.POST)
-        if user_type == 'host':  
-            profile_form = HostCreationForm(request.POST)
-        elif user_type == 'worker':
-            profile_form = WorkerCreationForm(request.POST)
-        if user_form.is_valid() and profile_form.is_valid():
-            user = user_form.save()
-            profile = profile_form.save(commit=False)
-            profile.user = user
-            profile.save()
-            return HttpResponse("registered!")
-        else:
-            print(profile_form.errors.values())
-            return HttpResponse(user_form.errors.values())
-    print(profile_form)
-    return render(request, 'accounts/register.html', {'form': form, 'profile_form': profile_form, 'post_paramater': post_paramater})
+#def register(request, user_type):
+  #  """A view that manages the registration form"""
+  #  if user_type == 'host':
+  #      profile_form = HostCreationForm()
+  #      post_paramater = 'host'
+  #  elif user_type == 'worker':
+  #      profile_form = WorkerCreationForm()
+  #      post_paramater = 'worker'
+  #  form = ExtendedUserCreationForm()
+   # if request.method == 'POST':
+   #     user_form = ExtendedUserCreationForm(request.POST)
+    #    if user_type == 'host':  
+   #         profile_form = HostCreationForm(request.POST)
+   #     elif user_type == 'worker':
+   #         profile_form = WorkerCreationForm(request.POST)
+   #     if user_form.is_valid() and profile_form.is_valid():
+   #         user = user_form.save()
+   #         profile = profile_form.save(commit=False)
+   #         profile.user = user
+   #         profile.save()
+   #         return HttpResponse("registered!")
+  #      else:
+   #         print(profile_form.errors.values())
+   #         return HttpResponse(user_form.errors.values())
+   # print(profile_form)
+   # return render(request, 'accounts/register.html', {'form': form, 'profile_form': profile_form, 'post_paramater': post_paramater})
 
 
 def login(request):

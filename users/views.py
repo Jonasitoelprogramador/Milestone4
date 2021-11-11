@@ -3,8 +3,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Host
 from hostofferings.models import offering
 from django.contrib.auth.models import User
+from .forms import HostCreationForm
 from hostofferings.forms import OfferingForm
-from .forms import HostForm
 from accounts.forms import UserEmailForm
 from django.forms.models import model_to_dict
 from copy import copy
@@ -41,11 +41,11 @@ def hostProfileEdit(request):
     for h in hosts:
         if request.user == h.user:
             if request.method == 'POST':
-                hostyForm = HostForm(request.POST, instance = h)
+                hostyForm = HostCreationForm(request.POST, instance = h)
                 saveForm(hostyForm)
             else:    
                 hostDict = {'nationality': h.nationality, 'first_language': h.first_language, 'location': h.location}
-                host_filled_form = HostForm(initial=hostDict)
+                host_filled_form = HostCreationForm(initial=hostDict)
     for o in offeringz:
         if request.user == o.host.user:
             if request.method == 'POST':
@@ -63,7 +63,7 @@ def hostProfileEdit(request):
                 return render(request, 'users/host_profile_edit.html')
             else:
                 userDict = {'email': u.email}
-                user_email_filled_form = UserEmailForm(initial=userDict)
+                user_email_filled_form = UserEmailForm(initial=userDict) 
     return render(request, 'users/host_profile_edit.html', {"host_filled_form": host_filled_form, 
             'offering_filled_form': offering_filled_form, 'user_email_filled_form': user_email_filled_form})
 
@@ -76,18 +76,4 @@ def saveForm(formToSave):
     else:
         print("not valid")
 
-
-#This is based on stack overflow: https://stackoverflow.com/questions/8216353/django-update-one-field-using-modelform
-def UPOST(post, obj):
-    '''Updates request's POST dictionary with values from object, for update purposes'''
-    post = copy(post)
-    for k,v in model_to_dict(obj).items():
-        if k == "username": post[k] = v
-        if k == "first_name": post[k] = v
-        if k == "last_name": post[k] = v
-    if authenticate(username=post["username"], password=post["password1"]):
-        login(post, post["username"])
-        post["password2"] = post["password1"]
-    print(post)
-    return post
 
