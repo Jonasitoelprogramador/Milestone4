@@ -4,11 +4,10 @@ from .models import Host
 from hostofferings.models import offering
 from django.contrib.auth.models import User
 from .forms import HostCreationForm
-from hostofferings.forms import OfferingForm
+from hostofferings.forms import OfferingForm, ImageForm
 from accounts.forms import UserEmailForm
 from django.forms.models import model_to_dict
-from copy import copy
-from django.contrib.auth import authenticate, login
+
 
 
 @login_required()
@@ -48,6 +47,7 @@ def hostProfileEdit(request):
                 host_filled_form = HostCreationForm(initial=hostDict)
     for o in offeringz:
         if request.user == o.host.user:
+            off_obj = o
             if request.method == 'POST':
                 offeryForm = OfferingForm(request.POST, instance = o)
                 saveForm(offeryForm)
@@ -56,6 +56,7 @@ def hostProfileEdit(request):
                 offering_filled_form = OfferingForm(initial=offDict)
     for u in userz:
         if request.user == u:
+            user_obj = u 
             if request.method == 'POST':
                 print(request.POST)
                 useryForm = UserEmailForm(request.POST, instance = u)
@@ -65,7 +66,8 @@ def hostProfileEdit(request):
                 userDict = {'email': u.email}
                 user_email_filled_form = UserEmailForm(initial=userDict) 
     return render(request, 'users/host_profile_edit.html', {"host_filled_form": host_filled_form, 
-            'offering_filled_form': offering_filled_form, 'user_email_filled_form': user_email_filled_form})
+            'offering_filled_form': offering_filled_form, 'user_email_filled_form': user_email_filled_form, 'user_obj': user_obj,
+            'off_obj': off_obj, 'ImageForm': ImageForm})
 
 
 def saveForm(formToSave):
