@@ -1,10 +1,10 @@
 from django import forms
-from .models import offering
+from .models import Offering
 
 
 class OfferingForm(forms.ModelForm):
     class Meta:
-        model = offering
+        model = Offering
         fields = ('work_category', 'work_details', 'offering_image') 
 
         widgets = {
@@ -13,7 +13,3 @@ class OfferingForm(forms.ModelForm):
         }
 
 
-class ImageForm(forms.ModelForm):
-    class Meta:
-        model = offering
-        fields = ('offering_image',) 

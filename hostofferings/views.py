@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from .forms import OfferingForm
 from django.contrib.auth.decorators import login_required
-from .models import offering
+from .models import Offering
 from django.apps import apps
 from .models import Host
 import random
@@ -14,6 +14,7 @@ import random
 def add_offering(request):
     if request.method == "POST":
         print(request.user)
+        print(f"request.POST: {request.POST} - request.FILES: {request.FILES}")
         form = OfferingForm(request.POST, request.FILES)
         if form.is_valid():
             offering = form.save(commit=False)
@@ -35,7 +36,7 @@ def all_offerings(request):
     hosts = Host.objects.all()
     result_list = []
     for host in hosts:
-        offerings = offering.objects.filter(host=host)
+        offerings = Offering.objects.filter(host=host)
         offerings_list = list(offerings)
         for o in offerings_list:
             host_and_offering = [host] + [o]
@@ -54,7 +55,7 @@ def offering_details(request, pk):
     hosts = Host.objects.all()
     result_list = []
     for host in hosts:
-        offerings = offering.objects.filter(host=host)
+        offerings = Offering.objects.filter(host=host)
         offerings_list = list(offerings)
         for o in offerings_list:
             host_and_offering = [host] + [o]
@@ -91,7 +92,7 @@ def edit_offering(request, pk):
         else:
             return HttpResponse("data not valid")
     else:
-        offer = offering.objects.get(pk=pk)
+        offer = Offering.objects.get(pk=pk)
         form = OfferingForm(instance=offer)
     return render(request, 'hostofferings/add_offering.html', {'form': form})
 

@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import offering
+from .models import Offering
 
 # Register your models here.
 
-admin.site.register(offering)
+admin.site.register(Offering)

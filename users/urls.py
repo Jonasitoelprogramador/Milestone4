@@ -1,7 +1,7 @@
 from .views import hostProfile, hostProfileEdit
-from django.urls import path
+from django.urls import re_path
 
 urlpatterns = [
-    path('hostprofile/', hostProfile, name='hostprofile'),
-    path('hostprofileedit/', hostProfileEdit, name='hostprofileedit'),
+    re_path('hostprofile/', hostProfile, name='hostprofile'),
+    re_path('hostprofileedit/', hostProfileEdit, name='hostprofileedit'),
 ]

@@ -47,7 +47,7 @@ def login(request):
         user = authenticate(request, username=request.POST['your_name'], password=request.POST['your_pass'])
         if user:
             auth_login(request, user)
-            return HttpResponse("logged in")
+            return HttpResponse("logged in baby!")
         else:
             return HttpResponse("login details incorrect")
     form = AuthenticationForm()

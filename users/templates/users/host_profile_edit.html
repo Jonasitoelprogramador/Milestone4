@@ -9,7 +9,7 @@
                 </div>
                 <div class="profile-container ">
                         <div class="details">
-                                <form method="POST">
+                                <form method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}     
                                         <div class="row">
                                                 <div class="col-12 col-md-6">
@@ -43,16 +43,14 @@
                                                         <p class="wrapable">{{offering_filled_form.work_details}}</p>
                                                         <hr>
                                                         <i class="fas fa-image"></i>
+                                                        <p class="inline"><strong>Image</strong></p> 
                                                         <div id="display-image-host">
-                                                                <p class="inline"><strong>Image</strong></p> 
-                                                                <button class="btn btn-secondary" onclick="editImage">Edit Image</button>
                                                                 <image src='/media/images/{{off_obj.random_identifier}}' class="host-worker-profile-image">
                                                         </div>
-                                                        <div id="edit-image-host" hidden>
-                                                                <p class="inline"><strong>Image</strong></p> 
-                                                                <button class="btn btn-secondary" type="button" id="image-button">Edit Image</button>
-                                                                {{ImageForm}}
+                                                        <div class="input3">
+                                                                {{offering_filled_form.offering_image}}
                                                         </div>
+                                                        <!-- <p class="wrapable">{{offering_filled_form.offering_image}}</p> -->
                                                 </div> 
                                         </div>
                                         <div class="profile-edit">
