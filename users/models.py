@@ -6,9 +6,9 @@ from django.db.models.signals import post_save
 # Create your models here.
 class Host(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    nationality = models.CharField(max_length=100, default='British')
-    first_language = models.CharField(max_length=100, default='British')
-    location = models.CharField(max_length=100, default='Britain')
+    nationality = models.CharField(max_length=100)
+    first_language = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
     
     def __str__(self):
         return self.user.username

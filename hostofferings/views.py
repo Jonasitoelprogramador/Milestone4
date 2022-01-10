@@ -7,8 +7,6 @@ from .models import Host
 import random
 
 
-
-
 # Create your views here.
 @login_required()  
 def add_offering(request):
@@ -51,7 +49,10 @@ def all_offerings(request):
 
 @login_required()
 def offering_details(request, pk):
-    offering_details = get_object_or_404(offering, pk=pk)
+    all_offerings = Offering.objects.all()
+    for o in all_offerings:
+        print(o.pk)
+    offering_details = get_object_or_404(Offering, pk=pk)
     hosts = Host.objects.all()
     result_list = []
     for host in hosts:

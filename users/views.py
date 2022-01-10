@@ -8,10 +8,20 @@ from hostofferings.forms import OfferingForm
 from accounts.forms import UserEmailForm
 from django.forms.models import model_to_dict
 
+ 
 
-
-@login_required()
+'''@login_required()
 def hostProfile(request):  
+    current_user = request.user
+    try:
+        host = Host.objects.get(user=current_user)
+    except:
+        host = None 
+     # you want to force a 1:1 between offering and host
+    try:
+        offering = Offering.objects.filter(host=host).first()
+    except:
+        offering = None 
     hosts = Host.objects.all() 
     result_list = []
     for host in hosts:
@@ -25,26 +35,39 @@ def hostProfile(request):
     tuples = list(zipped_tuples)
     for x in tuples:
         if x[0] == request.user: 
-            return x
-    hoster = x[0]
-    offer = x[1]
-    return render(request, 'users/host_profile.html', {'host': hoster, 'offer': offer})
+            context = {
+                'host': x[0],
+                'offer': x[1]}
+        else:
+            context = {}
+    return render(request, 'users/host_profile.html', context)'''
 
 
 @login_required()
-def hostProfileEdit(request):
+def hostProfile(request):
     current_user = request.user
-    host = Host.objects.get(user=current_user)
+    try:
+        host = Host.objects.get(user=current_user)
+    except:
+        host = None 
      # you want to force a 1:1 between offering and host
-    offering = Offering.objects.filter(host=host).first()
+    try:
+        offering = Offering.objects.filter(host=host).first()
+    except:
+        offering = None 
     
     if request.method == 'POST':
         host_filled_form = HostCreationForm(request.POST, instance = host)
+        print(f"The host filled form:{host_filled_form}")
         if host_filled_form.is_valid():
-            host_filled_form.save()
+            new_host = host_filled_form.save(commit=False)
+            new_host.user = request.user
+            new_host.save()
         offering_filled_form = OfferingForm(request.POST, request.FILES, instance = offering)
         if offering_filled_form.is_valid():
-            offering = offering_filled_form.save()
+            offering = offering_filled_form.save(commit=False)
+            offering.host = request.user.host
+            offering.save()
         user_email_filled_form = UserEmailForm(request.POST, instance = request.user)
         if user_email_filled_form.is_valid():
             user_email_filled_form.save()
