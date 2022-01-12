@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from urllib.error import HTTPError
-from .forms import ExtendedUserCreationForm
+from .forms import ExtendedUserCreationForm, TypeForm
 from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
@@ -50,8 +50,9 @@ def login(request):
             return HttpResponse("logged in baby!")
         else:
             return HttpResponse("login details incorrect")
-    form = AuthenticationForm()
-    return render(request, 'accounts/login.html', {'form': form})
+    authentication_form = AuthenticationForm()
+    account_type_form = TypeForm()
+    return render(request, 'accounts/login.html', {'form': authentication_form, 'form2': account_type_form})
 
 
 def logout(request):

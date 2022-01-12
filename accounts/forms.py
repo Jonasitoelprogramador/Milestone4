@@ -3,7 +3,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from users.models import Host, Worker
-
+from .models import Type
 
 class ExtendedUserCreationForm(UserCreationForm):
     password1 = forms.CharField(
@@ -47,3 +47,8 @@ class UserEmailForm(ModelForm):
             'email': forms.TextInput(attrs={'id':"email", 'class': 'input3'})
         }
 
+
+class TypeForm(ModelForm):
+    class Meta:
+        model = Type
+        fields = ("account_type",)
