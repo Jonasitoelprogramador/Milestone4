@@ -89,6 +89,10 @@ img {
   border-color: #a4b0c0;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .register-container {
   width: 1422px !important;
   height: 388px !important;

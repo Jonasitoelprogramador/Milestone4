@@ -52,3 +52,7 @@ class TypeForm(ModelForm):
     class Meta:
         model = Type
         fields = ("account_type",)
+
+        widgets = {
+            "account_type": forms.Select(attrs={'class': 'host_vs_worker'})
+        }

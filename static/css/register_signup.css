@@ -549,7 +549,7 @@ label.valid {
   color: #fff;
 }
 
-@media only screen and (min-width: 800px) {
+/*@media only screen and (min-width: 800px) {
   .login-section {
     margin-right: 50px;
     margin-top: 0;
@@ -566,7 +566,7 @@ label.valid {
   .form-flex {
     flex-direction: row;
   }
-}
+}*/
 
 .login-group label {
   color: #fff;
@@ -574,4 +574,8 @@ label.valid {
 
 #already-account {
   color: #fff;
+}
+
+.host_vs_worker {
+  margin-left: 15px;
 }
