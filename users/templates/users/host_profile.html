@@ -1,52 +1,62 @@
 {% extends "base.html" %}
 {% load static %}
 
+
 {% block content %}
         <div class="profile-background">
                 <div class="text-center profile-title-div">
-                        <h1 class="profile-title">Your Profile</h1>
+                        <h1 class="profile-title">Profile</h1>
                 </div>
                 <div class="profile-container ">
-                        <div class="details">  
+                        <div class="details">
+                                <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}     
                                         <div class="row">
                                                 <div class="col-12 col-md-6">
                                                         <i class="fas fa-user-alt"></i>
                                                         <p class="inline"><strong>Username</strong></p>
-                                                        <p class="wrapable">{{host.user}}</p>
+                                                        <p class="wrapable">{{user_obj.username}}</p>
                                                         <hr>
                                                         <i class="fas fa-envelope"></i>
                                                         <p class="inline"><strong>Email</strong></p>
-                                                        <p class="wrapable">{{host.user.email}}</p>
+                                                        <p class="wrapable">{{user_email_filled_form.email}}</p>
                                                         <hr>
                                                         <i class="fas fa-language"></i>
                                                         <p class="inline"><strong>Fist Language</strong></p>
-                                                        <p class="wrapable">{{host.first_language}}</p>
+                                                        <p class="wrapable">{{host_filled_form.first_language}}</p>
                                                         <hr>
                                                         <i class="fas fa-globe-europe"></i>
                                                         <p class="inline"><strong>Nationality</strong></p>
-                                                        <p class="wrapable">{{host.nationality}}</p>
+                                                        <p class="wrapable">{{host_filled_form.nationality}}</p>
                                                         <hr>
                                                         <i class="fas fa-map-marker-alt"></i>
                                                         <p class="inline"><strong>Location</strong></p>
-                                                        <p class="wrapable">{{host.location}}</p>
+                                                        <p class="wrapable">{{host_filled_form.location}}</p>
                                                 </div>    
                                                 <div class="col-12 col-md-6">   
                                                         <i class="fas fa-hands-helping"></i>
                                                         <p class="inline"><strong>Work Category</strong></p>
-                                                        <p class="wrapable">{{offer.work_category}}</p>
+                                                        <p class="wrapable">{{offering_filled_form.work_category}}</p>
                                                         <hr>
                                                         <i class="fas fa-info"></i>
                                                         <p class="inline"><strong>Work Details</strong></p>
-                                                        <p class="wrapable">{{offer.work_details}}</p>
+                                                        <p class="wrapable">{{offering_filled_form.work_details}}</p>
                                                         <hr>
                                                         <i class="fas fa-image"></i>
-                                                        <p class="inline"><strong>Image</strong></p>    
-                                                        <image src='/media/images/{{offer.random_identifier}}' class="host-worker-profile-image">
+                                                        <p class="inline"><strong>Image</strong></p> 
+                                                        <div id="display-image-host">
+                                                                <image src='/media/images/{{off_obj.random_identifier}}' class="host-worker-profile-image">
+                                                        </div>
+                                                        <div class="input3">
+                                                                {{offering_filled_form.offering_image}}
+                                                        </div>
+                                                        <!-- <p class="wrapable">{{offering_filled_form.offering_image}}</p> -->
                                                 </div> 
-                                        </div> 
-                                <div class="profile-edit">
-                                        <a class="btn btn-secondary" href="#" role="button">Edit</a>
-                                </div>
+                                        </div>
+                                        <div class="profile-edit">
+                                                <input class="btn btn-secondary" role="button" type="submit" value="Save Changes">
+                                        </div>
+                                </form>   
                         </div>
                 </div>
         </div>

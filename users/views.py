@@ -1,46 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .models import Host
+from .models import Host, Worker
 from hostofferings.models import Offering
 from django.contrib.auth.models import User
-from .forms import HostCreationForm
+from .forms import HostCreationForm, WorkerCreationForm
 from hostofferings.forms import OfferingForm
 from accounts.forms import UserEmailForm
 from django.forms.models import model_to_dict
-
- 
-
-'''@login_required()
-def hostProfile(request):  
-    current_user = request.user
-    try:
-        host = Host.objects.get(user=current_user)
-    except:
-        host = None 
-     # you want to force a 1:1 between offering and host
-    try:
-        offering = Offering.objects.filter(host=host).first()
-    except:
-        offering = None 
-    hosts = Host.objects.all() 
-    result_list = []
-    for host in hosts:
-        offerings = Offering.objects.filter(host=host)
-        offerings_list = list(offerings)
-        for o in offerings_list:
-            host_and_offering = [host] + [o]
-            result_list += host_and_offering
-    it = iter(result_list)
-    zipped_tuples = zip(it, it)
-    tuples = list(zipped_tuples)
-    for x in tuples:
-        if x[0] == request.user: 
-            context = {
-                'host': x[0],
-                'offer': x[1]}
-        else:
-            context = {}
-    return render(request, 'users/host_profile.html', context)'''
 
 
 @login_required()
@@ -73,12 +39,16 @@ def hostProfile(request):
             user_email_filled_form.save()
 
     else:
-        host_filled_form = HostCreationForm(instance=host)
-        offering_filled_form = OfferingForm(instance=offering)
-        user_email_filled_form = UserEmailForm(instance=request.user)
-    
+        if str(request.user.type.account_type) == "host":
+            filled_form = HostCreationForm(instance=host)
+            offering_filled_form = OfferingForm(instance=offering)
+            user_email_filled_form = UserEmailForm(instance=request.user)
+        elif str(request.user.type.account_type) == "worker":
+            filled_form = WorkerCreationForm(instance=host)
+            user_email_filled_form = UserEmailForm(instance=request.user)
+
     context = {
-        "host_filled_form": host_filled_form, 
+        "filled_form": filled_form, 
         'offering_filled_form': offering_filled_form, 
         'user_email_filled_form': user_email_filled_form, 
         'user_obj': request.user,
@@ -86,6 +56,40 @@ def hostProfile(request):
     }
     
     return render(request, 'users/host_profile_edit.html', context)
+
+
+@login_required()
+def workerProfile(request):
+    current_user = request.user
+    #get the worker instance associated with the logged in user
+    try:
+        worker = Worker.objects.get(user=current_user)
+    except:
+        worker = None 
+     # you want to force a 1:1 between offering and host 
+    
+    if request.method == 'POST':
+        worker_filled_form = WorkerCreationForm(request.POST, instance = worker)
+        print(f"The worker filled form:{worker_filled_form}")
+        if worker_filled_form.is_valid():
+            new_worker = worker_filled_form.save(commit=False)
+            new_worker.user = request.user
+            new_worker.save()
+        user_email_filled_form = UserEmailForm(request.POST, instance = request.user)
+        if user_email_filled_form.is_valid():
+            user_email_filled_form.save()
+
+    else:
+        filled_form = WorkerCreationForm(instance=worker)
+        user_email_filled_form = UserEmailForm(instance=request.user)
+
+        context = {
+            "filled_form": filled_form, 
+            'user_email_filled_form': user_email_filled_form, 
+            'user_obj': request.user,
+        }
+    
+    return render(request, 'users/worker_profile.html', context)
 
 
         # this_is_snake_case
