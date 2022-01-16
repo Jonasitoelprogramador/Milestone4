@@ -31,21 +31,28 @@
                             <div class="form-flex">
                                 <div class="form-group login-group">
                                     <label for="your_name">Username</label>
-                                    <input type="text" name="your_name" id="your_name" placeholder="Username" class="login-inputs" required>
+                                    {{form1.username}}
+                                    <!--<input type="text" name="your_name" id="your_name" placeholder="Username" class="login-inputs" required>-->
                                 </div>
                                 <div class="form-group login-group">
                                     <label for="your_pass">Password</label>
-                                    <input type="password" name="your_pass" id="your_pass" placeholder="Password" class="login-inputs" required>
+                                    {{form1.password1}}
+                                    <!--<input type="password" name="your_pass" id="your_pass" placeholder="Password" class="login-inputs" required>-->
                                 </div>
-                                <div class="login-group">
+                                <div class="form-group login-group">
+                                    <label for="your_pass">Confirm Password</label>
+                                    {{form1.password2}}
+                                    <!--<input type="password" name="your_pass" id="your_pass" placeholder="Password" class="login-inputs" required>-->
+                                </div>
+                                <div class="form-group login-group">
                                     {{form2}}
                                 </div>
                                 <div class="form-group form-button">
-                                    <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" required>
+                                    <input type="submit" name="signin" id="signin" class="form-submit" value="Sign up" required>
                                 </div>
                             </div>
                             <div class="padding-bottom-30">
-                                <a href="#" class="signup-image-link" id="already-account">Register</a>
+                                <a href="#" class="signup-image-link" id="already-account">Sign In</a>
                             </div>
                         </form>
                     </div>

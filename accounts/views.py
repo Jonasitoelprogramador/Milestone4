@@ -9,32 +9,22 @@ from .forms import ExtendedUserCreationForm, TypeForm
 from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
-#def register(request, user_type):
-  #  """A view that manages the registration form"""
-  #  if user_type == 'host':
-  #      profile_form = HostCreationForm()
-  #      post_paramater = 'host'
-  #  elif user_type == 'worker':
-  #      profile_form = WorkerCreationForm()
-  #      post_paramater = 'worker'
-  #  form = ExtendedUserCreationForm()
-   # if request.method == 'POST':
-   #     user_form = ExtendedUserCreationForm(request.POST)
-    #    if user_type == 'host':  
-   #         profile_form = HostCreationForm(request.POST)
-   #     elif user_type == 'worker':
-   #         profile_form = WorkerCreationForm(request.POST)
-   #     if user_form.is_valid() and profile_form.is_valid():
-   #         user = user_form.save()
-   #         profile = profile_form.save(commit=False)
-   #         profile.user = user
-   #         profile.save()
-   #         return HttpResponse("registered!")
-  #      else:
-   #         print(profile_form.errors.values())
-   #         return HttpResponse(user_form.errors.values())
-   # print(profile_form)
-   # return render(request, 'accounts/register.html', {'form': form, 'profile_form': profile_form, 'post_paramater': post_paramater})
+def signup(request):
+    form1 = ExtendedUserCreationForm()
+    form2 = TypeForm()
+    if request.method == 'POST':
+        user_form = ExtendedUserCreationForm(request.POST)
+        type_form = TypeForm(request.POST)
+        if user_form.is_valid():
+            user = user_form.save()
+        if type_form.is_valid():
+            form = type_form.save(commit=False)
+            form.user = user
+            form.save()
+            return HttpResponse("registered!")
+        else:
+            return HttpResponse(user_form.errors.values())
+    return render(request, 'accounts/sign_up.html', {"form1": form1, "form2": form2})
 
 
 def login(request):

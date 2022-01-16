@@ -8,11 +8,11 @@ from .models import Type
 class ExtendedUserCreationForm(UserCreationForm):
     password1 = forms.CharField(
             label="Password",
-            widget=forms.PasswordInput(attrs={'class':'background-translucent', 'type':'password'}),
+            widget=forms.PasswordInput(attrs={'class':'login-inputs', 'type':'password'}),
         )
     password2 = forms.CharField(
         label="Confirm password",
-        widget=forms.PasswordInput(attrs={'class':'background-translucent', 'type':'password'}),
+        widget=forms.PasswordInput(attrs={'class':'login-inputs', 'type':'password'}),
     )
 
     class Meta:
@@ -20,10 +20,10 @@ class ExtendedUserCreationForm(UserCreationForm):
         fields = ("username", "email", "first_name", "last_name", "password1", "password2")
 
         widgets = {
-                'username': forms.TextInput(attrs={'id':"username", 'class': 'background-translucent'}),
-                'email': forms.TextInput(attrs={'id':"email", 'class': 'background-translucent'}),
-                'first_name': forms.TextInput(attrs={'id':"first_name", 'class': 'background-translucent'}),
-                'last_name': forms.TextInput(attrs={'id': "last_name", 'class': 'background-translucent'}),
+                'username': forms.TextInput(attrs={'id':"username", 'class': 'login-inputs'}),
+                'email': forms.TextInput(attrs={'id':"email", 'class': 'login-inputs'}),
+                'first_name': forms.TextInput(attrs={'id':"first_name", 'class': 'login-inputs'}),
+                'last_name': forms.TextInput(attrs={'id': "last_name", 'class': 'login-inputs'}),
             }
 
     def save(self, commit=True):
