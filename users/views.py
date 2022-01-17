@@ -23,10 +23,9 @@ def hostProfile(request):
         offering = None 
     
     if request.method == 'POST':
-        host_filled_form = HostCreationForm(request.POST, instance = host)
-        print(f"The host filled form:{host_filled_form}")
-        if host_filled_form.is_valid():
-            new_host = host_filled_form.save(commit=False)
+        filled_form = HostCreationForm(request.POST, instance = host)
+        if filled_form.is_valid():
+            new_host = filled_form.save(commit=False)
             new_host.user = request.user
             new_host.save()
         offering_filled_form = OfferingForm(request.POST, request.FILES, instance = offering)
@@ -39,13 +38,9 @@ def hostProfile(request):
             user_email_filled_form.save()
 
     else:
-        if str(request.user.type.account_type) == "host":
-            filled_form = HostCreationForm(instance=host)
-            offering_filled_form = OfferingForm(instance=offering)
-            user_email_filled_form = UserEmailForm(instance=request.user)
-        elif str(request.user.type.account_type) == "worker":
-            filled_form = WorkerCreationForm(instance=host)
-            user_email_filled_form = UserEmailForm(instance=request.user)
+        filled_form = HostCreationForm(instance=host)
+        offering_filled_form = OfferingForm(instance=offering)
+        user_email_filled_form = UserEmailForm(instance=request.user)
 
     context = {
         "filled_form": filled_form, 
@@ -55,7 +50,7 @@ def hostProfile(request):
         'off_obj': offering
     }
     
-    return render(request, 'users/host_profile_edit.html', context)
+    return render(request, 'users/host_profile.html', context)
 
 
 @login_required()
@@ -80,14 +75,14 @@ def workerProfile(request):
             user_email_filled_form.save()
 
     else:
-        filled_form = WorkerCreationForm(instance=worker)
+        worker_filled_form = WorkerCreationForm(instance=worker)
         user_email_filled_form = UserEmailForm(instance=request.user)
 
-        context = {
-            "filled_form": filled_form, 
-            'user_email_filled_form': user_email_filled_form, 
-            'user_obj': request.user,
-        }
+    context = {
+        "worker_filled_form": worker_filled_form, 
+        'user_email_filled_form': user_email_filled_form, 
+        'user_obj': request.user,
+    }
     
     return render(request, 'users/worker_profile.html', context)
 
