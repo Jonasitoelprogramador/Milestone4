@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Host, Worker
 from hostofferings.models import Offering
@@ -7,6 +7,16 @@ from .forms import HostCreationForm, WorkerCreationForm
 from hostofferings.forms import OfferingForm
 from accounts.forms import UserEmailForm
 from django.forms.models import model_to_dict
+from accounts.urls import urlpatterns
+
+
+def hostOrWorker(request):
+    if request.user.type == "host":
+        hostProfile(request)
+    elif request.user.type == "worker":
+        workerProfile(request)
+    else:
+        return redirect(request, urlpatterns[0])
 
 
 @login_required()
