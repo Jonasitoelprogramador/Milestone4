@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from urllib.error import HTTPError
 from .forms import ExtendedUserCreationForm, TypeForm
 from django.contrib.auth.forms import AuthenticationForm
+from hostofferings.views import all_offerings
 
 # Create your views here.
 def signup(request):
@@ -15,22 +16,23 @@ def signup(request):
     if request.method == 'POST':
         user_form = ExtendedUserCreationForm(request.POST)
         type_form = TypeForm(request.POST)
-        if user_form.is_valid():
+        if user_form.is_valid() and type_form.is_valid():
             user = user_form.save()
-        if type_form.is_valid():
             form = type_form.save(commit=False)
             form.user = user
             form.save()
-            return HttpResponse("registered!")
+            authenticated_user = authenticate(request, username=request.POST['username'], password=request.POST['password1'])
+            if authenticated_user:
+                auth_login(request, authenticated_user)
+            return redirect(all_offerings)
         else:
-            return HttpResponse(user_form.errors.values())
+            return render(request, 'accounts/sign_up.html', {"form1": form1, "form2": form2, "errors": user_form.errors.values()})
     return render(request, 'accounts/sign_up.html', {"form1": form1, "form2": form2})
 
 
 def login(request):
     """A view that manages the login form"""
     if request.method == 'POST':
-        print('hellothen')
         user_form = AuthenticationForm(request.POST)
         #if user_form.is_valid():
         print(request.POST)

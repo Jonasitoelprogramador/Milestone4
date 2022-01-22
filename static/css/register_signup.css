@@ -169,7 +169,7 @@ figure {
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
-  margin-top: 25px;
+  margin-top: 5px;
   cursor: pointer; }
   .form-submit:hover {
     background: darkblue; }
@@ -187,6 +187,12 @@ figure {
 .form-group {
   position: relative;
   margin-bottom: 25px;
+  overflow: hidden;
+}
+
+.form-group-submit {
+  position: relative;
+  margin-bottom: 10px;
   overflow: hidden;
 }
 
@@ -513,7 +519,12 @@ label.valid {
 
 .main-log {
   padding: 30px 0;
-  background: url('/static/images/desert_cropped.jpg');
+  background-image: 
+  linear-gradient(
+      rgba(0, 0, 0, 0.4), 
+      rgba(0, 0, 0, 0.4)
+    ),
+  url('/static/images/swiss-countryside.jpg');
   height: 100%;
   background-size: cover;
   background-position: center;
@@ -533,7 +544,7 @@ label.valid {
 .signin-section {
   width: 250px;
   margin: auto;
-  margin-top: 120px;
+  margin-top: 40px;
   text-align: center;
 }
 
@@ -574,6 +585,11 @@ label.valid {
     flex-direction: row;
   }
 }*/
+
+.authentication-errors {
+  color: #fff;
+  font-size: 0.9rem;
+}
 
 .login-group label {
   color: #fff;

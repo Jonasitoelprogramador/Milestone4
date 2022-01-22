@@ -44,15 +44,20 @@
                                     {{form1.password2}}
                                     <!--<input type="password" name="your_pass" id="your_pass" placeholder="Password" class="login-inputs" required>-->
                                 </div>
-                                <div class="form-group login-group">
+                                <div class="login-group">
                                     {{form2}}
                                 </div>
-                                <div class="form-group form-button">
+                                <div class="login-group form-group-submit">
                                     <input type="submit" name="signin" id="signin" class="form-submit" value="Sign up" required>
                                 </div>
                             </div>
-                            <div class="padding-bottom-30">
+                            <div>
                                 <a href="#" class="signup-image-link" id="already-account">Sign In</a>
+                            </div>
+                            <div class="authentication-errors">
+                                {% for e in errors %}
+                                    <em></em><strong>{{ e }}</strong></em>
+                                {% endfor %}
                             </div>
                         </form>
                     </div>
