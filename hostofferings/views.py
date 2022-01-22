@@ -3,8 +3,8 @@ from .forms import OfferingForm
 from django.contrib.auth.decorators import login_required
 from .models import Offering
 from django.apps import apps
-from .models import Host
 import random
+from users.models import Host, Worker
 
 
 # Create your views here.
@@ -31,20 +31,31 @@ def add_offering(request):
 
 @login_required()
 def all_offerings(request):
+    #get all the instances of the Host model
     hosts = Host.objects.all()
     result_list = []
+    #loop through the instances
     for host in hosts:
+        #get each offering associated with a given host
         offerings = Offering.objects.filter(host=host)
         offerings_list = list(offerings)
+        #add offering and host together to results_list
         for o in offerings_list:
             host_and_offering = [host] + [o]
             result_list += host_and_offering
     it = iter(result_list)
     zipped_tuples = zip(it, it)
+    #create a list of tuples [host, offering]
     tuples = list(zipped_tuples)
-    image = '/media/images/default.jpg'
-    print(tuples)
-    return render(request, "hostofferings/all_offerings.html", {'offerings': tuples, 'image': image})
+    return render(request, "hostofferings/all_offerings.html", {'offerings': tuples})
+
+
+@login_required()
+def all_workers(request):
+    workers = Worker.objects.all()
+    print(f"the workers list is {list(workers)}")
+    lst_workers = list(workers)
+    return render(request, "hostofferings/all_workers.html", {'workers': lst_workers})
 
 
 @login_required()

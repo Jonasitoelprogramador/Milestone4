@@ -32,19 +32,17 @@ def signup(request):
 
 def login(request):
     """A view that manages the login form"""
-    if request.method == 'POST':
-        user_form = AuthenticationForm(request.POST)
-        #if user_form.is_valid():
-        print(request.POST)
-        user = authenticate(request, username=request.POST['your_name'], password=request.POST['your_pass'])
-        if user:
-            auth_login(request, user)
-            return HttpResponse("logged in baby!")
-        else:
-            return HttpResponse("login details incorrect")
     authentication_form = AuthenticationForm()
-    account_type_form = TypeForm()
-    return render(request, 'accounts/login.html', {'form': authentication_form, 'form2': account_type_form})
+    if request.method == 'POST':
+        print(request.POST)
+        user_form = AuthenticationForm(request.POST)
+        authenticated_user = authenticate(request, username=request.POST['your_name'], password=request.POST['your_pass'])
+        if authenticated_user:
+            auth_login(request, authenticated_user)
+            return redirect(all_offerings)
+        else:
+            return render(request, 'accounts/login.html', {'form': authentication_form, 'errors': "credentials incorrect"})
+    return render(request, 'accounts/login.html', {'form': authentication_form})
 
 
 def logout(request):

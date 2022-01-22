@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+{% block content %}
+  <div class="hero-div"></div>
+  <div class="container marketing width-control">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      {% for worker in workers %}
+      <div class="col-sm-6 col-md-4 each-offering">
+        <div class="mx-auto circle-container-sm">
+          <div style="background-image: url('/media/images/{{offering.random_identifier}}')" class="circle-cover-bg"></div>
+        </div>
+        <h4 class="text-center">{{worker.user.username}}</h4>
+        <p class="text-center padding-top-7">{{worker.desired_language}}</p>
+        <p class="text-center">{{worker.work_experience_category}}</p>
+        <p class="text-center"><a class="btn btn-secondary" href="#" role="button">View details</a></p>
+      </div>
+      {% endfor %}
+    </div><!-- /.row -->
+{% endblock %}
+
