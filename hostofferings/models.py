@@ -8,11 +8,16 @@ import os.path
 
 
 def path_time(instance, filename):
+    #takes the instance and the filename of the uploaded image
+    #splits the filename from the extension
     extension = os.path.splitext(filename)[1]
+    #assigns a random value to the random_identifier field of the model instance
     instance.random_identifier = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(16))
+    #adds the correct file extension to this field
     instance.random_identifier = instance.random_identifier + extension
     print(instance.random_identifier)
     upload = 'images/'
+    #uploads the newly-renamed image to the images folder on the server
     return os.path.join(upload, instance.random_identifier)
 
 
