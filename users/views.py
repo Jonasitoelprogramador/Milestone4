@@ -64,7 +64,7 @@ def profile(request):
         # you want to force a 1:1 between offering and host 
         
         if request.method == 'POST':
-            worker_filled_form = WorkerCreationForm(request.POST, instance = worker)
+            worker_filled_form = WorkerCreationForm(request.POST, request.FILES, instance = worker)
             if worker_filled_form.is_valid():
                 new_worker = worker_filled_form.save(commit=False)
                 new_worker.user = request.user
@@ -81,6 +81,7 @@ def profile(request):
             "filled_form": worker_filled_form, 
             'user_email_filled_form': user_email_filled_form, 
             'user_obj': request.user,
+            'worker': worker
         }
         
         return render(request, 'users/worker_profile.html', context)

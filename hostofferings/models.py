@@ -8,6 +8,7 @@ import os.path
 
 
 def path_time(instance, filename):
+    print("hello I need to make a path time as quickly as possible becos running late")
     #takes the instance and the filename of the uploaded image
     #splits the filename from the extension
     extension = os.path.splitext(filename)[1]
