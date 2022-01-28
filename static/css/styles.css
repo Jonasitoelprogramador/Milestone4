@@ -58,18 +58,6 @@ img {
   margin: auto;
 }
 
-.navbar {
-  background-color: #a4b0c0;
-}
-
-.navbar-toggler {
-  background-color: #a4b0c0;
-}
-
-#nav-home {
-  margin-left: 20px;
-}
-
 .padding-top-7 {
   padding-top: 7px;
 }
@@ -263,4 +251,33 @@ hr {
   }
 }
 
+/*-----------------navbar--------------------------*/
 
+.navbar-nav li a {
+  font-family: 'Arvo', serif;
+  font-size: 1.2rem;
+}
+
+.navbar {
+  background-color: #a4b0c0;
+}
+
+.navbar-toggler {
+  background-color: #a4b0c0;
+}
+
+.navbar-nav li {
+  margin-left: 20px;
+}
+
+
+/*---------------------Homepage-------------------------*/
+
+#jonah-photo {
+  border-radius: 50%;
+}
+
+.homepage-text {
+  font-family: 'Arvo', serif;
+  color: #a4b0c0;
+}

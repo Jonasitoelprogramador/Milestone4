@@ -51,4 +51,8 @@ def logout(request):
     #return redirect(request, 'accounts/login.html')
 
 
+def homepage(request):
+    return render(request, 'accounts/homepage.html')
+
+
 
