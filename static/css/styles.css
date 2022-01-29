@@ -91,6 +91,9 @@ img {
   word-wrap: break-word;
 }
 
+.text-inherit {
+  font-family: inherit;
+}
 /*------------offering details---------------------------*/
 
 .circle-container-bg {
@@ -245,6 +248,10 @@ hr {
   padding-top: 30px;
 }
 
+.padding-top-15 {
+  padding-top: 15px;
+}
+
 @media (max-width:660px) and (min-width:480px) {
   hr {
     width: fit-content;
@@ -280,4 +287,42 @@ hr {
 .homepage-text {
   font-family: 'Arvo', serif;
   color: #a4b0c0;
+}
+
+.homepage-text div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.homepage-titles {
+  margin-bottom: 8px;
+}
+
+.homepage-quote {
+  margin: 15px;
+}
+
+.paragraph-padding {
+  padding: 8px;
+}
+
+.homepage-quote-row {
+  background-color: #a4b0c0;
+}
+
+.middle-row-white {
+  color: #fff !important;
+}
+
+.homepage-quote q {
+  font-size: 25px;
+}
+
+@media only screen and (min-width: 1030px) {
+  .padding-bottom-10 {
+    padding-bottom: 10px;
+  }
+  .jonahs-story {
+    padding-top: 15px;
+  }
 }
