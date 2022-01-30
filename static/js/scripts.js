@@ -1,2 +1,2 @@
-object.onload = function(){myScript};
+
 
