@@ -367,7 +367,7 @@ hr {
 }
 
 .footer p {
-  font-family: inherit;
+  font-family: 'Arvo', serif;;
 }
 
 .business-info {
@@ -375,5 +375,13 @@ hr {
 }
 
 .footer h6 {
-  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.back-to-top {
+  margin-top: 90px;
+}
+
+.footer {
+  background-color: #a4b0c0;
 }
