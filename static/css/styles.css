@@ -7,6 +7,7 @@ body {
   overflow-x: hidden;
   padding-top: 0;
   height: auto;
+  padding-bottom: 10px;
 }
 
 .circle-cover-bg {
@@ -24,6 +25,10 @@ body {
 
 .header-style {
   height: 76px;
+}
+
+.nav-item a:hover {
+  color: #fff;
 }
 
 .hero-div {
@@ -285,13 +290,19 @@ hr {
   margin-left: 20px;
 }
 
-.navbar-toggler-icon {
-  background-color: #a4b0c0;
-  border-radius: 10%;
-}
-
 #globe {
   display: none;
+}
+
+.navbar-toggler-icon div {
+  background-color: #a4b0c0;
+  height: 8px;
+  border-radius:10%;
+  margin-bottom: 3px;
+}
+
+.navbar-nav li {
+  padding-top: 8px;
 }
 
 @media only screen and (min-width: 767px) {
@@ -299,7 +310,6 @@ hr {
     display: inline;
   }
 }
-
 
 /*---------------------Homepage-------------------------*/
 
@@ -348,4 +358,22 @@ hr {
   .jonahs-story {
     padding-top: 15px;
   }
+}
+
+/*----------------footer----------------------------*/
+
+.footer p a:hover {
+  color: #a4b0c0;
+}
+
+.footer p {
+  font-family: inherit;
+}
+
+.business-info {
+  margin-top: 30px;
+}
+
+.footer h6 {
+  margin-bottom: 10px;
 }
