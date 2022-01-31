@@ -107,6 +107,15 @@ img {
 .no-margin {
   margin: 0 !important;
 }
+
+.container-fluid {
+  padding: 0;
+}
+
+#body-element {
+  padding-bottom: 0;
+}
+
 /*------------offering details---------------------------*/
 
 .circle-container-bg {
@@ -363,11 +372,12 @@ hr {
 /*----------------footer----------------------------*/
 
 .footer p a:hover {
-  color: #a4b0c0;
+  color: #fff;
 }
 
 .footer p {
-  font-family: 'Arvo', serif;;
+  font-family: 'Arvo', serif;
+  color: #fff;
 }
 
 .business-info {
@@ -375,13 +385,15 @@ hr {
 }
 
 .footer h6 {
-  margin-top: 20px;
+  color: #fff;
+  margin-bottom: 3px;
 }
 
 .back-to-top {
-  margin-top: 90px;
+  margin-top: 97px;
 }
 
 .footer {
   background-color: #a4b0c0;
+  padding: 15px;
 }
