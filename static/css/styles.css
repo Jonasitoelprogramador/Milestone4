@@ -116,6 +116,11 @@ img {
   padding-bottom: 0;
 }
 
+.payment-modal-button {
+  position: absolute;
+  right: 25px;
+}
+
 /*------------offering details---------------------------*/
 
 .circle-container-bg {
