@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'accounts',
     'django_countries',
     'hostofferings',
-    'users'
+    'users',
+    'payments'
 ]
 
 MIDDLEWARE = [

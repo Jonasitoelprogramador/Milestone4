@@ -19,6 +19,7 @@ from django.urls import path
 from accounts import urls as urls_accounts
 from hostofferings import urls as urls_hostofferings
 from users import urls as urls_users
+from payments import urls as urls_payments
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -28,6 +29,7 @@ urlpatterns = [
     path('accounts/', include(urls_accounts)),
     path('hostofferings/', include(urls_hostofferings)),
     path('users/', include(urls_users)),
+    path('payments/', include(urls_payments))
 ]
 
 if settings.DEBUG:
