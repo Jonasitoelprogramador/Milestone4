@@ -7,7 +7,8 @@ from django.contrib.auth.decorators import login_required
 from urllib.error import HTTPError
 from .forms import ExtendedUserCreationForm, TypeForm
 from django.contrib.auth.forms import AuthenticationForm
-from hostofferings.views import all_offerings
+from hostofferings.views import all_offerings, all_workers
+from django.urls import reverse
 
 # Create your views here.
 def signup(request):
@@ -39,7 +40,10 @@ def login(request):
         authenticated_user = authenticate(request, username=request.POST['your_name'], password=request.POST['your_pass'])
         if authenticated_user:
             auth_login(request, authenticated_user)
-            return redirect(all_offerings)
+            if str(authenticated_user.type) == "host":
+                return redirect(all_offerings)
+            elif str(authenticated_user.type) == "worker":
+                return redirect(all_workers)
         else:
             return render(request, 'accounts/login.html', {'form': authentication_form, 'errors': "credentials incorrect"})
     return render(request, 'accounts/login.html', {'form': authentication_form})
@@ -52,7 +56,17 @@ def logout(request):
 
 
 def homepage(request):
-    return render(request, 'accounts/homepage.html')
+    worker = "worker"
+    host = "host"
+    if str(request.user.type) == host:
+        context = {
+            "host_or_worker": "host"
+        }
+    elif str(request.user.type) == "worker":
+        context = {
+            "host_or_worker": worker
+        }
+    return render(request, 'accounts/homepage.html', {"host_or_worker": worker})
 
 
 
