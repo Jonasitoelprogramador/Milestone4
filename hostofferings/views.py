@@ -47,7 +47,13 @@ def all_offerings(request):
     zipped_tuples = zip(it, it)
     #create a list of tuples [host, offering]
     tuples = list(zipped_tuples)
-    return render(request, "hostofferings/all_offerings.html", {'offerings': tuples})
+    if str(request.user.type) == "host":
+        context = {"host_or_worker": "host",
+            'offerings': tuples}
+    elif str(request.user.type) == "worker":
+        context = {"host_or_worker": "worker",
+            'offerings': tuples}
+    return render(request, "hostofferings/all_offerings.html", context)
 
 
 @login_required()
@@ -55,7 +61,14 @@ def all_workers(request):
     workers = Worker.objects.all()
     print(f"the workers list is {list(workers)}")
     lst_workers = list(workers)
-    return render(request, "hostofferings/all_workers.html", {'workers': lst_workers})
+    if str(request.user.type) == "host":
+        context = {"host_or_worker": "host",
+            'workers': lst_workers}
+    elif str(request.user.type) == "worker":
+        context = {"host_or_worker": "worker",
+            'workers': lst_workers}
+    return render(request, "hostofferings/all_workers.html", context)
+    
 
 
 @login_required()
@@ -82,7 +95,19 @@ def offering_details(request, pk):
         lst.append(tuples[ran_num])
         i += 1
     image = '/media/images/default.jpg'
-    return render(request, 'hostofferings/offering_details.html', {'offering_details': offering_details, 'offerings': lst, 'image': image})
+    if str(request.user.type) == "host":
+        context = {
+            "host_or_worker": "host",
+            'offering_details': offering_details,
+            'offerings': lst,
+            'image': image}
+    elif str(request.user.type) == "worker":
+        context = {
+            "host_or_worker": "worker",
+            'offering_details': offering_details,
+            'offerings': lst,
+            'image': image}
+    return render(request, 'hostofferings/offering_details.html', context)
 
 
 @login_required() 
