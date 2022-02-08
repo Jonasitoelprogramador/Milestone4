@@ -59,7 +59,7 @@
                             <a class="nav-link" href="#" tabindex="-1">Disabled</a>
                         </li>
                         <li class="nav-item">
-                            <a id="host_or_worker" class="nav-link" href="#" tabindex="-1"></a>
+                            <a id="host_or_worker" class="nav-link" href='#' tabindex="-1">{{inner_HTML}}</a>
                         </li>
                     </ul>
                     <span class="payment-modal-button"><!-- Button trigger modal -->
@@ -125,5 +125,8 @@
             link = document.getElementById("host_or_worker");
             link.innerHTML = "Workers";
             link.href = "{% url 'all_workers' %}";}
-    }
+        if ('{{inner_HTML}}' == "Hosts") {
+            link = document.getElementById("host_or_worker");
+            link.href = "{% url 'all_offerings' %}";}
+        }
 </script>

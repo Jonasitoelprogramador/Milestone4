@@ -48,10 +48,10 @@ def all_offerings(request):
     #create a list of tuples [host, offering]
     tuples = list(zipped_tuples)
     if str(request.user.type) == "host":
-        context = {"host_or_worker": "host",
-            'offerings': tuples}
+        return HttpResponse("You must be logged in as a worker to view this page")
     elif str(request.user.type) == "worker":
-        context = {"host_or_worker": "worker",
+        context = {"inner_HTML": "Hosts",
+            'href': "{% url 'all_offerings' %}", 
             'offerings': tuples}
     return render(request, "hostofferings/all_offerings.html", context)
 
