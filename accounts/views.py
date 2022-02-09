@@ -7,8 +7,9 @@ from django.contrib.auth.decorators import login_required
 from urllib.error import HTTPError
 from .forms import ExtendedUserCreationForm, TypeForm
 from django.contrib.auth.forms import AuthenticationForm
-from hostofferings.views import all_offerings, all_workers
+from users.views import all_offerings, all_workers
 from django.urls import reverse
+
 
 # Create your views here.
 def signup(request):
