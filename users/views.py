@@ -99,10 +99,10 @@ def all_offerings(request):
         offerings_list = list(offerings)
         #add offering and host together to results_list
         for o in offerings_list:
-            host_and_offering = [host] + [o]
+            host_and_offering = [host] + [o] + [o.pk]
             result_list += host_and_offering
     it = iter(result_list)
-    zipped_tuples = zip(it, it)
+    zipped_tuples = zip(it, it, it)
     #create a list of tuples [host, offering]
     tuples = list(zipped_tuples)
     if str(request.user.type) == "host":
