@@ -7,7 +7,7 @@ from .forms import HostCreationForm, WorkerCreationForm
 from hostofferings.forms import OfferingForm
 from accounts.forms import UserEmailForm
 from django.forms.models import model_to_dict
-from random import random, randint
+import random
 
 
 @login_required()
@@ -173,20 +173,27 @@ def offering_details(request, pk):
 
 @login_required()
 def worker_details(request, pk):
-    all_workers = Offering.objects.all()
+    all_workers = Worker.objects.all()
+    all_workers_list = list(all_workers)
+    print(all_workers_list)
+    worker_details = get_object_or_404(Worker, pk=pk)
+    #print out the primary key of all of the Offering model instances
+    for w in all_workers:
+        print(w.pk)
     #randomly select 3 elements from the tuples list
     lst = []
     i = 1
     while i < 4:
-        ran_num = random.randint(0, len(tuples)-1)
-        lst.append(tuples[ran_num])
+        ran_num = random.randint(0, len(all_workers_list)-1)
+        lst.append(all_workers_list[ran_num])
         i += 1
+    print(lst[0].first_language)
     image = '/media/images/default.jpg'
     if str(request.user.type) == "worker":
         return HttpResponse("You must be logged in as a host to view this page")
     elif str(request.user.type) == "host":
         context = {"inner_HTML": "Workers",
-            'offering_details': offering_details,
-            'offerings': lst,
+            'worker_details': worker_details,
+            'workers': lst,
             'image': image}
-    return render(request, "hostofferings/offering_details.html", context)
+    return render(request, "users/worker_details.html", context)
