@@ -21,13 +21,15 @@ from users import urls as urls_users
 from payments import urls as urls_payments
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import homepage
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include(urls_accounts)),
     path('users/', include(urls_users)),
-    path('payments/', include(urls_payments))
+    path('payments/', include(urls_payments)),
+    path('', homepage, name='homepage')
 ]
 
 if settings.DEBUG:

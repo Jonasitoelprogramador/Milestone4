@@ -48,18 +48,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav">
-                        <img src="{% static 'images/globe.png' %}" alt="globe-picture" id="globe" type="button">
+                        <a type="button" href="{% url 'homepage' %}"><img src="{% static 'images/globe.png' %}" alt="globe-picture" id="globe"></a>
                         <li class="nav-item active" id="nav-home">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" tabindex="-1">Disabled</a>
+                            <a class="nav-link" href="{% url 'homepage' %}">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a id="host_or_worker" class="nav-link" href='' tabindex="-1">{{inner_HTML}}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'profile' %}" tabindex="-1">Profile</a>
                         </li>
                     </ul>
                     <span class="payment-modal-button"><!-- Button trigger modal -->

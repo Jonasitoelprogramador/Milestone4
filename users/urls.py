@@ -3,7 +3,7 @@ from django.urls import re_path
 
 
 urlpatterns = [
-    re_path('profile/', profile, name='Profile'), 
+    re_path('profile/', profile, name='profile'), 
     re_path(r'^all_offerings/$', all_offerings, name='all_offerings'),
     re_path(r'^offering_details/(?P<pk>\d+)/$', offering_details, name="offering_details"),
     re_path(r'^all_workers/$', all_workers, name='all_workers'),

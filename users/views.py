@@ -49,7 +49,8 @@ def profile(request):
             'offering_filled_form': offering_filled_form, 
             'user_email_filled_form': user_email_filled_form, 
             'user_obj': request.user,
-            'off_obj': offering
+            'off_obj': offering,
+            'host_or_worker': 'host'
         }
         
         return render(request, 'users/host_profile.html', context)
@@ -81,7 +82,8 @@ def profile(request):
             "filled_form": worker_filled_form, 
             'user_email_filled_form': user_email_filled_form, 
             'user_obj': request.user,
-            'worker': worker
+            'worker': worker,
+            'host_or_worker': 'worker'
         }
         
         return render(request, 'users/worker_profile.html', context)
