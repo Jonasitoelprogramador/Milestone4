@@ -99,10 +99,10 @@ def all_offerings(request):
         offerings_list = list(offerings)
         #add offering and host together to results_list
         for o in offerings_list:
-            host_and_offering = [host] + [o] + [o.pk]
+            host_and_offering = [host] + [o]
             result_list += host_and_offering
     it = iter(result_list)
-    zipped_tuples = zip(it, it, it)
+    zipped_tuples = zip(it, it)
     #create a list of tuples [host, offering]
     tuples = list(zipped_tuples)
     if str(request.user.type) == "host":
@@ -116,7 +116,6 @@ def all_offerings(request):
 @login_required()
 def all_workers(request):
     workers = Worker.objects.all()
-    print(f"the workers list is {list(workers)}")
     lst_workers = list(workers)
     if str(request.user.type) == "worker":
         return HttpResponse("You must be logged in as a host to view this page")
@@ -158,8 +157,9 @@ def offering_details(request, pk):
     i = 1
     while i < 4:
         ran_num = random.randint(0, len(tuples)-1)
-        lst.append(tuples[ran_num])
-        i += 1
+        if tuples[ran_num] not in lst and tuples[ran_num][1] != offering_details:
+            lst.append(tuples[ran_num])
+            i += 1
     image = '/media/images/default.jpg'
     if str(request.user.type) == "host":
         return HttpResponse("You must be logged in as a worker to view this page")
@@ -185,9 +185,10 @@ def worker_details(request, pk):
     i = 1
     while i < 4:
         ran_num = random.randint(0, len(all_workers_list)-1)
-        lst.append(all_workers_list[ran_num])
-        i += 1
-    print(lst[0].first_language)
+        if all_workers_list[ran_num] not in lst and all_workers_list[ran_num] != worker_details:
+            lst.append(all_workers_list[ran_num])
+            i += 1
+    print(f"this is the list: {all_workers_list[0]}")
     image = '/media/images/default.jpg'
     if str(request.user.type) == "worker":
         return HttpResponse("You must be logged in as a host to view this page")

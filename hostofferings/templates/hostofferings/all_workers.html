@@ -18,7 +18,7 @@
         <h4 class="text-center">{{worker.user.username}}</h4>
         <p class="text-center padding-top-7">{{worker.desired_language}}</p>
         <p class="text-center">{{worker.work_experience_category}}</p>
-        <p class="text-center"><a class="btn btn-secondary" href="#" role="button">View details</a></p>
+        <p class="text-center"><a class="btn btn-secondary" href="/users/worker_details/{{worker.pk}}" role="button">View details</a></p>
       </div>
       {% endfor %}
     </div><!-- /.row -->
