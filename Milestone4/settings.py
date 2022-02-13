@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django_countries',
     'hostofferings',
     'users',
-    'payments'
+    'payments',
+    'products'
 ]
 
 MIDDLEWARE = [
@@ -138,5 +139,9 @@ STATIC_ROOT = '../milestone4_cdn'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STRIPE_PUBLIC_KEY = "pk_test_51KOfJ0CS31G6KZO7biEXnTyyKT4G4wDg129iGCnr2LN4FbOXDgDe4i6mDu9LP2GjH7VOYv0o0rurKidobSWOE3k600PhNWTujf"
+STRIPE_SECRET_KEY = "sk_test_51KOfJ0CS31G6KZO7To5bVMrFMhQVaJ0yLi3JaDo5gAgg1h8jsyemik1OUKR08793jT3vD5eUlt6vOU6kNViZWIgR00cuzpa7gC"
+STRIPE_WEBHOOK_SECRET = ""
 
 

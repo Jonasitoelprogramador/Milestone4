@@ -18,18 +18,19 @@ from django.contrib import admin
 from django.urls import path
 from accounts import urls as urls_accounts
 from users import urls as urls_users
-from payments import urls as urls_payments
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import homepage
+from products.views import CreateCheckoutSessionView, ProductLanding
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include(urls_accounts)),
     path('users/', include(urls_users)),
-    path('payments/', include(urls_payments)),
-    path('', homepage, name='homepage')
+    path('', homepage, name='homepage'),
+    path('create-session-view', CreateCheckoutSessionView.as_view(), name='create-session-view'),
+    path('product-landing', ProductLanding, name='template-landing')
 ]
 
 if settings.DEBUG:
