@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django_countries',
     'hostofferings',
     'users',
-    'payments',
     'products'
 ]
 

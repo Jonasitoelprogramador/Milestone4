@@ -3,6 +3,7 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.views import View
 from django.shortcuts import render
+from .models import Product
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -11,7 +12,11 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 def ProductLanding(request):
-    return render(request, "products/product-landing.html")
+    product = Product.objects.get(name="subscription")
+    context = {
+        product: "product"
+    }
+    return render(request, "products/product-landing.html", context)
 
 
 class CreateCheckoutSessionView(View):
