@@ -21,7 +21,7 @@ from users import urls as urls_users
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import homepage
-from products.views import CreateCheckoutSessionView, ProductLanding
+from products.views import CreateCheckoutSessionView, ProductLanding, Cancel, Success
 
 
 urlpatterns = [
@@ -29,8 +29,10 @@ urlpatterns = [
     path('accounts/', include(urls_accounts)),
     path('users/', include(urls_users)),
     path('', homepage, name='homepage'),
-    path('create-session-view', CreateCheckoutSessionView.as_view(), name='create-session-view'),
-    path('product-landing', ProductLanding, name='product-landing')
+    path('create-session-view/<pk>/', CreateCheckoutSessionView.as_view(), name='create-session-view'),
+    path('product-landing', ProductLanding, name='product-landing'),
+    path('cancel', Cancel, name='cancel'),
+    path('success', Success, name='success'),
 ]
 
 if settings.DEBUG:

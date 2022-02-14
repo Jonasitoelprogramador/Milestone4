@@ -4,6 +4,7 @@ from django.db import models
 class Product(models.Model):
     name = models.CharField(max_length=100)
     price = models.IntegerField(default=2000)
+    price_id = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
