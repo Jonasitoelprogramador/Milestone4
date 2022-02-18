@@ -1,9 +1,11 @@
 import stripe
 from django.conf import settings
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views import View
 from django.shortcuts import render, redirect
 from .models import Product
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -32,7 +34,7 @@ class CreateCheckoutSessionView(View):
     def post(self, request, *args, **kwargs):
         product_id = self.kwargs["pk"]
         product = Product.objects.get(id=product_id)
-        YOUR_DOMAIN = "https://8000-jonasitoelprogr-mileston-7nkbtlfiplb.ws-eu31.gitpod.io/"
+        YOUR_DOMAIN = "https://8000-jonasitoelprogr-mileston-7nkbtlfiplb.ws-eu32.gitpod.io/"
         checkout_session = stripe.checkout.Session.create(
             line_items=[
                 {
@@ -46,3 +48,11 @@ class CreateCheckoutSessionView(View):
             cancel_url=YOUR_DOMAIN + '/cancel',
         )
         return redirect(checkout_session.url, code=303)
+
+
+@require_http_methods(["POST"])
+@csrf_exempt
+def StripeWebhook(request):
+    payload = request.body
+    print(f"This is your payload:{payload}")
+    return HttpResponse(status=200)
