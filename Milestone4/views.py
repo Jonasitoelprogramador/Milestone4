@@ -6,9 +6,9 @@ def homepage(request):
     host = "host"
     if str(request.user) != 'AnonymousUser':
         if str(request.user.type) == "host":
-            return render(request, 'accounts/homepage.html', {"host_or_worker": host})
+            return render(request, 'accounts/homepage.html', {"inner_HTML": "Hosts"})
         elif str(request.user.type) == "worker":
-            return render(request, 'accounts/homepage.html', {"host_or_worker": worker})
+            return render(request, 'accounts/homepage.html', {"inner_HTML": 'Workers'})
     else:
         return render(request, 'accounts/homepage.html')    
 

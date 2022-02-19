@@ -58,6 +58,9 @@
                         <li class="nav-item">
                             <a id="host_or_worker" class="nav-link" href='' tabindex="-1">{{inner_HTML}}</a>
                         </li>
+                        <li class="nav-item">
+                            <a id="login_or_logout" class="nav-link" href='' tabindex="-1"></a>
+                        </li>
                     </ul>
                     <span class="payment-modal-button"><!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
@@ -120,5 +123,12 @@
         }
         else if (the_element.innerHTML == "Hosts") {
             the_element.href = '/users/all_offerings'
+        }
+        the_element_2 = document.getElementById('login_or_logout')
+        if ((the_element.innerHTML == "Hosts") || (the_element.innerHTML == "Workers")) {
+            the_element_2.innerHTML = "Logout"
+        }
+        else {
+            the_element_2.innerHTML = "Login"
         }
 </script>
