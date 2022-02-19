@@ -50,7 +50,7 @@ def profile(request):
             'user_email_filled_form': user_email_filled_form, 
             'user_obj': request.user,
             'off_obj': offering,
-            'host_or_worker': 'host'
+            "inner_HTML": "Workers"
         }
         
         return render(request, 'users/host_profile.html', context)
@@ -83,7 +83,7 @@ def profile(request):
             'user_email_filled_form': user_email_filled_form, 
             'user_obj': request.user,
             'worker': worker,
-            'host_or_worker': 'worker'
+            "inner_HTML": "Hosts"
         }
         
         return render(request, 'users/worker_profile.html', context)

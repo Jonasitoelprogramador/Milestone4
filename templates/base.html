@@ -113,20 +113,12 @@
 
 <script>
     window.onload = function() {
-        console.log("hello my friend how are you"); 
-        if ('{{ host_or_worker }}' == "worker"){
-            link = document.getElementById("host_or_worker");
-            link.innerHTML = "Hosts";
-            link.href = "{% url 'all_offerings' %}";}
-        else if ('{{ host_or_worker }}' == "host"){
-            link = document.getElementById("host_or_worker");
-            link.innerHTML = "Workers";
-            link.href = "{% url 'all_workers' %}";}
-        if ('{{inner_HTML}}' == "Hosts") {
-            link = document.getElementById("host_or_worker");
-            link.href = "{% url 'all_offerings' %}";}
-        else if ('{{inner_HTML}}' == "Workers") {
-            link = document.getElementById("host_or_worker");
-            link.href = "{% url 'all_workers' %}";}
+        console.log("hello my friend how are you");}
+        the_element = document.getElementById('host_or_worker')
+        if (the_element.innerHTML == "Workers") {
+            the_element.href = '/users/all_workers'
+        }
+        else if (the_element.innerHTML == "Hosts") {
+            the_element.href = '/users/all_offerings'
         }
 </script>
