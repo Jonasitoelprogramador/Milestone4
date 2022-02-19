@@ -34,7 +34,7 @@ class CreateCheckoutSessionView(View):
     def post(self, request, *args, **kwargs):
         product_id = self.kwargs["pk"]
         product = Product.objects.get(id=product_id)
-        YOUR_DOMAIN = "https://8000-jonasitoelprogr-mileston-7nkbtlfiplb.ws-eu32.gitpod.io/"
+        YOUR_DOMAIN = "https://8000-jonasitoelprogr-mileston-7nkbtlfiplb.ws-eu33.gitpod.io/"
         checkout_session = stripe.checkout.Session.create(
             line_items=[
                 {
@@ -50,7 +50,6 @@ class CreateCheckoutSessionView(View):
         return redirect(checkout_session.url, code=303)
 
 
-@require_http_methods(["POST"])
 @csrf_exempt
 def StripeWebhook(request):
     payload = request.body
