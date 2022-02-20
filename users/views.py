@@ -167,7 +167,8 @@ def offering_details(request, pk):
         return HttpResponse("You must be logged in as a worker to view this page")
     elif str(request.user.type) == "worker":
         if request.user.worker.payment_status == "paid":
-            email_parameter = request.worker.user.email
+            #this needs to be the email of the host instance
+            email_parameter = offering_details.host.user.email
         elif request.user.worker.payment_status == "nonpaid":
             email_parameter = "Upgrade your account to access host's email!"
         context = {"inner_HTML": "Hosts",
@@ -201,7 +202,8 @@ def worker_details(request, pk):
         return HttpResponse("You must be logged in as a host to view this page")
     elif str(request.user.type) == "host":
         if request.user.host.payment_status == "paid":
-            email_parameter = request.worker.user.email
+            #this needs to be the email of the worker instance
+            email_parameter = worker_details.user.email
         elif request.user.host.payment_status == "nonpaid":
             email_parameter = "Upgrade your account to access worker's email!"
         context = {"inner_HTML": "Workers",
