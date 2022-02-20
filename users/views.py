@@ -166,10 +166,15 @@ def offering_details(request, pk):
     if str(request.user.type) == "host":
         return HttpResponse("You must be logged in as a worker to view this page")
     elif str(request.user.type) == "worker":
+        if request.user.worker.payment_status == "paid":
+            email_parameter = request.worker.user.email
+        elif request.user.worker.payment_status == "nonpaid":
+            email_parameter = "Upgrade your account to access host's email!"
         context = {"inner_HTML": "Hosts",
-            'offering_details': offering_details,
-            'offerings': lst,
-            'image': image}
+                'offering_details': offering_details,
+                'offerings': lst,
+                'image': image,
+                'email': email_parameter}
     return render(request, "hostofferings/offering_details.html", context)
 
 
@@ -195,8 +200,13 @@ def worker_details(request, pk):
     if str(request.user.type) == "worker":
         return HttpResponse("You must be logged in as a host to view this page")
     elif str(request.user.type) == "host":
+        if request.user.host.payment_status == "paid":
+            email_parameter = request.worker.user.email
+        elif request.user.host.payment_status == "nonpaid":
+            email_parameter = "Upgrade your account to access worker's email!"
         context = {"inner_HTML": "Workers",
-            'worker_details': worker_details,
-            'workers': lst,
-            'image': image}
+                'worker_details': worker_details,
+                'workers': lst,
+                'image': image,
+                'email': email_parameter}
     return render(request, "users/worker_details.html", context)
