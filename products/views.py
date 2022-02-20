@@ -6,6 +6,8 @@ from django.shortcuts import render, redirect
 from .models import Product
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
+from accounts.models import Payment
+from users.models import Host, Worker
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -43,6 +45,10 @@ class CreateCheckoutSessionView(View):
                     'quantity': 1,
                 },
             ],
+            metadata={
+                "user_id": request.user.id,
+                "user_type": request.user.type 
+            },
             mode='payment',
             success_url=YOUR_DOMAIN + '/success',
             cancel_url=YOUR_DOMAIN + '/cancel',
@@ -50,8 +56,41 @@ class CreateCheckoutSessionView(View):
         return redirect(checkout_session.url, code=303)
 
 
+'''@csrf_exempt
+def StripeWebhook(request):
+    payload = request.body
+    print("just printing this thing out there you go all good")
+    return HttpResponse(status=200)'''
+
 @csrf_exempt
 def StripeWebhook(request):
     payload = request.body
-    print(f"This is your payload:{payload}")
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    event = None
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
+        )
+    except ValueError as e:
+        # Invalid payload
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        return HttpResponse(status=400)
+    
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+
+        customer_id = session["metadata"]["user_id"]
+        customer_type = session["metadata"]["user_type"]
+        if customer_type == "host":
+            obj = Host.objects.get(user=customer_id)
+            obj.payment_status = 'paid'
+            obj.save()
+        elif customer_type == "worker":
+            obj = Worker.objects.get(user=customer_id)
+            obj.payment_status = 'paid'
+            obj.save()
+            
+    # Passed signature verification
     return HttpResponse(status=200)

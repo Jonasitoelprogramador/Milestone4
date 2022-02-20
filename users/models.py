@@ -28,6 +28,12 @@ class Host(models.Model):
     nationality = models.CharField(max_length=100)
     first_language = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
+    account_choices = [
+        ('paid', 'paid'),
+        ('nonpaid', 'nonpaid')]
+    payment_status = models.CharField(
+        max_length=10,
+        choices=account_choices, default="nonpaid") 
     
     def __str__(self):
         return self.user.username
@@ -42,6 +48,12 @@ class Worker(models.Model):
     work_experience = models.CharField(max_length=100)
     worker_image = models.ImageField(upload_to=path_time, default='default.jpg')
     random_identifier = models.CharField(max_length=100)
+    account_choices = [
+        ('paid', 'paid'),
+        ('nonpaid', 'nonpaid')]
+    payment_status = models.CharField(
+        max_length=10,
+        choices=account_choices, default="nonpaid") 
 
     def __str__(self):
         return self.user.username
