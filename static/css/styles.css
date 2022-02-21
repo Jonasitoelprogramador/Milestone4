@@ -121,6 +121,8 @@ img {
   right: 25px;
 }
 
+
+
 /*------------offering details---------------------------*/
 
 .circle-container-bg {
@@ -319,11 +321,14 @@ hr {
   padding-top: 8px;
 }
 
-@media only screen and (min-width: 767px) {
+@media only screen and (min-width: 768px) {
   #globe {
     display: inline;
   }
+  
 }
+
+
 
 /*---------------------Homepage-------------------------*/
 
