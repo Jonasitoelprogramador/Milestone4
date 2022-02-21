@@ -52,8 +52,7 @@ def login(request):
 
 def logout(request):
     auth_logout(request)
-    return HttpResponse('logged out')
-    #return redirect(request, 'accounts/login.html')
+    return redirect(login)
 
 
 

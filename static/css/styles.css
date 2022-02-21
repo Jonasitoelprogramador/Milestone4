@@ -116,13 +116,6 @@ img {
   padding-bottom: 0;
 }
 
-.payment-modal-button {
-  position: absolute;
-  right: 25px;
-}
-
-
-
 /*------------offering details---------------------------*/
 
 .circle-container-bg {
@@ -321,14 +314,23 @@ hr {
   padding-top: 8px;
 }
 
+.payment-modal-button button {
+  margin-left: 18px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+
 @media only screen and (min-width: 768px) {
   #globe {
     display: inline;
   }
-  
+  .payment-modal-button {
+    position: absolute;
+    right: 25px;
+  }
 }
-
-
 
 /*---------------------Homepage-------------------------*/
 

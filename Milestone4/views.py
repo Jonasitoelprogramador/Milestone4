@@ -27,5 +27,5 @@ def homepage(request):
         }
         return render(request, 'accounts/homepage.html', context)
     else:
-        return render(request, 'accounts/homepage.html')    
+        return render(request, 'accounts/homepage.html', {"login_logout": "Login", "hidden":"hidden"})    
 

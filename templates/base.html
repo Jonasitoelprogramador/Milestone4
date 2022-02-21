@@ -52,10 +52,10 @@
                         <li class="nav-item active" id="nav-home">
                             <a class="nav-link" href="{% url 'homepage' %}">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item" id="profile-list-element">
+                        <li class="nav-item" id="profile-list-element" {{hidden}}>
                             <a class="nav-link" href="{% url 'profile' %}" tabindex="-1">{{profile}}</a>
                         </li>
-                        <li class="nav-item" id="worker-host-list-element">
+                        <li class="nav-item" id="worker-host-list-element" {{hidden}}>
                             <a id="host_or_worker" class="nav-link" href='' tabindex="-1">{{inner_HTML}}</a>
                         </li>
                         <li class="nav-item">
@@ -129,11 +129,10 @@
         }
         the_element_2 = document.getElementById('login_or_logout')
         if ((the_element.innerHTML == "Hosts") || (the_element.innerHTML == "Workers")) {
-            pass
+            the_element_2.href='/accounts/logout'
         }
         else {
-            the_element_2.innerHTML = "Login"
-
+            the_element_2.href = '/accounts/login'
         }
         }
 </script>
