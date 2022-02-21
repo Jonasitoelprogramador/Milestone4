@@ -44,14 +44,23 @@ def profile(request):
             offering_filled_form = OfferingForm(instance=offering)
             user_email_filled_form = UserEmailForm(instance=request.user)
 
+        if str(request.user.host.payment_status) == "paid":
+            upgrade_hidden = "hidden"
+        else:
+            upgrade_hidden = ""
+
         context = {
             "filled_form": host_filled_form, 
             'offering_filled_form': offering_filled_form, 
             'user_email_filled_form': user_email_filled_form, 
             'user_obj': request.user,
             'off_obj': offering,
-            "inner_HTML": "Workers"
+            "inner_HTML": "Workers",
+            "upgradeHidden": upgrade_hidden,
+            "profile": "Profile",
+            "login_logout": "Logout"
         }
+
         
         return render(request, 'users/host_profile.html', context)
     
@@ -78,12 +87,20 @@ def profile(request):
             worker_filled_form = WorkerCreationForm(instance=worker)
             user_email_filled_form = UserEmailForm(instance=request.user)
 
+        if str(request.user.worker.payment_status) == "paid":
+            upgrade_hidden = "hidden"
+        else:
+            upgrade_hidden = ""
+
         context = {
             "filled_form": worker_filled_form, 
             'user_email_filled_form': user_email_filled_form, 
             'user_obj': request.user,
             'worker': worker,
-            "inner_HTML": "Hosts"
+            "inner_HTML": "Hosts",
+            "upgradeHidden": upgrade_hidden,
+            "profile": "Profile",
+            "login_logout": "Logout"
         }
         
         return render(request, 'users/worker_profile.html', context)
@@ -110,8 +127,17 @@ def all_offerings(request):
     if str(request.user.type) == "host":
         return HttpResponse("You must be logged in as a worker to view this page")
     elif str(request.user.type) == "worker":
-        context = {"inner_HTML": "Hosts",
-            'offerings': tuples}
+        if str(request.user.worker.payment_status) == "paid":
+            upgrade_hidden = "hidden"
+        else:
+            upgrade_hidden = ""
+        context = {
+            "inner_HTML": "Hosts",
+            'offerings': tuples,
+            "upgradeHidden": upgrade_hidden,
+            "profile": "Profile",
+            "login_logout": "Logout"
+        }
     return render(request, "hostofferings/all_offerings.html", context)
 
 
@@ -122,8 +148,17 @@ def all_workers(request):
     if str(request.user.type) == "worker":
         return HttpResponse("You must be logged in as a host to view this page")
     elif str(request.user.type) == "host":
-        context = {"inner_HTML": "Workers",
-            'workers': lst_workers}
+        if str(request.user.host.payment_status) == "paid":
+            upgrade_hidden = "hidden"
+        else:
+            upgrade_hidden = ""
+        context = {
+            "inner_HTML": "Workers",
+            'workers': lst_workers,
+            "upgradeHidden": upgrade_hidden,
+            "profile": "Profile",
+            "login_logout": "Logout"
+            }
     return render(request, "hostofferings/all_workers.html", context)
 
 
@@ -169,13 +204,20 @@ def offering_details(request, pk):
         if request.user.worker.payment_status == "paid":
             #this needs to be the email of the host instance
             email_parameter = offering_details.host.user.email
+            upgrade_hidden = "hidden"
         elif request.user.worker.payment_status == "nonpaid":
             email_parameter = "Upgrade your account to access host's email!"
-        context = {"inner_HTML": "Hosts",
-                'offering_details': offering_details,
-                'offerings': lst,
-                'image': image,
-                'email': email_parameter}
+            upgrade_hidden = ""
+        context = {
+            "inner_HTML": "Hosts",
+            'offering_details': offering_details,
+            'offerings': lst,
+            'image': image,
+            'email': email_parameter,
+            "upgradeHidden": upgrade_hidden,
+            "profile": "Profile",
+            "login_logout": "Logout"
+        }
     return render(request, "hostofferings/offering_details.html", context)
 
 
@@ -204,11 +246,18 @@ def worker_details(request, pk):
         if request.user.host.payment_status == "paid":
             #this needs to be the email of the worker instance
             email_parameter = worker_details.user.email
+            upgrade_hidden = "hidden"
         elif request.user.host.payment_status == "nonpaid":
             email_parameter = "Upgrade your account to access worker's email!"
-        context = {"inner_HTML": "Workers",
-                'worker_details': worker_details,
-                'workers': lst,
-                'image': image,
-                'email': email_parameter}
+            upgrade_hidden = ""
+        context = {
+            "inner_HTML": "Workers",
+            'worker_details': worker_details,
+            'workers': lst,
+            'image': image,
+            'email': email_parameter,
+            "upgradeHidden": upgrade_hidden,
+            "profile": "Profile",
+            "login_logout": "Logout"
+            }
     return render(request, "users/worker_details.html", context)

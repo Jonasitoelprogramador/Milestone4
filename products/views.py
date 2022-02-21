@@ -34,7 +34,7 @@ def ProductLanding(request):
 
 class CreateCheckoutSessionView(View):
     def post(self, request, *args, **kwargs):
-        product_id = self.kwargs["pk"]
+        product_id = Product.objects.get(name="subscription").id
         product = Product.objects.get(id=product_id)
         YOUR_DOMAIN = "https://8000-jonasitoelprogr-mileston-7nkbtlfiplb.ws-eu33.gitpod.io/"
         checkout_session = stripe.checkout.Session.create(

@@ -52,17 +52,17 @@
                         <li class="nav-item active" id="nav-home">
                             <a class="nav-link" href="{% url 'homepage' %}">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'profile' %}" tabindex="-1">Profile</a>
+                        <li class="nav-item" id="profile-list-element">
+                            <a class="nav-link" href="{% url 'profile' %}" tabindex="-1">{{profile}}</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" id="worker-host-list-element">
                             <a id="host_or_worker" class="nav-link" href='' tabindex="-1">{{inner_HTML}}</a>
                         </li>
                         <li class="nav-item">
-                            <a id="login_or_logout" class="nav-link" href='' tabindex="-1"></a>
+                            <a id="login_or_logout" class="nav-link" href='' tabindex="-1">{{login_logout}}</a>
                         </li>
                     </ul>
-                    <span class="payment-modal-button"><!-- Button trigger modal -->
+                    <span class="payment-modal-button" {{upgradeHidden}}><!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                           Upgrade
                         </button>
@@ -84,11 +84,12 @@
                     Upgrade to our premium membership now in order to access members' email addresses 
                     and get started on your next adventure!
 
-                    Membership is £10 for a 12 months subscription.
+                    Membership is $20 for a lifetime subscription
                     </div>
                     <div class="modal-footer">
-                    <form action="/create-checkout-session" method="POST">
-                        <button type="submit">Checkout</button>
+                    <form action="{% url 'create-session-view' %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" id="checkout-button" class="btn btn-secondary">Checkout</button>
                     </form>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
@@ -116,8 +117,10 @@
 
 <script>
     window.onload = function() {
-        console.log("hello my friend how are you");}
+        console.log("hello my friend how are you");
         the_element = document.getElementById('host_or_worker')
+        profile = document.getElementById("profile-list-element")
+        worker_host_list_element = document.getElementById("worker-host-list-element")
         if (the_element.innerHTML == "Workers") {
             the_element.href = '/users/all_workers'
         }
@@ -126,9 +129,11 @@
         }
         the_element_2 = document.getElementById('login_or_logout')
         if ((the_element.innerHTML == "Hosts") || (the_element.innerHTML == "Workers")) {
-            the_element_2.innerHTML = "Logout"
+            pass
         }
         else {
             the_element_2.innerHTML = "Login"
+
+        }
         }
 </script>

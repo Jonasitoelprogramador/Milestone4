@@ -4,12 +4,28 @@ from django.shortcuts import render
 def homepage(request):
     worker = "worker"
     host = "host"
-    print(f"playing the game of one two three {request.user.type}")
     if str(request.user) != 'AnonymousUser':
+        profile = "Profile"
+        logout = "Logout"
         if str(request.user.type) == "host":
-            return render(request, 'accounts/homepage.html', {"inner_HTML": "Workers"})
+            inner_HTML = 'Workers'
+            if str(request.user.host.payment_status) == "paid":
+                upgrade_hidden = "hidden"
+            else:
+                upgrade_hidden = ""
         elif str(request.user.type) == "worker":
-            return render(request, 'accounts/homepage.html', {"inner_HTML": 'Hosts'})
+            inner_HTML = 'Hosts'
+            if str(request.user.worker.payment_status) == "paid":
+                upgrade_hidden = "hidden"
+            else:
+                upgrade_hidden = ""
+        context = {
+            "inner_HTML": inner_HTML,
+            "upgradeHidden": upgrade_hidden,
+            "profile": profile,
+            "login_logout": logout
+        }
+        return render(request, 'accounts/homepage.html', context)
     else:
         return render(request, 'accounts/homepage.html')    
 
