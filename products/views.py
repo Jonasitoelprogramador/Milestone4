@@ -47,7 +47,7 @@ class CreateCheckoutSessionView(View):
             ],
             metadata={
                 "user_id": request.user.id,
-                "user_type": request.user.type 
+                "user_role": request.user.role 
             },
             mode='payment',
             success_url=YOUR_DOMAIN + '/success',
@@ -82,12 +82,12 @@ def StripeWebhook(request):
         session = event['data']['object']
 
         customer_id = session["metadata"]["user_id"]
-        customer_type = session["metadata"]["user_type"]
-        if customer_type == "host":
+        customer_role = session["metadata"]["user_role"]
+        if customer_role == "host":
             obj = Host.objects.get(user=customer_id)
             obj.payment_status = 'paid'
             obj.save()
-        elif customer_type == "worker":
+        elif customer_role == "worker":
             obj = Worker.objects.get(user=customer_id)
             obj.payment_status = 'paid'
             obj.save()

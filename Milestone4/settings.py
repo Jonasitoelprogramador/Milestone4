@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-m-m8+0jj+9ux4u@ja1qvl592&3*8^a3zj8(zc+04(!ur8ex9-y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['language-stay', 'localhost']
 
 # Application definition
 
@@ -81,16 +81,17 @@ WSGI_APPLICATION = 'Milestone4.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-# }
-
-DATABASES = {
-    'default': dj_database_url.parse('postgres://xcexqnpjyhqwll:adcd4f53dc9043049f89e5d0e691bb97bf4d9ddb5dbed2e3d27b004b2236d09c@ec2-54-228-97-176.eu-west-1.compute.amazonaws.com:5432/d40jn6psvhhf0h')
-}
+if "DATABASE_URL" in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.parse('postgres://xcexqnpjyhqwll:adcd4f53dc9043049f89e5d0e691bb97bf4d9ddb5dbed2e3d27b004b2236d09c@ec2-54-228-97-176.eu-west-1.compute.amazonaws.com:5432/d40jn6psvhhf0h')
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -148,3 +149,4 @@ STRIPE_SECRET_KEY = "sk_test_51KOfJ0CS31G6KZO7To5bVMrFMhQVaJ0yLi3JaDo5gAgg1h8jsy
 STRIPE_WEBHOOK_SECRET = "whsec_838e4b302da2ba0b9ea44eb733557d1381bef63e3f329bca27617c9033caaa0c"
 
 
+DATABASE_URL = 'postgres://xcexqnpjyhqwll:adcd4f53dc9043049f89e5d0e691bb97bf4d9ddb5dbed2e3d27b004b2236d09c@ec2-54-228-97-176.eu-west-1.compute.amazonaws.com:5432/d40jn6psvhhf0h'
