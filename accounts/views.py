@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from urllib.error import HTTPError
-from .forms import ExtendedUserCreationForm, TypeForm
+from .forms import ExtendedUserCreationForm, RoleForm
 from django.contrib.auth.forms import AuthenticationForm
 from users.views import all_offerings, all_workers
 from django.urls import reverse
@@ -14,13 +14,13 @@ from django.urls import reverse
 # Create your views here.
 def signup(request):
     form1 = ExtendedUserCreationForm()
-    form2 = TypeForm()
+    form2 = RoleForm()
     if request.method == 'POST':
         user_form = ExtendedUserCreationForm(request.POST)
-        type_form = TypeForm(request.POST)
-        if user_form.is_valid() and type_form.is_valid():
+        Role_form = RoleForm(request.POST)
+        if user_form.is_valid() and Role_form.is_valid():
             user = user_form.save()
-            form = type_form.save(commit=False)
+            form = Role_form.save(commit=False)
             form.user = user
             form.save()
             authenticated_user = authenticate(request, username=request.POST['username'], password=request.POST['password1'])
@@ -41,9 +41,9 @@ def login(request):
         authenticated_user = authenticate(request, username=request.POST['your_name'], password=request.POST['your_pass'])
         if authenticated_user:
             auth_login(request, authenticated_user)
-            if str(authenticated_user.type) == "host":
+            if str(authenticated_user.role) == "host":
                 return redirect(all_workers)
-            elif str(authenticated_user.type) == "worker":
+            elif str(authenticated_user.role) == "worker":
                 return redirect(all_offerings)
         else:
             return render(request, 'accounts/login.html', {'form': authentication_form, 'errors': "credentials incorrect"})

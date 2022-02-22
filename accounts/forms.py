@@ -3,7 +3,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from users.models import Host, Worker
-from .models import Type
+from .models import Role
 
 class ExtendedUserCreationForm(UserCreationForm):
     password1 = forms.CharField(
@@ -48,11 +48,11 @@ class UserEmailForm(ModelForm):
         }
 
 
-class TypeForm(ModelForm):
+class RoleForm(ModelForm):
     class Meta:
-        model = Type
-        fields = ("account_type",)
+        model = Role
+        fields = ("account_Role",)
 
         widgets = {
-            "account_type": forms.Select(attrs={'class': 'host_vs_worker'})
+            "account_Role": forms.Select(attrs={'class': 'host_vs_worker'})
         }

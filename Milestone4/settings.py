@@ -81,12 +81,12 @@ WSGI_APPLICATION = 'Milestone4.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-#DATABASES = {
+# DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
-#}
+# }
 
 DATABASES = {
     'default': dj_database_url.parse('postgres://xcexqnpjyhqwll:adcd4f53dc9043049f89e5d0e691bb97bf4d9ddb5dbed2e3d27b004b2236d09c@ec2-54-228-97-176.eu-west-1.compute.amazonaws.com:5432/d40jn6psvhhf0h')

@@ -12,7 +12,7 @@ import random
 
 @login_required()
 def profile(request):
-    if str(request.user.type) == "host":
+    if str(request.user.role) == "host":
         current_user = request.user
         try:
             host = Host.objects.get(user=current_user)
@@ -64,7 +64,7 @@ def profile(request):
         
         return render(request, 'users/host_profile.html', context)
     
-    elif str(request.user.type) == "worker":
+    elif str(request.user.role) == "worker":
         current_user = request.user
         #get the worker instance associated with the logged in user
         try:
@@ -124,9 +124,9 @@ def all_offerings(request):
     zipped_tuples = zip(it, it)
     #create a list of tuples [host, offering]
     tuples = list(zipped_tuples)
-    if str(request.user.type) == "host":
+    if str(request.user.role) == "host":
         return HttpResponse("You must be logged in as a worker to view this page")
-    elif str(request.user.type) == "worker":
+    elif str(request.user.role) == "worker":
         if str(request.user.worker.payment_status) == "paid":
             upgrade_hidden = "hidden"
         else:
@@ -145,9 +145,9 @@ def all_offerings(request):
 def all_workers(request):
     workers = Worker.objects.all()
     lst_workers = list(workers)
-    if str(request.user.type) == "worker":
+    if str(request.user.role) == "worker":
         return HttpResponse("You must be logged in as a host to view this page")
-    elif str(request.user.type) == "host":
+    elif str(request.user.role) == "host":
         if str(request.user.host.payment_status) == "paid":
             upgrade_hidden = "hidden"
         else:
@@ -198,9 +198,9 @@ def offering_details(request, pk):
             lst.append(tuples[ran_num])
             i += 1
     image = '/media/images/default.jpg'
-    if str(request.user.type) == "host":
+    if str(request.user.role) == "host":
         return HttpResponse("You must be logged in as a worker to view this page")
-    elif str(request.user.type) == "worker":
+    elif str(request.user.role) == "worker":
         if request.user.worker.payment_status == "paid":
             #this needs to be the email of the host instance
             email_parameter = offering_details.host.user.email
@@ -240,9 +240,9 @@ def worker_details(request, pk):
             i += 1
     print(f"this is the list: {all_workers_list[0]}")
     image = '/media/images/default.jpg'
-    if str(request.user.type) == "worker":
+    if str(request.user.role) == "worker":
         return HttpResponse("You must be logged in as a host to view this page")
-    elif str(request.user.type) == "host":
+    elif str(request.user.role) == "host":
         if request.user.host.payment_status == "paid":
             #this needs to be the email of the worker instance
             email_parameter = worker_details.user.email

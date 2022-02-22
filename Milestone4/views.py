@@ -7,13 +7,13 @@ def homepage(request):
     if str(request.user) != 'AnonymousUser':
         profile = "Profile"
         logout = "Logout"
-        if str(request.user.type) == "host":
+        if str(request.user.role) == "host":
             inner_HTML = 'Workers'
             if str(request.user.host.payment_status) == "paid":
                 upgrade_hidden = "hidden"
             else:
                 upgrade_hidden = ""
-        elif str(request.user.type) == "worker":
+        elif str(request.user.role) == "worker":
             inner_HTML = 'Hosts'
             if str(request.user.worker.payment_status) == "paid":
                 upgrade_hidden = "hidden"

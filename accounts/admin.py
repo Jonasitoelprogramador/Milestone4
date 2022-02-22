@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Type, Payment
+from .models import Role, Payment
 
 # Register your models here.
 
-admin.site.register(Type)
+admin.site.register(Role)
 admin.site.register(Payment)
