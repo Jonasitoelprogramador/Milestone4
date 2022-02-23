@@ -36,7 +36,7 @@ class CreateCheckoutSessionView(View):
     def post(self, request, *args, **kwargs):
         product_id = Product.objects.get(name="subscription").id
         product = Product.objects.get(id=product_id)
-        YOUR_DOMAIN = "https://8000-jonasitoelprogr-mileston-7nkbtlfiplb.ws-eu33.gitpod.io/"
+        YOUR_DOMAIN = "https://language-stay.herokuapp.com/"
         checkout_session = stripe.checkout.Session.create(
             line_items=[
                 {
