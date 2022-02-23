@@ -1,4 +1,7 @@
 from django.shortcuts import render
+import os
+
+print(os.environ)
 
 
 def homepage(request):
