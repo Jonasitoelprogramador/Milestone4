@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = ['language-stay.herokuapp.com', 'localhost']
 
@@ -81,17 +81,17 @@ WSGI_APPLICATION = 'Milestone4.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if "DATABASE_URL" in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
-    DATABASES = {
-        'default': dj_database_url.parse('postgres://xcexqnpjyhqwll:adcd4f53dc9043049f89e5d0e691bb97bf4d9ddb5dbed2e3d27b004b2236d09c@ec2-54-228-97-176.eu-west-1.compute.amazonaws.com:5432/d40jn6psvhhf0h')
-    }
+#if "DATABASE_URL" in os.environ:
+#    DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.sqlite3',
+#            'NAME': BASE_DIR / 'db.sqlite3',
+#        }
+#    }
+#else:
+DATABASES = {
+    'default': dj_database_url.parse('postgres://xcexqnpjyhqwll:adcd4f53dc9043049f89e5d0e691bb97bf4d9ddb5dbed2e3d27b004b2236d09c@ec2-54-228-97-176.eu-west-1.compute.amazonaws.com:5432/d40jn6psvhhf0h')
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
