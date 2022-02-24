@@ -12,7 +12,6 @@ import random
 
 @login_required()
 def profile(request):
-    print("ecoute cherie comment ce soir la")
     if str(request.user.role) == "host":
         current_user = request.user
         try:
