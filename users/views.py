@@ -68,7 +68,6 @@ def profile(request):
             "headerhidden": headerhidden
         }
 
-        
         return render(request, 'users/host_profile.html', context)
     
     elif str(request.user.role) == "worker":
@@ -279,4 +278,6 @@ def worker_details(request, pk):
 
 @login_required()
 def hello_time(request):
-    print("my namw is johnboi")
+    if request.method == 'POST':
+        print("my namw is johnboi")
+    return render(request, "users/testing_tem.html")

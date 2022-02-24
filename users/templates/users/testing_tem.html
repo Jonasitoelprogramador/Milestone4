@@ -1,0 +1,13 @@
+<form method="POST" class="login-form text-center">
+    {% csrf_token %}
+    <input type="text" id="fname" value="John">
+</form>       
+<form method="POST" class="login-form text-center">
+    {% csrf_token %}
+        <div class="form-group form-button">
+            <input type="submit" name="signin" class="form-submit" value="Log in" required>
+        </div>
+        <div class="profile-edit">
+            <input class="btn btn-secondary" role="button" type="submit" value="Save Changes">
+        </div>
+</form>
