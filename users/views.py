@@ -12,6 +12,7 @@ import random
 
 @login_required()
 def profile(request):
+    print("ecoute cherie comment ce soir la")
     if str(request.user.role) == "host":
         current_user = request.user
         try:
@@ -45,12 +46,14 @@ def profile(request):
             user_email_filled_form = UserEmailForm(instance=request.user)
         try: 
             str(request.user.host)
+            headerhidden = ""
             if str(request.user.host.payment_status) == "paid":
                 upgrade_hidden = "hidden"
             else:
                 upgrade_hidden = ""
         except:
             upgrade_hidden = ""
+            headerhidden = "hidden"
 
         context = {
             "filled_form": host_filled_form, 
@@ -61,7 +64,8 @@ def profile(request):
             "inner_HTML": "Workers",
             "upgradeHidden": upgrade_hidden,
             "profile": "Profile",
-            "login_logout": "Logout"
+            "login_logout": "Logout",
+            "headerhidden": headerhidden
         }
 
         
@@ -91,6 +95,7 @@ def profile(request):
             user_email_filled_form = UserEmailForm(instance=request.user)
 
         try: 
+            headerhidden = ""
             str(request.user.worker)
             if str(request.user.worker.payment_status) == "paid":
                 upgrade_hidden = "hidden"
@@ -98,6 +103,7 @@ def profile(request):
                 upgrade_hidden = ""
         except:
             upgrade_hidden = ""
+            headerhidden = "hidden"
 
         context = {
             "filled_form": worker_filled_form, 
@@ -107,7 +113,8 @@ def profile(request):
             "inner_HTML": "Hosts",
             "upgradeHidden": upgrade_hidden,
             "profile": "Profile",
-            "login_logout": "Logout"
+            "login_logout": "Logout",
+            "headerhidden": headerhidden
         }
         
         return render(request, 'users/worker_profile.html', context)
@@ -268,3 +275,8 @@ def worker_details(request, pk):
             "login_logout": "Logout"
             }
     return render(request, "users/worker_details.html", context)
+
+
+@login_required()
+def hello_time(request):
+    print("my namw is johnboi")

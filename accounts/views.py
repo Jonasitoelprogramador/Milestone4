@@ -26,7 +26,7 @@ def signup(request):
             authenticated_user = authenticate(request, username=request.POST['username'], password=request.POST['password1'])
             if authenticated_user:
                 auth_login(request, authenticated_user)
-            return redirect(homepage)
+            return redirect(profile)
         else:
             return render(request, 'accounts/sign_up.html', {"form1": form1, "form2": form2, "errors": user_form.errors.values()})
     return render(request, 'accounts/sign_up.html', {"form1": form1, "form2": form2})
