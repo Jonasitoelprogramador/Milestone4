@@ -12,15 +12,23 @@ def homepage(request):
         logout = "Logout"
         if str(request.user.role) == "host":
             inner_HTML = 'Workers'
-            if str(request.user.host.payment_status) == "paid":
-                upgrade_hidden = "hidden"
-            else:
+            try: 
+                str(request.user.host)
+                if str(request.user.host.payment_status) == "paid":
+                    upgrade_hidden = "hidden"
+                else:
+                    upgrade_hidden = ""
+            except:
                 upgrade_hidden = ""
         elif str(request.user.role) == "worker":
             inner_HTML = 'Hosts'
-            if str(request.user.worker.payment_status) == "paid":
-                upgrade_hidden = "hidden"
-            else:
+            try: 
+                str(request.user.host)
+                if str(request.user.worker.payment_status) == "paid":
+                    upgrade_hidden = "hidden"
+                else:
+                    upgrade_hidden = ""
+            except:
                 upgrade_hidden = ""
         context = {
             "inner_HTML": inner_HTML,

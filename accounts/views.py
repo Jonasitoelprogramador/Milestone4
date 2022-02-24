@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from urllib.error import HTTPError
 from .forms import ExtendedUserCreationForm, RoleForm
 from django.contrib.auth.forms import AuthenticationForm
-from users.views import all_offerings, all_workers
+from users.views import all_offerings, all_workers, profile
 from django.urls import reverse
 
 
@@ -26,7 +26,7 @@ def signup(request):
             authenticated_user = authenticate(request, username=request.POST['username'], password=request.POST['password1'])
             if authenticated_user:
                 auth_login(request, authenticated_user)
-            return redirect(all_offerings)
+            return redirect(homepage)
         else:
             return render(request, 'accounts/sign_up.html', {"form1": form1, "form2": form2, "errors": user_form.errors.values()})
     return render(request, 'accounts/sign_up.html', {"form1": form1, "form2": form2})
@@ -42,9 +42,9 @@ def login(request):
         if authenticated_user:
             auth_login(request, authenticated_user)
             if str(authenticated_user.role) == "host":
-                return redirect(all_workers)
+                return redirect(profile)
             elif str(authenticated_user.role) == "worker":
-                return redirect(all_offerings)
+                return redirect(profile)
         else:
             return render(request, 'accounts/login.html', {'form': authentication_form, 'errors': "credentials incorrect"})
     return render(request, 'accounts/login.html', {'form': authentication_form})

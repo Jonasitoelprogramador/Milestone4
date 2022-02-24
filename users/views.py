@@ -43,10 +43,13 @@ def profile(request):
             host_filled_form = HostCreationForm(instance=host)
             offering_filled_form = OfferingForm(instance=offering)
             user_email_filled_form = UserEmailForm(instance=request.user)
-
-        if str(request.user.host.payment_status) == "paid":
-            upgrade_hidden = "hidden"
-        else:
+        try: 
+            str(request.user.host)
+            if str(request.user.host.payment_status) == "paid":
+                upgrade_hidden = "hidden"
+            else:
+                upgrade_hidden = ""
+        except:
             upgrade_hidden = ""
 
         context = {
@@ -87,9 +90,13 @@ def profile(request):
             worker_filled_form = WorkerCreationForm(instance=worker)
             user_email_filled_form = UserEmailForm(instance=request.user)
 
-        if str(request.user.worker.payment_status) == "paid":
-            upgrade_hidden = "hidden"
-        else:
+        try: 
+            str(request.user.worker)
+            if str(request.user.worker.payment_status) == "paid":
+                upgrade_hidden = "hidden"
+            else:
+                upgrade_hidden = ""
+        except:
             upgrade_hidden = ""
 
         context = {
