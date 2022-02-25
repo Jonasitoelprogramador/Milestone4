@@ -1,17 +1,17 @@
 Language Stay
 
-So you've been learning Spanish for a while now and you have a strong grasp of the vocabularly and grammar.  You decide to spend a few months in Madrid to get yourself up to scratch and you'll be fluent in no time, right?  Wrong.  In reality you spend your entire time with English-speaking friends and, even worse, whenever you speak to the waiter in Spanish, you are replied to in English.  Well, look no further than Language-Stay.  This is the app that allows you to integrate seemlessly into a linguistic community and, by speaking the target language 
+So you've been learning Spanish for a while now and you have a strong grasp of the vocabularly and grammar.  You decide to spend a few months in Madrid and you'll be fluent in no time, right?  Wrong.  In reality you spend your entire time with English-speaking friends and, even worse, whenever you speak to the waiter in Spanish, you are replied to in English.  Well, look no further than Language-Stay.  This is the app that allows you to integrate seemlessly into a linguistic community and, by speaking the target language 24/7 you are ACTUALLY fluent in a matter of months.
 
-This site targets amateur chefs who want to make new dishes but struggle to find inspiration for new recipes, as well as people who would like to experience cooking within a more sociable environment.
+This site targets targets anyone and everyone who has ever tried to learn a language and although they have put however many hours in on Duolingo or evening classes, the waiter still replies to them in English.
 
-The site aims to achieve its goal by having good, crisp UX which produces a positive reaction in the user, powerful and well- designed search and filtering functionality, high-quality CRUD funtionality as well as an ability to 'like' recipes and finally responsive design to allow the site to be accessed on any screen size.
+The site aims to achieve its goal by having good, crisp UX which produces a positive reaction in the user, a well-designed database of "hosts" and "volunteers" and wide-ranging functionality.
 
 User Stories
 First-time-users
 As a first time user, I want to have a positive emotional response when visiting the site (be impressed with the quality of the website) so that I am encourgaed to return.
 As a first time user, I want to be able to easily understand the aim and idea behind the site.
-As a first time user, I want to be able to navigate through the site and use the 'more details' button to find out more information about a given recipe.
-As a first time user, I would like to be able to use the register page to create myself an account.
+As a first time user, I want to be able to navigate through the site and to create an account and a profile.
+As a first time user, I would like to be able to navigate to and look through the lis.
 Returning-users
 As a Returning visitor, I would like to be able to login using my username and password and then to be able to make use of the full CRUD functionality as well as the 'like recipe' function.
 As a Returning visitor, I would like to be able to use the serach functionality in order to find a given recipe/recipes.
