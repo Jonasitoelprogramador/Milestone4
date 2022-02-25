@@ -1,6 +1,6 @@
 from django.conf import settings
 from storages.backends.s3boto3 import S3Boto3Storage
-from Milestone4.settings import STATICFILES_LOCATION, MEDIAFILES_LOCATION
+from .settings import STATICFILES_LOCATION, MEDIAFILES_LOCATION
 
 class StaticStorage(S3Boto3Storage):
     location = STATICFILES_LOCATION
