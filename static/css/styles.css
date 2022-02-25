@@ -231,7 +231,7 @@ hr {
 }
 
 .profile-background {
-  background-image: linear-gradient(rgba(240, 240, 240, 0.55), rgba(240, 240, 240, 0.55)),  url('/static/images/z-s-9cKVKzUJ6o0-unsplash\ \(4\).jpg');
+  background-image: linear-gradient(rgba(240, 240, 240, 0.55), rgba(240, 240, 240, 0.55)),  url('/static/images/three_little_birds.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
