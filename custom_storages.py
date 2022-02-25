@@ -2,8 +2,8 @@ from django.conf import settings
 from storages.backends.s3boto3 import S3Boto3Storage
 
 class StaticStorage(S3Boto3Storage):
-    location = settings_STATICFILES_LOCATION
+    location = settings.STATICFILES_LOCATION
 
 
 class MediaStorage(S3Boto3Storage):
-    location = settings_MEDIAFILES_LOCATION
+    location = settings.MEDIAFILES_LOCATION
