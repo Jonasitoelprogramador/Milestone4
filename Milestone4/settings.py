@@ -127,11 +127,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-'''STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -141,7 +141,7 @@ MEDIA_URL = '/media/'
 #This will only run if USE_AWS is included in the environment variables
 
 
-if 'USE_AWS' in os.environ:
+'''if 'USE_AWS' in os.environ:
     # Cache control	
     AWS_S3_OBJECT_PARAMETERS = {	
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',	
