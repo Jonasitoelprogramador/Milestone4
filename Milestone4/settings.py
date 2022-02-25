@@ -140,7 +140,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 #This will only run if USE_AWS is included in the environment variables
-#Add comment to explain this in detail so to get heroku to build
+
 if 'USE_AWS' in os.environ:
     # Cache control	
     AWS_S3_OBJECT_PARAMETERS = {	
