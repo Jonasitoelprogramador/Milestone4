@@ -140,6 +140,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 #This will only run if USE_AWS is included in the environment variables
+#Add comment to explain this in detail
 if 'USE_AWS' in os.environ:
     AWS_STORAGE_BUCKET_NAME = 'language-stay'
     AWS_S3_REGION_NAME = 'eu-west-2'
