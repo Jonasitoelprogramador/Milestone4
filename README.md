@@ -11,14 +11,14 @@ First-time-users
 As a first time user, I want to have a positive emotional response when visiting the site (be impressed with the quality of the website) so that I am encourgaed to return.
 As a first time user, I want to be able to easily understand the aim and idea behind the site.
 As a first time user, I want to be able to navigate through the site and to create an account and a profile.
-As a first time user, I would like to be able to navigate to and look through the lis.
+As a first time user, I would like to be able to navigate to and look through the lists of "Workers" or "Hosts".
 Returning-users
-As a Returning visitor, I would like to be able to login using my username and password and then to be able to make use of the full CRUD functionality as well as the 'like recipe' function.
-As a Returning visitor, I would like to be able to use the serach functionality in order to find a given recipe/recipes.
-As a Returning Visitor, I want to be able to contact the site owner and be able to find and use their social meadia links.
+As a Returning visitor, I would like to be able to login using my username and password and then to be able to look at the details of a Host/Worker.
+As a Returning visitor, I would like to be able to buy a subscription to Language-Stay.
+As a Returning Visitor, I want to be able to find a Host/Worker and access their email address after paying.
 As a Returning Visitor, I want to be able to access the website on various different screen sizes and for it to evoke a positive response.
 Features
-The site is formed of seven page each of which have a header, footer and main body.
+The site is formed of seven pages each of which have a header, footer and main body.
 
 Header
 This exists across all pages and contains the below.

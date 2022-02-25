@@ -141,6 +141,8 @@ MEDIA_URL = '/media/'
 
 #This will only run if USE_AWS is included in the environment variables
 
+STATICFILES_LOCATION = 'static'
+
 if 'USE_AWS' in os.environ:
     # Cache control	
     AWS_S3_OBJECT_PARAMETERS = {	
@@ -155,7 +157,6 @@ if 'USE_AWS' in os.environ:
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-    STATICFILES_LOCATION = 'static'
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
     MEDIAFILES_LOCATION = 'media'
 
