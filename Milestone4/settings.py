@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
-from custom_storages import StaticStorage, MediaStorage
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -141,7 +140,6 @@ MEDIA_URL = '/media/'
 
 #This will only run if USE_AWS is included in the environment variables
 
-STATICFILES_LOCATION = 'static'
 
 if 'USE_AWS' in os.environ:
     # Cache control	
@@ -159,6 +157,7 @@ if 'USE_AWS' in os.environ:
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
     MEDIAFILES_LOCATION = 'media'
+    STATICFILES_LOCATION = 'static'
 
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
