@@ -40,13 +40,19 @@ Hosts/Workers Page
 This page either shows a list of worker profiles (logged in as a host) or a list of host profiles (logged in as a worker).  The for each worker/host, the user is shown the host/worker's uploaded picture as well as some basic details.  The idea behind this page is so that users can browse the various hosts/workers and select any that appeal to them.
 
 More Details Page
-This page can be navigated to from the Hosts/Workers page and displays all of the details of a given Host/Worker.
+This page can be navigated to from the Hosts/Workers page and displays all of the details of a given Host/Worker.  The idea behind this page is to allow users to peruse all of the information relating to a paricular Host/Worker and to decide whether or not they would like to contact them.  The More Details page also contains the email address of said Host/Worker to allow contact to be made.  Note that this is only visible to the user if they have a premium subscription.
+
+Upgrade Modal
+There is a button that triggers a modal in the navbar for all users that do not hold a premium subscription.  Inside this modal is an explaination of the premium subscription and a link that takes the user to the Stripe checkout page.  Once the user has paid, the "email address" value in the More Details page will be visible.
 
 Login Page
 This page contains a 'card' and within that a form that requires both a username and password. There are also two buttons: 'login' which submits the inputted data to be checked against the data in the database and 'register' which takes the user to the Register Page (see below) if they don't aleready have an account. This is designed to be as easy and intuitive as possible and to make the authentication process as straightforward as possible.  There is also a landscape background on this page in order to play into the "travelling" theme of the app as well as to improve UX generally.  The background is also visible on the Register page.
 
 Register Page
 This page is similarly laid out to the Login Page. The difference is that the submit button uses the inputted data to create a new user and the second button takes the user to the Login Page.
+
+Profile Page
+
 
 Note on the database
 This site uses MongoDB database to store both recipe information and authentication details. All of the pages in this site display some CRUD functionality and thus necessarily communicate with the MongoDB database. This communiaction is carried out via Flask (see app.py) and anything displayed to the site is displayed via Jinja template language.
