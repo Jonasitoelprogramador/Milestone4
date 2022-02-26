@@ -92,9 +92,9 @@ def profile(request):
             worker_filled_form = WorkerCreationForm(instance=worker)
             user_email_filled_form = UserEmailForm(instance=request.user)
 
-        try: 
-            headerhidden = ""
+        try:
             str(request.user.worker)
+            headerhidden = ""
             if str(request.user.worker.payment_status) == "paid":
                 upgrade_hidden = "hidden"
             else:
