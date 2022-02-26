@@ -84,6 +84,8 @@ def profile(request):
                 new_worker = worker_filled_form.save(commit=False)
                 new_worker.user = request.user
                 new_worker.save()
+            else:
+                print(worker_filled_form.errors)
             user_email_filled_form = UserEmailForm(request.POST, instance = request.user)
             if user_email_filled_form.is_valid():
                 user_email_filled_form.save()

@@ -18,7 +18,7 @@ class HostCreationForm(ModelForm):
 class WorkerCreationForm(ModelForm):
     class Meta:
         model = Worker
-        fields = ('first_language', 'desired_language', 'nationality', 'work_experience_category', 'work_experience', 'worker_image', 'random_identifier')
+        fields = ('first_language', 'desired_language', 'nationality', 'work_experience_category', 'work_experience', 'worker_image')
 
         widgets = {
             'first_language': forms.TextInput(attrs={'id':"nationality_first", 'placeholder': "Fruit Picking", 'class': 'input3'}),
