@@ -18,31 +18,23 @@ As a Returning visitor, I would like to be able to buy a subscription to Languag
 As a Returning Visitor, I want to be able to find a Host/Worker and access their email address after paying.
 As a Returning Visitor, I want to be able to access the website on various different screen sizes and for it to evoke a positive response.
 Features
-The site is formed of seven pages each of which have a header, footer and main body.
+The site is formed of five pages each of which have a header, footer and main body.
 
 Header
 This exists across all pages and contains the below.
 
 Responsive nabar
-This allows users to quickly and intuitively navigate between pages of the site. On larger screen sizes the links are organised across the width of the navbar but on smaller screen sizes this is replaced by a 'burger' toggle which displays links vertically when toggled thus allowing for smooth transition across pages even with smaller screen sizes.
-
-Title and subtitle
-There is a clear title and subtitle on the homepage displaying the name of the site and a little extra information in order to welcome first-time users. This feature is also used to display various other messages to the user across other pages on the site. This is in order to help the user orientate themselves throughout the site and also serves to provide a response after a call to action as been taken up.
-
-Searchbar
-This allows users to find recipes quickly and easily no matter where they are in the site, whether that be by recipe name or by ingredient. This provides a more succint way to find recipes that via browsing (see below). The search function searches for the name, recipe and ingredients of a given recipe.
+This allows users to quickly and intuitively navigate between pages of the site. On larger screen sizes the links are organised across the width of the navbar but on smaller screen sizes this is replaced by a 'burger' toggle which displays links vertically when toggled thus allowing for smooth transition across pages even with smaller screen sizes.  There is 
+also an "upgrade" button that displays if users are using the free version of the site.  Furthermore, on first entry into the site (directly after signing up) the navbar is hidden until the user completes their profile.
 
 Footer
-This also exists across all pages and contains the below.
-
-Copyright and contact sections
-Clearly displays copyright and contact information. In the contact section there is also a link that opens an email platform with an email addressed to Jonasitoelprogramdor@journeyman.com. This facilitates the user sending an email and thus encourages the user to send an email.
-
-Links section
-Displays icons that open up their respective social media pages in a new tab on clicking. This allows the user to easily post about, share or find out additional information about the site.
+This also exists across all pages and contains both copyright information as well as phonenumber and a email address in order to encourage users to get in contact.
 
 Homepage
-This page displays all of the recipes in the database in the order of most recently added at the top. This allows the user, on entering the site, to browse all recipes and thus to get an idea of what the site is/does as well as to start finding recipes that look good to them! Each recipe is displayed on a 'card' with the name, a description and who the recipe was added by. There is also a call to action in the 'more details' button.
+This page introduces the users to the basic idea behind this app.  There are three main sections: 
+1.  Jonah's Story - this section explains to the user how the idea for the app came into being.
+2.  The Concept - this section roughly explains what you should expect from using this platform. 
+3.  The Deal - this section explains a little more about the specifics of 
 
 Userpage
 This is similar to the Homepage, however, only displays recipes that the current user uploaded.
