@@ -1,1 +1,1 @@
-web: gunicorn Milestone4.wsgi:application
+web: gunicorn language-stay.wsgi:application
