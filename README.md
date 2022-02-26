@@ -33,8 +33,8 @@ This also exists across all pages and contains both copyright information as wel
 Homepage
 This page introduces the users to the basic idea behind this app.  There are three main sections: 
 1.  Jonah's Story - this section explains to the user how the idea for the app came into being.
-2.  The Concept - this section roughly explains what you should expect from using this platform. 
-3.  The Deal - this section explains a little more about the specifics of 
+2.  The Concept - this section explains the aim of the app or, in other words, the type of situation that this app aims to engender. 
+3.  The Deal - this section explains the specifics of the arrangement between host and worker.
 
 Userpage
 This is similar to the Homepage, however, only displays recipes that the current user uploaded.
@@ -49,7 +49,7 @@ More Details Page
 This page displays all of the possible values of a given recipe, that is, name, nationality, cook-time, ingredients, method and liked by. Note that on this page, the name and desciption of the recipe are displayed in the header as the title and the subtitle respectively. This page also has the following three calls to action: edit, delete and like. Edit takes the user to the Edit Recipe Page (see above), delete deletes the recipe entirely from the database and like will add that user's name to the list of users that like the given recipe.
 
 Login Page
-This page contains a 'card' and within that a form that requires both a username and password. There are also two buttons: 'login' which submits the inputted data to be checked against the data in the database and 'register' which takes the user to the Register Page (see below) if they don't have a username/password. This is designed to be as easy and intuitive as possible and to make the authentication process as straightforward as possible.
+This page contains a 'card' and within that a form that requires both a username and password. There are also two buttons: 'login' which submits the inputted data to be checked against the data in the database and 'register' which takes the user to the Register Page (see below) if they don't have a username/password. This is designed to be as easy and intuitive as possible and to make the authentication process as straightforward as possible.  There is also a landscape background on this page in order to play into the "travelling" theme of the app as well as to improve UX generally.
 
 Register Page
 This page is similarly laid out to the Login Page. The difference is that the submit button uses the inputted data to create a new user and the second button takes the user to the Login Page.
