@@ -52,7 +52,7 @@ Register Page
 This page is similarly laid out to the Login Page. The difference is that the submit button uses the inputted data to create a new user and the second button takes the user to the Login Page.
 
 Profile Page
-
+The profile page is where a Worker/Host can input all of their details
 
 Note on the database
 This site uses MongoDB database to store both recipe information and authentication details. All of the pages in this site display some CRUD functionality and thus necessarily communicate with the MongoDB database. This communiaction is carried out via Flask (see app.py) and anything displayed to the site is displayed via Jinja template language.
