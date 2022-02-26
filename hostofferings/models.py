@@ -16,9 +16,10 @@ def path_time(instance, filename):
     instance.random_identifier = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(16))
     #adds the correct file extension to this field
     instance.random_identifier = instance.random_identifier + extension
-    print(instance.random_identifier)
-    upload = 'images/'
+    print(f'this is the identofier {instance.random_identifier}')
+    upload = 'media/images/'
     #uploads the newly-renamed image to the images folder on the server
+    print(f'this is the path I am using {os.path.join(upload, instance.random_identifier)}')
     return os.path.join(upload, instance.random_identifier)
 
 
