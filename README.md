@@ -37,10 +37,10 @@ This page introduces the users to the basic idea behind this app.  There are thr
 3.  The Deal - this section explains the specifics of the arrangement between host and worker.
 
 Hosts/Workers Page
-This page either shows a list of worker profiles
+This page either shows a list of worker profiles (logged in as a host) or a list of host profiles (logged in as a worker).  The for each worker/host, the user is shown the host/worker's uploaded picture as well as some basic details.  The idea behind this page is so that users can browse the various hosts/workers and select any that appeal to them.
 
 More Details Page
-This page displays all of the possible values of a given recipe, that is, name, nationality, cook-time, ingredients, method and liked by. Note that on this page, the name and desciption of the recipe are displayed in the header as the title and the subtitle respectively. This page also has the following three calls to action: edit, delete and like. Edit takes the user to the Edit Recipe Page (see above), delete deletes the recipe entirely from the database and like will add that user's name to the list of users that like the given recipe.
+This page can be navigated to from the Hosts/Workers page and displays all of the details of a given Host/Worker.
 
 Login Page
 This page contains a 'card' and within that a form that requires both a username and password. There are also two buttons: 'login' which submits the inputted data to be checked against the data in the database and 'register' which takes the user to the Register Page (see below) if they don't aleready have an account. This is designed to be as easy and intuitive as possible and to make the authentication process as straightforward as possible.  There is also a landscape background on this page in order to play into the "travelling" theme of the app as well as to improve UX generally.  The background is also visible on the Register page.
