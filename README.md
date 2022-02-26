@@ -36,20 +36,14 @@ This page introduces the users to the basic idea behind this app.  There are thr
 2.  The Concept - this section explains the aim of the app or, in other words, the type of situation that this app aims to engender. 
 3.  The Deal - this section explains the specifics of the arrangement between host and worker.
 
-Userpage
-This is similar to the Homepage, however, only displays recipes that the current user uploaded.
-
-Add Recipes Page
-Used to add recipes to the database. This is possible via a form where the user can input the name, nationality, ingredients, method and cook-time of a given recipe. Extra ingredients and method inputs can be added by clicking the 'next ingredient' or 'next step buttons' respectively. There is also the functionality to edit or delete method steps or ingredients if need be using the adjacent buttons. The idea of this is to make adding recipes to the database as easy and intuitive as possible for the user and to allow for any mistakes made in inputting to be correctly quickly and easily. The form on this page and the edit recipes page has been built by javascript. Please see scripts2.js for more details.
-
-Edit Recipes Page
-This is functionally the same as the Add Recipes Page, however, the details of the recipe that is being edited are automatically inputted into the form. This means that the user does not have to re-input all of the recipe's details into the form each time they want to edit the recipe. This saves time and encourages users to make edits if need be.
+Hosts/Workers Page
+This page either shows a list of worker profiles
 
 More Details Page
 This page displays all of the possible values of a given recipe, that is, name, nationality, cook-time, ingredients, method and liked by. Note that on this page, the name and desciption of the recipe are displayed in the header as the title and the subtitle respectively. This page also has the following three calls to action: edit, delete and like. Edit takes the user to the Edit Recipe Page (see above), delete deletes the recipe entirely from the database and like will add that user's name to the list of users that like the given recipe.
 
 Login Page
-This page contains a 'card' and within that a form that requires both a username and password. There are also two buttons: 'login' which submits the inputted data to be checked against the data in the database and 'register' which takes the user to the Register Page (see below) if they don't have a username/password. This is designed to be as easy and intuitive as possible and to make the authentication process as straightforward as possible.  There is also a landscape background on this page in order to play into the "travelling" theme of the app as well as to improve UX generally.
+This page contains a 'card' and within that a form that requires both a username and password. There are also two buttons: 'login' which submits the inputted data to be checked against the data in the database and 'register' which takes the user to the Register Page (see below) if they don't aleready have an account. This is designed to be as easy and intuitive as possible and to make the authentication process as straightforward as possible.  There is also a landscape background on this page in order to play into the "travelling" theme of the app as well as to improve UX generally.  The background is also visible on the Register page.
 
 Register Page
 This page is similarly laid out to the Login Page. The difference is that the submit button uses the inputted data to create a new user and the second button takes the user to the Login Page.
