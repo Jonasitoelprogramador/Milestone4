@@ -514,7 +514,8 @@ label.valid {
   padding: 30px 0;
   height: 100%;
   background-size: cover;
-  background-position: center;
+  background-position: right;
+  background-image: url("/static/images/swiss-countryside.jpg");
 }
 
 .login-inputs {
