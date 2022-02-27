@@ -1,9 +1,6 @@
 from django.shortcuts import render
 import os
 
-print(os.environ)
-
-
 def homepage(request):
     worker = "worker"
     host = "host"
@@ -23,7 +20,7 @@ def homepage(request):
         elif str(request.user.role) == "worker":
             inner_HTML = 'Hosts'
             try: 
-                str(request.user.host)
+                str(request.user.worker)
                 if str(request.user.worker.payment_status) == "paid":
                     upgrade_hidden = "hidden"
                 else:

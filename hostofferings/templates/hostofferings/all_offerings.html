@@ -13,7 +13,7 @@
       {% for host, offering in offerings %}
       <div class="col-sm-6 col-md-4 each-offering">
         <div class="mx-auto circle-container-sm">
-          <div style="background-image: url('/media/images/{{offering.random_identifier}}')" class="circle-cover-bg"></div>
+          <div style="background-image: url('https://language-stay.s3.amazonaws.com/media/images/{{offering.random_identifier}}')" class="circle-cover-bg"></div>
         </div>
         <h4 class="text-center">{{host.user.username}}</h4>
         <p class="text-center padding-top-7">{{host.first_language}}</p>

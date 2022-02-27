@@ -52,20 +52,59 @@ Register Page
 This page is similarly laid out to the Login Page. The difference is that the submit button uses the inputted data to create a new user and the second button takes the user to the Login Page.
 
 Profile Page
-The profile page is where a Worker/Host can input all of their details
+The profile page is where a Worker/Host can input all of their details, which are then saved to the database and can then be viewed by other hosts/workers.  Note that directly after signing up, users are redirected straight to the profile page in order that they create a profile before accessing the rest of the site.  In order to ensure that this occurs, the navbar is hidden from the user until they save their profile so that the user cannot navigate to anther page before they have completed their profile.
+
+Note on the site structure
+The site is formed of four different Django "apps" which, taken together, deliver the full functionality of the site.  Django recommends splitting a project into various apps as it allows programmers to quickly and easily reuse code that has been written for one project, in another project.  The apps in this project are the following:
+1.  accounts - deals with user creation and authentication.
+2.  hostofferings - deals with a given host's proposal i.e. what they are offering to a worker.
+3.  products - deals with the premium subscription that is available to users.
+4.  users - deals with details to do with both hosts and workers e.g. desired language, work experience or whether or not they have paid for the premium subscription.
 
 Note on the database
-This site uses MongoDB database to store both recipe information and authentication details. All of the pages in this site display some CRUD functionality and thus necessarily communicate with the MongoDB database. This communiaction is carried out via Flask (see app.py) and anything displayed to the site is displayed via Jinja template language.
 
-As alluded to above, the MongoDB database has two separate collections: recipes and users. Each record in the recipes collection has id, name, natioanlity, ingredients, method, description, time, liked_by attributes and each record in the users collection has id, username and password attributes. In the recipes collection, the ingredients, method and liked_by attributes are all arrays. All other attributes for both collections are strings.
+As detailed above, the site is split in to various different apps, each of which deals with different aspects of the site.  One of the most important parts of each app is its models, in other words, the way it arranges, interacts with, and stores data in the database.
+
+This site uses a Postgres SQL database that is hosted on Heroku and which has six different models split across the four apps.  As mentioned above, these models allow the Django apps to store the necessary information in the database and access it when required to fulfil functionality of the app.  The models in this project are as follows:
+1.  accounts
+- Roles (whether host or worker)
+- Users (general info e.g. username, email)
+2.  hostofferings
+- Offerings (info about host's proposal)
+3.  products
+-  Product (info about the subscription e.g. price)
+4.  users
+- Hosts (more info about the host and whether or not they have bought the premium subscription)
+- Workers (same as above but for worker)
+
+As mentioned above, these modules are linked together in order to reflect the way in which the concepts and things interrelate in real life.  The is done by using Django primary keys.  The interrelation schemata is show below.
+- Role has a one-to-one relationship with User
+- Host has a one-to-one relationship with User
+- Worker has a one-to-one relationship with User
+- Host has a one-to-one relationship with Offering
+As you can see, with the exception of Product and Offering (which is indirectly linked to User via Host) the idea is to relate each module back to User in a one-to-one relationship.  Again, this is to reflect the links between these concepts and things in reality e.g. a logged-in User on the website must necessarily also be either a Host or a Worker.  Furthermore, a Host is not the same thing as what they are offering (accomadation/food) hence the distinction between Host and Offering.
+
 
 Testing
 Manual Testing
-This app has full CRUD functionality and search and 'like' functionality and connects to a MongoDB database via Flask. The site also has an interactive javascript-built form that is populated from MongoDB. This can create potential bugs if not thoroughly tested. Thus, I have devised a detailed selection of manual tests in order to ensure that the app is bug-free.
+This app has various moving parts as well as a complex database schemata so I have devised a variety of manual tests in other to ensure the app is bug-free.
 
-Test: Click on all the links in navbar. Home link result: Takes the user to the Homepage and changes colour when clicked or when hovered over. Logout link result: Takes the user to the Login and changes colour when clicked or when hovered over. Userpage link result: Takes the user to the Userpage and changes colour when clicked or when hovered over. Add Recipe link result: Takes the user to the Add Recipe and changes colour when clicked or when hovered over. Register link result: Takes the user to the Register Page and changes colour when clicked or when hovered over. Login link result: Takes the user to the Login Page and changes colour when clicked or when hovered over.
+Test: Click on all the links in navbar. Ensure that they change colour when hovered over and take the user to the corresponding page.
+Result:
+Home (including homepage graphic) link - pass
+Profile link - pass
+Workers link - pass
+Hosts link - pass
+Login - pass
+Logout - pass 
 
-Test: This search function searches for matching terms across across the name, method and ingredients attributes for a given recipe so each of these must be tested. In this test, a value for each of these attributes is searched for, for the "Feijao" recipe. Result of search for "Feijao": returns Feijao recipe - pass. Result of search for "Cook for an hour": returns Feijao recipe - pass Result of search for "lardons": returns Feijao recipe - pass (screenshot evidence)
+Test: Navigate to the homepage as a (1.)paid host, (2.)non-paid host, (3.)a paid worker, (4.)a non-paid worker and as (5.)an anonymous user.  Each of these should cause different links to be displayed in the navbar.
+Result: 
+1. [(screenshot evidence)](testing/images/manual-test-5/edit-button.png)
+2.
+3.
+4.
+5.
 
 Test: Click and hover over all links in footer. they take the user to the correct social media site/open an email address to jonasitoelprogramdor and change colour when hovered over.
 Facebook link result: Open a new Facebook tab on click and change colour on hover. Instagram link result: Open a new Instagram tab on click and change colour on hover. Twitter link result: Open a new Twitter tab on click and change colour on hover. Youtube link result: Open a new Youtube tab on click and change colour on hover. Here link result: Open an email address to jonasitoelprogramdor on click and change colour on hover.
