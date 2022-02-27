@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import os
 
+
 def homepage(request):
     worker = "worker"
     host = "host"
@@ -35,5 +36,5 @@ def homepage(request):
         }
         return render(request, 'accounts/homepage.html', context)
     else:
-        return render(request, 'accounts/homepage.html', {"login_logout": "Login", "hidden":"hidden"})    
+        return render(request, 'accounts/homepage.html', {"login_logout": "Login", "hidden": "hidden", "upgradeHidden": "hidden"})    
 

@@ -100,48 +100,61 @@ Logout - pass
 
 Test: Navigate to the homepage as a (1.)paid host, (2.)non-paid host, (3.)a paid worker, (4.)a non-paid worker and as (5.)an anonymous user.  Each of these should cause different links to be displayed in the navbar.
 Result: 
-1. [(screenshot evidence)](testing/images/manual-test-5/edit-button.png)
-2.
-3.
-4.
-5.
+1. [(screenshot evidence)](testing/images/paid-host.png)
+2. [(screenshot evidence)](testing/images/nonpaid-host.png)
+3. [(screenshot evidence)](testing/images/paid-worker.png)
+4. [(screenshot evidence)](testing/images/nonpaid-worker.png)
+5. [(screenshot evidence)](testing/images/annonymous.png)
 
-Test: Click and hover over all links in footer. they take the user to the correct social media site/open an email address to jonasitoelprogramdor and change colour when hovered over.
-Facebook link result: Open a new Facebook tab on click and change colour on hover. Instagram link result: Open a new Instagram tab on click and change colour on hover. Twitter link result: Open a new Twitter tab on click and change colour on hover. Youtube link result: Open a new Youtube tab on click and change colour on hover. Here link result: Open an email address to jonasitoelprogramdor on click and change colour on hover.
+Test: Signup as a new user.
+Result: Takes the user to the profile page with the navbar hidden.
+[(screenshot evidence)](testing/images/profile-no-nav.png)
 
-Test: Click 'more details' button. Homepage result: It takes the user to the More Details page. Userpage result: It takes the user to the More Details page. (screenshot evidence)
+Test: Click save changes buttom.
+Result: Saves the input and reveals the navbar.
+[(screenshot evidence)](testing/images/profile-nav.png)
 
-Test: Click the 'edit', 'delete' and 'like' buttons on the More Details Page. Edit button result: Takes the user to the Edit Recipe Page. Delete button result: Delete the recipe entirely. Like button result: Add the user to the list of users that have liked this page. (screenshot evidence) (screenshot evidence) (screenshot evidence) (screenshot evidence) (screenshot evidence) (screenshot evidence)
+Test: When logged in a host, navigate to "Workers" page.
+Result: The "Workers" page correctly displays all workers that have submitted a profile.
+[(screenshot evidence)](testing/images/worker-profiles.png)
 
-Test: Fill in the form on the Add Recipes Page and then click submit. Result: Input values are saved in the recipes collection in the Mongo database. (screenshot evidence) (screenshot evidence)
+Test: When logged in a worker, navigate to "Hosts" page.
+Result: The "Hosts" page correctly displays all hosts that have submitted a profile.
+[(screenshot evidence)](testing/images/host-profiles.png)
 
-Test: Click the 'Next Ingredient' and 'Next Step' on the form on the Add Recipes Page. Result: A new input is created for the 'ingredients' and 'method' section of the form respectively. (screenshot evidence) (screenshot evidence)
+Test: Logged in as a worker, on the "Hosts" Page, click "more details" of a given host profile. 
+Result: Host details page is displaying all information relating to the host whose profile was clicked on.  There are 3 other DIFFERENT hosts displayed in thumnails with introductory information.
+[(screenshot evidence)](testing/images/host-details.png)
 
-Test: Click the 'Next Ingredient' and 'Next Step' on the form on the Edit Recipes Page. Result: A new input is created for the 'ingredients' and 'method' section of the form respectively. (screenshot evidence) (screenshot evidence)
+Test: Logged in as a host, on the "Workers" Page, click "more details" of a given worker profile. 
+Result: Worker details page is displaying all information relating to the worker whose profile was clicked on.  There are 3 other DIFFERENT workers displayed in thumnails with intorductory information.
+[(screenshot evidence)](testing/images/worker-details.png)
 
-Test: Click the 'done', 'edit' and 'delete' buttons for the inputs on both the Add Recipes Page and the Edit Recipes Page. Result: The 'done' and 'edit' buttons make the input 'readonly' and not 'readonly' respectively and the 'delete' button deletes the new input, this does not cause the numbering to be disrupted. (screenshot evidence) (screenshot evidence)
+Test: Naviagte to "More Details" page of a given host when logged in as a (1.)nonpaid worker and (2.)paid worker.
+Result: 
+1. The "Email" field displays this message: "Upgrade your account to access hosts's email!"
+[(screenshot evidence)](testing/images/paid-email.png)
+2. The "Email" field displays the host's email.
+[(screenshot evidence)](testing/images/nonpaid-email.png)
 
-Test: Click the logout button followed by the home button on the navbar. Then click the 'more details' button of a given recipe. Result: The recipe's More Details Page does not give the user the option to edit, add or delete the recipe as the user is logged out. (screenshot evidence)
+Test:  Naviagte to "More Details" page of a given worker when logged in as a nonpaid host and a (2.)paid host.
+Result: 
+1. The "Email" field displays this message: "Upgrade your account to access worker's email!"
+[(screenshot evidence)](testing/images/paid-email.png)
+2. The "Email" field displays the worker's email.
+[(screenshot evidence)](testing/images/nonpaid-email.png)
 
-Test: Click the logout button. Result: The navbar only shows the 'Home', 'Register' and 'Login' links. (screenshot evidence)
+Test: Logged in as either host or worker, click upgrade button.
+Result: Brings up modal that contains a link to Stripe checkout page.
+[(screenshot evidence)](testing/images/upgrade-modal.png)
 
-Test: On the Login Page input a username and password that do not match a value in the database. Result: The user is not granted entry and a message is displayed on the title of the login page telling the user either the username or password are incorrect. (screenshot evidence)
+Test: Correctly fill in details in Stripe checkout page.
+Result: Redirects to success page.
+[(screenshot evidence)](testing/images/success-page.png)
 
-Test: On the Login Page the username and/or password fields are left blank. Result: Both fields display a "Please fill out this field" message if nothing is inputted. (screenshot evidence)
-
-Test: On the Login Page input a username and password that match a value in the database. Result: The user's Userpage is displayed and the navbar displays "Logout", "Home", "Username" and "Add Recipe" links. (screenshot evidence)
-
-Test: On the Login Page click on the 'sign up' button. Result: The user is taken to the Register Page. (screenshot evidence)
-
-Test: Click on the 'more details' button when logged in as a user. Result: The buttons 'delete', 'edit' and 'like' are displayed to the user. (screenshot evidence)
-
-Test: On the Register Page input a username and password that do not match a value in the database. Result: The user is taken to the Userpage and a new user is created in the database. (screenshot evidence) (screenshot evidence)
-
-Test: On the Register Page the username and/or password fields are left blank. Result: Both fields display a "Please fill out this field" message if nothing is inputted. (screenshot evidence)
-
-Test: On the Register Page input a username and password that match a value in the database. Result: The user remains on the same page and the message "This user already exists!" is displayed as the page title. (screenshot evidence)
-
-Test: On the Register Page click on the 'Already Registered?' button. Result: The user is taken to the Login Page. (screenshot evidence)
+Test: Incorrectly fill in details in Stripe checkout page.
+Result: Redirects to cancelled page.
+[(screenshot evidence)](testing/images/cancelled-page.png)
 
 User Story Testing
 As a first time user, I want to have a positive emotional response when visiting the site (be impressed with the quality of the website) so that I am encourgaed to return.
@@ -150,7 +163,7 @@ The website uses a high-contrast colour schemata as well as various bootstrap co
 As a first time user, I want to be able to easily understand the aim and idea behind the site.
 
 The homepage of the site allows users to directly browse through recipes and there is a clear 'more details' button that provides more information about each recipe.
-There is a clear title and subtitle that introduces the auim of the website (screenshot evidence)
+There is a clear title and subtitle that introduces the aim of the website (screenshot evidence)
 As a first time user, I want to be able to navigate through the site and use the 'more details' button to find out more information about a given recipe.
 
 On the homepage and the Userpage, on each card which corresponds to one recipe, there is a clear 'more details' button which changes colour when hovered over to provide visual feedback to the user. screenshot evidence
