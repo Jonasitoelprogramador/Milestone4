@@ -157,30 +157,29 @@ Result: Redirects to cancelled page.
 [(screenshot evidence)](testing/images/cancelled-page.png)
 
 User Story Testing
+
 As a first time user, I want to have a positive emotional response when visiting the site (be impressed with the quality of the website) so that I am encourgaed to return.
+The website uses a high-contrast colour schemata as well as various bootstrap components such as cards, forms, navbars and buttons in order to give the impression of quality.  The are also images interspered throughout the site that are both added to the website as default and that are uploaded by the user.  As a result of variuous user roles (Host/Worker) and statuses (paid/nonpaid), the navbar is extremely important in the UX as it should only display links to pages that the user has access to.  This feat is achieved by a combination of javascript and Jinja2.
 
-The website uses a high-contrast colour schemata as well as various bootstrap components such as cards, forms, navbars and buttons in order to give the impression of quality. One example of a boostrap card is the below link: (screenshot evidence)
 As a first time user, I want to be able to easily understand the aim and idea behind the site.
+Given that the concept behind the site is not something that exists already in any major way, I felt that it was necessary to devote an entire page to an explainantion of the project.  This is split into three sections (Story, Concept, Deal) and uses images, clean, engaging text and responsive design to convey the thinking behind this site.  
 
-The homepage of the site allows users to directly browse through recipes and there is a clear 'more details' button that provides more information about each recipe.
-There is a clear title and subtitle that introduces the aim of the website (screenshot evidence)
-As a first time user, I want to be able to navigate through the site and use the 'more details' button to find out more information about a given recipe.
+As a first time user, I want to be able to navigate through the site and to create an account and a profile.
+The "Signup" page has a striking background coupled with high contrast inputs and text that ensure the page functionality is clear whilst being appealing to a user.  As previosuly mentioned, the key to the ease of navigation of the site is the navbar: both its links that change depending on user role and status as well as the fact taht it is hidden if the user has not yet completed their profile.
 
-On the homepage and the Userpage, on each card which corresponds to one recipe, there is a clear 'more details' button which changes colour when hovered over to provide visual feedback to the user. screenshot evidence
-As a first time user, I would like to be able to use the register page to create myself an account.
+As a first time user, I would like to be able to navigate to and look through the lists of "Workers" or "Hosts".
+Navigating to the Hosts/Workers page is facilitated by the navbar.  In terms of scrolling through the lists of "Workers" or "Hosts", for each host/worker there is displayed a picture and some introductory information so that the user is able to garner enough information about each in order to make a decision as to which host/worker they would like to find out more about.
 
-There is a clear navbar link to 'register' when the user is not logged in.
-If the user finds themselves on the Login Page but has not yet made a username and password, there is a 'Sign Up' to the register page. screenshot evidence
-As a Returning visitor, I would like to be able to login using my username and password and then to be able to make use of the full CRUD functionality as well as the 'like recipe' function.
+Returning-users
+As a Returning visitor, I would like to be able to login using my username and password and then to be able to look at the details of a Host/Worker.
+In terms of user UX/UI, The "Login" page has a nearly identical design to the "Signup" page so functionality of the page is maximised whilst making it visually striking.  The details page itself has a main image and clear, well-spaced text as well as a 'taster' of other host/worker profiles, these features give the user a variety of content to interact with and thus encouraging them to stay on the page (or the details pages of other users!).
 
-Clear link in the navbar to the Login page.
-On the More Details Page (see user story 3) there is a clear 3-button set that allows a logged-in user to like, edit or delete the given recipe.
-Clear link in the navbar for logged-in users to 'Add Recipe'. screenshot evidence
+As a Returning visitor, I would like to be able to buy a subscription to Language-Stay so that I can access other users' email details.
+The navbar displays a clear "upgrade" button that triggers a modal.  The objective of the modal is to explain to the user the benefits and specifics of a premium subscription.  The modal also has a button that calls a Stripe checkout page.  By filling out your details in Stripe checkout and paying, you are redirected to a success page.  On payment completion, the stripe-checkout-view in this project is sent a response that updates the user's Host/Worker model which, in turn, allows them to view the email addresses of other users.   
+
 As a Returning Visitor, I want to be able to access the website on various different screen sizes and for it to evoke a positive response.
-
-The site uses a combination of Bootstrap responsive design and media queries in order to ensure UX remains consistent and of high quality on any screen-size. The navbar uses a toggle button to show/hide the navbar links when the screensize is narrower. The screenshot evidence does not show the Login, Edit Recipe and Profile pages as these are structually the same as the Register, Add Recipe and Home Pages respectively.
-screenshot evidence
-Please note that the image evidence for the user story testing was taken before a final change in the colour schemata of the application. All interactive/functional parts of the website remain the same, however.
+Features
+The site uses a combination of Bootstrap responsive design and media queries in order to ensure UX remains consistent and of high quality on any screen-size. The navbar uses a toggle button to show/hide the navbar links when the screensize is narrower. 
 
 Automated testing
 The HTML and the CSS code were put through the W3C schools HTML and CSS validators respectively to eliminated any potential syntax errors. (HTML: https://validator.w3.org/) (CSS: https://jigsaw.w3.org/css-validator/)
