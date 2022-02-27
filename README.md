@@ -182,23 +182,25 @@ Features
 The site uses a combination of Bootstrap responsive design and media queries in order to ensure UX remains consistent and of high quality on any screen-size. The navbar uses a toggle button to show/hide the navbar links when the screensize is narrower. 
 
 Automated testing
-The HTML and the CSS code were put through the W3C schools HTML and CSS validators respectively to eliminated any potential syntax errors. (HTML: https://validator.w3.org/) (CSS: https://jigsaw.w3.org/css-validator/)
+The HTML and the CSS code were put through the W3C schools HTML and CSS BeautifyTools validators to eliminated any potential syntax errors. (HTML: https://validator.w3.org/) (CSS: https://beautifytools.com/css-validator.php)
 
 The javascript code was put through a code beautifier also to eliminate syntax errors (link:https://beautifytools.com/javascript-validator.php).
 
-Bugs
-Bug: After changing the bootstrap file from being local to a CDN, the CSS behaved slightly differently. Fix: The problem occured as a result of specificity so I created several new classes in my CSS to target (with a lower specificity) the classes that were not functioning as they had done before.
+Main Bugs
 
-Bug: Everytime that a recipe was edited, the users in its "liked by" attribute would be deleted. Fix: Add an extra hidden input to the Edit Recipes page that passes the users that have liked the recipe to the database on submission of the Edit Recipe form.
+Bug: When building my app via Heroku, each build would fail with the error: TypeError: can only concatenate str (not 'Nonetype') to str. 
+Fix: I had written AWS_SECRET_ACCESS_KEY_ID instead of AWS_SECRET_ACCESS_KEY in my config vars.
 
-Bug: The "Home" navbar link would not be white when the page was loaded for the first time. On subsequent loads it would show up white. Fix: Add logic to the JS code that adds a class to the "Home" link element on the first load of the page as long as other conditions have not been met.
+Bug:  When I uploaded an image as a host/worker in the profile page post deployment, it would not be rendered in the front end after clicking "Save Changes".
+Fix: The image was being saved to a bucket in S3, however, the link to render the image in the HTML was only poiting to a folder in Gitpod (where I stored my images pre-deployment).  The solution was to change this link so that it pointed to the correct bucket in S3.
 
-Bug: Clicking the "Next Step" button on the Edit Recipe page would add an extra input to the ingredients section but not to the method section. Fix: The logic in the javascript, specifically the "next_input" function, needed to be modified in order for the code to target either the "method" section or the "ingredients" section depending on which button was pressed.
+Bug:  The links in the navbar were not rendering at all.  
+Fix:  Originally, I was passing values through from views.py to my javascript via Jinja2.  The idea was that depending on the values that are passed through, I would use the javascript to assign the correct navbar links.  I set this code up before realising that you cannot read pure Jinja2 in javascript, hence the error.  I changed the system to the current one in which I render the innerHTML of the links directly into the HTML and then get the innerHTML values of these links and add the correct href values to the links using JS.
 
 Technologies
 Languages
 HTML5 was used in order to provide the text content the structure of the site.
-CSS3 was used to add styling. Javascript (ECMAScript 2018) was used in order to add interactivity and to create the interactive forms for the Edit Recipe and the Add Recipe pages. Jinja template language was used in order to inject the content from the database into the HTML templates so that it could be displayed to the user. Python programming language was used in order to be able to run the Flask framework.
+CSS3 was used to add styling. Javascript (ECMAScript 2018) was used in order to assign the correct href values to the navbar links. Jinja template language was used in order to inject the content from the database into the HTML templates so that it could be displayed to the user. Python programming language was used in order to be able to run the Django framework.
 
 Frameworks, Libraries and Programs
 Bootstrap: was used to add responsivess and to aid with the structure of the site. (link: https://getbootstrap.com/docs/4.4/getting-started/introduction/)
@@ -209,19 +211,18 @@ Git: was used to save changes in the website's files. Gitpod terminal was used t
 
 GitHub: where the files are stored after being "pushed". (link: https://github.com/)
 
-Flask framework (written in Python programming language): is used to run the backend of the application. That is, it deals with requests from the browser and send back the correct HTML template as an HTTP response.
+Django framework (written in Python programming language): is used to run the backend of the application. That is, it deals with requests from the browser and sends back the correct HTML template as an HTTP response.  Django also communicates with the database through its "models" class and can populate HTML templates with data from the databse via Jinja.
 
-PyMongo: is a module containing tools that are used to connect with MongoDB when working in python.
+Note on database and S3!!!!!!!!!!!!!!!!!
+
+Typography
+The two fonts used in this project were 'Arvo' and 'Poppins-Regular' in order to convey a relaxed but pragmatic feel to the website.
 
 Color-Calculator was used to find a harmonious and high-contrast colour scheme: (link: https://www.sessions.edu/color-calculator/)
 
 Design
 Colour Scheme
-There are three main colours: off white, green and dark blue. These colours was chosen both for their colour harmony and to allow for high levels of contrast for UX purposes.
-
-Typography
-Wireframes
-Wireframes image link
+There are three main colours: white, dark grey, blue/grey. These colours was chosen both for their colour harmony and to allow for high levels of contrast for UX purposes.
 
 Deployment
 The project was deployed to Heroku via Github pages using the following steps...
@@ -231,6 +232,7 @@ Create a file called Procfile and write the following into the file: web: python
 Create an account for Heroku and from the dashboard click 'new' -> 'create a new app'.
 Give your app a name and chose the corresponding region.
 Set up automatic deployment from our Github repository by clicking "connect to Github" and folloing the steps to search for and connect to the app.
+
 Accessibility
 The aim of this project with regards to accessibility is to ensure that there is text explanation across all features to build a site that is usable for people that use screen readers. If a feature already has a title/text explaining its function there is no need to add additional text. However, in certain cases, such as in the case of the media links, there is no text explaining the function of the link. Therefore, an aria-label has been added to each link to explain its function.
 
@@ -241,6 +243,6 @@ Content
 Please see the inline comments across the CSS, HTML, python and JS files for any code that has been taken from third parties. Any borrowed code is clearly labelled as such.
 
 ReadMe
-The "Deployment" section of the Readme file is obtained from the Code Institue SampleREADME document which can be found:(https://github.com/Code-Institute-Solutions/SampleREADME/blob/master/README.md). Much of the CSS is taken from bootstrap templates. In these cases this is clearly indicated and a link to the corresponding bootstrap page is provided.
+
 
 Use the following code to run the project in server: python3 -m http.server

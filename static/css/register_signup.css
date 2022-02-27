@@ -450,7 +450,6 @@ label.valid {
     margin-right: 0px;
     margin-bottom: 10px; } }
 
-/*# sourceMappingURL=style.css.map */
 
 /*------------------my additions-----------------*/
 
@@ -515,7 +514,14 @@ label.valid {
   height: 100%;
   background-size: cover;
   background-position: right;
-  background-image: url("/static/images/swiss-countryside.jpg");
+  background-image:  
+    /* top, transparent red */
+    linear-gradient(
+      rgba(0, 0, 0, 0.5), 
+      rgba(0, 0, 0, 0.5)
+    ),
+    /* your image */
+    url("/static/images/swiss-countryside.jpg");
 }
 
 .login-inputs {
@@ -555,24 +561,6 @@ label.valid {
   color: #fff;
 }
 
-/*@media only screen and (min-width: 800px) {
-  .login-section {
-    margin-right: 50px;
-    margin-top: 0;
-    width: 450px;
-    text-align: right;
-  }
-  
-  #already-account {
-    text-align: right;
-    padding-right: 25px;
-  }
-
-
-  .form-flex {
-    flex-direction: row;
-  }
-}*/
 
 .authentication-errors {
   color: #fff;

@@ -338,6 +338,11 @@ hr {
   border-radius: 50%;
 }
 
+#daniela-photo {
+  border-radius: 50%;
+}
+
+
 .homepage-text {
   font-family: 'Arvo', serif;
   color: #a4b0c0;
@@ -408,4 +413,6 @@ hr {
 .footer {
   background-color: #a4b0c0;
   padding: 15px;
+  margin-top: 20px;
 }
+
