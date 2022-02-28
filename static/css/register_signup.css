@@ -517,8 +517,8 @@ label.valid {
   background-image:  
     /* top, transparent red */
     linear-gradient(
-      rgba(0, 0, 0, 0.5), 
-      rgba(0, 0, 0, 0.5)
+      rgba(0, 0, 0, 0.4), 
+      rgba(0, 0, 0, 0.4)
     ),
     /* your image */
     url("/static/images/swiss-countryside.jpg");
