@@ -1,4 +1,4 @@
-Language Stay
+# Language Stay
 
 So you've been learning Spanish for a while now and you have a strong grasp of the vocabularly and grammar.  You decide to spend a few months in Madrid and you'll be fluent in no time, right?  Wrong.  In reality you spend your entire time with English-speaking friends and, even worse, whenever you speak to the waiter in Spanish, you are replied to in English.  Well, look no further than Language-Stay.  This is the app that allows you to integrate seemlessly into a linguistic community and, by speaking the target language 24/7 you are ACTUALLY fluent in a matter of months.
 
@@ -6,7 +6,7 @@ This site targets targets anyone and everyone who has ever tried to learn a lang
 
 The site aims to achieve its goal by having good, crisp UX which produces a positive reaction in the user, a well-designed database of "hosts" and "volunteers" and wide-ranging functionality.
 
-User Stories
+## User Stories
 First-time-users
 As a first time user, I want to have a positive emotional response when visiting the site (be impressed with the quality of the website) so that I am encourgaed to return.
 As a first time user, I want to be able to easily understand the aim and idea behind the site.
@@ -17,41 +17,42 @@ As a Returning visitor, I would like to be able to login using my username and p
 As a Returning visitor, I would like to be able to buy a subscription to Language-Stay.
 As a Returning Visitor, I want to be able to find a Host/Worker and access their email address after paying.
 As a Returning Visitor, I want to be able to access the website on various different screen sizes and for it to evoke a positive response.
-Features
+
+## Features
 The site is formed of five pages each of which have a header, footer and main body.
 
-Header
+### Header
 This exists across all pages and contains the below.
 
-Responsive nabar
+### Responsive nabar
 This allows users to quickly and intuitively navigate between pages of the site. On larger screen sizes the links are organised across the width of the navbar but on smaller screen sizes this is replaced by a 'burger' toggle which displays links vertically when toggled thus allowing for smooth transition across pages even with smaller screen sizes.  There is 
 also an "upgrade" button that displays if users are using the free version of the site.  Furthermore, on first entry into the site (directly after signing up) the navbar is hidden until the user completes their profile.
 
-Footer
+### Footer
 This also exists across all pages and contains both copyright information as well as phonenumber and a email address in order to encourage users to get in contact.
 
-Homepage
+### Homepage
 This page introduces the users to the basic idea behind this app.  There are three main sections: 
 1.  Jonah's Story - this section explains to the user how the idea for the app came into being.
 2.  The Concept - this section explains the aim of the app or, in other words, the type of situation that this app aims to engender. 
 3.  The Deal - this section explains the specifics of the arrangement between host and worker.
 
-Hosts/Workers Page
+### Hosts/Workers Page
 This page either shows a list of worker profiles (logged in as a host) or a list of host profiles (logged in as a worker).  The for each worker/host, the user is shown the host/worker's uploaded picture as well as some basic details.  The idea behind this page is so that users can browse the various hosts/workers and select any that appeal to them.
 
-More Details Page
+### More Details Page
 This page can be navigated to from the Hosts/Workers page and displays all of the details of a given Host/Worker.  The idea behind this page is to allow users to peruse all of the information relating to a paricular Host/Worker and to decide whether or not they would like to contact them.  The More Details page also contains the email address of said Host/Worker to allow contact to be made.  Note that this is only visible to the user if they have a premium subscription.
 
-Upgrade Modal
+### Upgrade Modal
 There is a button that triggers a modal in the navbar for all users that do not hold a premium subscription.  Inside this modal is an explaination of the premium subscription and a link that takes the user to the Stripe checkout page.  Once the user has paid, the "email address" value in the More Details page will be visible.
 
-Login Page
+### Login Page
 This page contains a 'card' and within that a form that requires both a username and password. There are also two buttons: 'login' which submits the inputted data to be checked against the data in the database and 'register' which takes the user to the Register Page (see below) if they don't aleready have an account. This is designed to be as easy and intuitive as possible and to make the authentication process as straightforward as possible.  There is also a landscape background on this page in order to play into the "travelling" theme of the app as well as to improve UX generally.  The background is also visible on the Register page.
 
-Register Page
+### Register Page
 This page is similarly laid out to the Login Page. The difference is that the submit button uses the inputted data to create a new user and the second button takes the user to the Login Page.
 
-Profile Page
+### Profile Page
 The profile page is where a Worker/Host can input all of their details, which are then saved to the database and can then be viewed by other hosts/workers.  Note that directly after signing up, users are redirected straight to the profile page in order that they create a profile before accessing the rest of the site.  In order to ensure that this occurs, the navbar is hidden from the user until they save their profile so that the user cannot navigate to anther page before they have completed their profile.
 
 Note on the site structure
@@ -85,7 +86,7 @@ As mentioned above, these modules are linked together in order to reflect the wa
 As you can see, with the exception of Product and Offering (which is indirectly linked to User via Host) the idea is to relate each module back to User in a one-to-one relationship.  Again, this is to reflect the links between these concepts and things in reality e.g. a logged-in User on the website must necessarily also be either a Host or a Worker.  Furthermore, a Host is not the same thing as what they are offering (accomadation/food) hence the distinction between Host and Offering.
 
 
-Testing
+## Testing
 Manual Testing
 This app has various moving parts as well as a complex database schemata so I have devised a variety of manual tests in other to ensure the app is bug-free.
 
@@ -156,7 +157,7 @@ Test: Incorrectly fill in details in Stripe checkout page.
 Result: Redirects to cancelled page.
 [(screenshot evidence)](testing/images/cancelled-page.png)
 
-User Story Testing
+## User Story Testing
 
 As a first time user, I want to have a positive emotional response when visiting the site (be impressed with the quality of the website) so that I am encourgaed to return.
 The website uses a high-contrast colour schemata as well as various bootstrap components such as cards, forms, navbars and buttons in order to give the impression of quality.  The are also images interspered throughout the site that are both added to the website as default and that are uploaded by the user.  As a result of variuous user roles (Host/Worker) and statuses (paid/nonpaid), the navbar is extremely important in the UX as it should only display links to pages that the user has access to.  This feat is achieved by a combination of javascript and Jinja2. 
@@ -190,7 +191,8 @@ The navbar displays a clear "upgrade" button that triggers a modal.  The objecti
 
 As a Returning Visitor, I want to be able to access the website on various different screen sizes and for it to evoke a positive response.
 
-Features
+## Features
+
 The site uses a combination of Bootstrap responsive design and media queries in order to ensure UX remains consistent and of high quality on any screen-size. The navbar uses a toggle button to show/hide the navbar links when the screensize is narrower. 
 
 Automated testing
@@ -198,7 +200,7 @@ The HTML and the CSS code were put through the W3C schools HTML and CSS Beautify
 
 The javascript code was put through a code beautifier also to eliminate syntax errors (link:https://beautifytools.com/javascript-validator.php).
 
-Main Bugs
+## Main Bugs
 
 Bug: When building my app via Heroku, each build would fail with the error: TypeError: can only concatenate str (not 'Nonetype') to str. 
 Fix: I had written AWS_SECRET_ACCESS_KEY_ID instead of AWS_SECRET_ACCESS_KEY in my config vars.
@@ -227,22 +229,22 @@ Django framework (written in Python programming language): is used to run the ba
 
 Stripe API: an integration with Stripe was used in this project in order to be able to take payments from customers.  My Stripe inegration was set up by roughly following the steps in this tutorial: https://www.youtube.com/watch?v=722A27IoQnk&t=2539s.  As mentioned above, my project connects to a Stripe checkout page that allows the customer to fill in their details.  These details are then checked by Stripe and, if correct, Stripe send a request to my StripeWebhook view which makes the necessary changes to the database.  That is, the user's payment_status attribute in the Host/Worker model is changed to "paid".
 
-Storage
+## Storage
 
 The site uses a relational SQL database (see above for move information about database structure).  For production, the database used was SQLite, however, the database was migrated to a Postgres database hosted on Heroku for deployment.
 
 During production, static and media files were stored inside the Gitpod project itself.  For deployment, however, I created a bucket in S3 to store static and media files as Heroku does not have any permanent file storage.  Inside the S3 bucket, there is one folder for static files (images and css) and one folder for media files (images).  S3 hosting allows access of static files through "{% static path/to/file %}", however, the equivalent does not exist for files stored in the media folder.  Thus, the media files are accessed from the S3 bucket using a hardcoded URL.  This is not best practice so any future versions of this app would look at how to deal with this.
 
-Typography
+## Typography
 The two fonts used in this project were 'Arvo' and 'Poppins-Regular' in order to convey a relaxed but pragmatic feel to the website.
 
 Color-Calculator was used to find a harmonious and high-contrast colour scheme: (link: https://www.sessions.edu/color-calculator/)
 
-Design
+## Design
 Colour Scheme
 There are three main colours: white, dark grey, blue/grey. These colours was chosen both for their colour harmony and to allow for high levels of contrast for UX purposes.
 
-Deployment
+## Deployment
 The project was deployed to Heroku via Github pages using the following steps...
 
 Create a file called requirements.txt (pip3 freeze --local > requirements.txt). See file here for contents of this file. This is a list of the dependencies that are required to run Flask.
@@ -251,16 +253,14 @@ Create an account for Heroku and from the dashboard click 'new' -> 'create a new
 Give your app a name and chose the corresponding region.
 Set up automatic deployment from our Github repository by clicking "connect to Github" and folloing the steps to search for and connect to the app.
 
-Accessibility
+## Accessibility
 The aim of this project with regards to accessibility is to ensure that there is text explanation across all features to build a site that is usable for people that use screen readers. If a feature already has a title/text explaining its function there is no need to add additional text. However, in certain cases, such as in the case of the media links, there is no text explaining the function of the link. Therefore, an aria-label has been added to each link to explain its function.
 
 In addition, there are several input fields in the site, each of which corresponds to a label element. The relationship between these two elements can be unclear for a user with a screen reader so the class "labelledby" has been added to all of the input fields in order to show their relationship to their respective label elements.
 
-Credits
+## Credits
 Content
 Please see the inline comments across the CSS, HTML, python and JS files for any code that has been taken from third parties. Any borrowed code is clearly labelled as such.
-
-ReadMe
 
 
 Use the following code to run the project in server: python3 -m http.server

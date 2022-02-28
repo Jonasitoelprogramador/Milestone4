@@ -8,7 +8,6 @@ import os.path
 
 
 def path_time(instance, filename):
-    print("hello I need to make a path time as quickly as possible becos running late")
     #takes the instance and the filename of the uploaded image
     #splits the filename from the extension
     extension = os.path.splitext(filename)[1]
@@ -16,10 +15,8 @@ def path_time(instance, filename):
     instance.random_identifier = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(16))
     #adds the correct file extension to this field
     instance.random_identifier = instance.random_identifier + extension
-    print(f'this is the identofier {instance.random_identifier}')
     upload = 'images/'
     #uploads the newly-renamed image to the images folder on the server
-    print(f'this is the path I am using {os.path.join(upload, instance.random_identifier)}')
     return os.path.join(upload, instance.random_identifier)
 
 
