@@ -4,15 +4,19 @@
 
 {% block content %}
         <div class="profile-background">
+                <!--title-->
                 <div class="text-center profile-title-div">
                         <h1 class="profile-title">Profile</h1>
                 </div>
                 <div class="profile-container ">
                         <div class="details">
                                 <form method="POST" enctype="multipart/form-data" action="{% url 'profile' %}">
-                                {% csrf_token %}     
+                                {% csrf_token %}
+                                        <!--BS row-->
                                         <div class="row">
+                                                <!--BS column number 1-->
                                                 <div class="col-12 col-md-6">
+                                                        <!--This row contains half of the info relating to the host-->
                                                         <i class="fas fa-user-alt"></i>
                                                         <p class="inline"><strong>Username</strong></p>
                                                         <p class="wrapable">{{user_obj.username}}</p>
@@ -33,7 +37,9 @@
                                                         <p class="inline"><strong>Location</strong></p>
                                                         <p class="wrapable">{{filled_form.location}}</p>
                                                 </div>    
-                                                <div class="col-12 col-md-6">   
+                                                <!--BS column number 2-->
+                                                <div class="col-12 col-md-6">
+                                                        <!--This row contains the other half of the info relating to the host-->   
                                                         <i class="fas fa-hands-helping"></i>
                                                         <p class="inline"><strong>Work Category</strong></p>
                                                         <p class="wrapable">{{offering_filled_form.work_category}}</p>
@@ -53,6 +59,7 @@
                                                         <!-- <p class="wrapable">{{offering_filled_form.offering_image}}</p> -->
                                                 </div> 
                                         </div>
+                                        <!--submit button-->
                                         <div class="profile-edit">
                                                 <input class="btn btn-secondary" role="button" type="submit" value="Save Changes">
                                         </div>

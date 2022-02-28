@@ -25,38 +25,45 @@
             <section class="signin-section">
                 <div>
                     <div class="signup-form">
+                        <!--page title-->
                         <h2 class="signin-title">Sign Up</h2>
+                        <!--signup form-->
                         <form method="POST" class="login-form text-center">
                             {% csrf_token %}
                             <div class="form-flex">
+                                <!--div with username input-->
                                 <div class="form-group login-group">
                                     <label for="your_name">Username</label>
                                     {{form1.username}}
-                                    <!--<input type="text" name="your_name" id="your_name" placeholder="Username" class="login-inputs" required>-->
                                 </div>
+                                <!--div with password input-->
                                 <div class="form-group login-group">
                                     <label for="your_pass">Password</label>
                                     {{form1.password1}}
-                                    <!--<input type="password" name="your_pass" id="your_pass" placeholder="Password" class="login-inputs" required>-->
                                 </div>
+                                <!--div with password confirmation input-->
                                 <div class="form-group login-group">
                                     <label for="your_pass">Confirm Password</label>
                                     {{form1.password2}}
-                                    <!--<input type="password" name="your_pass" id="your_pass" placeholder="Password" class="login-inputs" required>-->
                                 </div>
+                                <!--div with user role input-->
                                 <div class="login-group">
                                     {{form2}}
                                 </div>
+                                <!--submit button-->
                                 <div class="login-group form-group-submit">
                                     <input type="submit" name="signin" id="signin" class="form-submit" value="Sign up" required>
                                 </div>
                             </div>
+                            <!--link to login page-->
                             <div class="padding-bottom-30">
                                 <a href="/accounts/login" class="signup-image-link" id="already-account">Sign In</a>
                             </div>
+                            <!--link to homepage-->
                             <div class="padding-bottom-30">
                                 <a href="/" class="signup-image-link" id="already-account">Home</a>
                             </div>
+                            <!--div where authetication errors are displayed-->
                             <div class="authentication-errors">
                                 {% for e in errors %}
                                     <em></em><strong>{{ e }}</strong></em>

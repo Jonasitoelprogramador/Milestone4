@@ -159,25 +159,37 @@ Result: Redirects to cancelled page.
 User Story Testing
 
 As a first time user, I want to have a positive emotional response when visiting the site (be impressed with the quality of the website) so that I am encourgaed to return.
-The website uses a high-contrast colour schemata as well as various bootstrap components such as cards, forms, navbars and buttons in order to give the impression of quality.  The are also images interspered throughout the site that are both added to the website as default and that are uploaded by the user.  As a result of variuous user roles (Host/Worker) and statuses (paid/nonpaid), the navbar is extremely important in the UX as it should only display links to pages that the user has access to.  This feat is achieved by a combination of javascript and Jinja2.
+The website uses a high-contrast colour schemata as well as various bootstrap components such as cards, forms, navbars and buttons in order to give the impression of quality.  The are also images interspered throughout the site that are both added to the website as default and that are uploaded by the user.  As a result of variuous user roles (Host/Worker) and statuses (paid/nonpaid), the navbar is extremely important in the UX as it should only display links to pages that the user has access to.  This feat is achieved by a combination of javascript and Jinja2. 
+[(screenshot evidence)](testing/images/profile-no-nav.png)
+[(screenshot evidence)](testing/images/paid-email.png)
+[(screenshot evidence)](testing/images/worker-profiles.png)
 
 As a first time user, I want to be able to easily understand the aim and idea behind the site.
 Given that the concept behind the site is not something that exists already in any major way, I felt that it was necessary to devote an entire page to an explainantion of the project.  This is split into three sections (Story, Concept, Deal) and uses images, clean, engaging text and responsive design to convey the thinking behind this site.  
+[(screenshot evidence)](testing/images/user-testing-2.png)
 
 As a first time user, I want to be able to navigate through the site and to create an account and a profile.
-The "Signup" page has a striking background coupled with high contrast inputs and text that ensure the page functionality is clear whilst being appealing to a user.  As previosuly mentioned, the key to the ease of navigation of the site is the navbar: both its links that change depending on user role and status as well as the fact taht it is hidden if the user has not yet completed their profile.
+The "Signup" page has a striking background coupled with high contrast inputs and text that ensure the page functionality is clear whilst being appealing to a user.  As previosuly mentioned, the key to the ease of navigation of the site is the navbar: both its links that change depending on user role and status as well as the fact that it is hidden if the user has not yet completed their profile.
+[(screenshot evidence)](testing/images/nonpaid-host.png)
+[(screenshot evidence)](testing/images/user-testing-3.png)
 
 As a first time user, I would like to be able to navigate to and look through the lists of "Workers" or "Hosts".
 Navigating to the Hosts/Workers page is facilitated by the navbar.  In terms of scrolling through the lists of "Workers" or "Hosts", for each host/worker there is displayed a picture and some introductory information so that the user is able to garner enough information about each in order to make a decision as to which host/worker they would like to find out more about.
+[(screenshot evidence)](testing/images/worker-profiles.png)
 
 Returning-users
 As a Returning visitor, I would like to be able to login using my username and password and then to be able to look at the details of a Host/Worker.
 In terms of user UX/UI, The "Login" page has a nearly identical design to the "Signup" page so functionality of the page is maximised whilst making it visually striking.  The details page itself has a main image and clear, well-spaced text as well as a 'taster' of other host/worker profiles, these features give the user a variety of content to interact with and thus encouraging them to stay on the page (or the details pages of other users!).
+[(screenshot evidence)](testing/images/return-testing-1.png)
 
 As a Returning visitor, I would like to be able to buy a subscription to Language-Stay so that I can access other users' email details.
 The navbar displays a clear "upgrade" button that triggers a modal.  The objective of the modal is to explain to the user the benefits and specifics of a premium subscription.  The modal also has a button that calls a Stripe checkout page.  By filling out your details in Stripe checkout and paying, you are redirected to a success page.  On payment completion, the stripe-checkout-view in this project is sent a response that updates the user's Host/Worker model which, in turn, allows them to view the email addresses of other users.   
+[(screenshot evidence)](testing/images/nonpaid-host.png)
+[(screenshot evidence)](testing/images/modal.png)
+
 
 As a Returning Visitor, I want to be able to access the website on various different screen sizes and for it to evoke a positive response.
+
 Features
 The site uses a combination of Bootstrap responsive design and media queries in order to ensure UX remains consistent and of high quality on any screen-size. The navbar uses a toggle button to show/hide the navbar links when the screensize is narrower. 
 
@@ -213,7 +225,13 @@ GitHub: where the files are stored after being "pushed". (link: https://github.c
 
 Django framework (written in Python programming language): is used to run the backend of the application. That is, it deals with requests from the browser and sends back the correct HTML template as an HTTP response.  Django also communicates with the database through its "models" class and can populate HTML templates with data from the databse via Jinja.
 
-Note on database and S3!!!!!!!!!!!!!!!!!
+Stripe API: an integration with Stripe was used in this project in order to be able to take payments from customers.  My Stripe inegration was set up by roughly following the steps in this tutorial: https://www.youtube.com/watch?v=722A27IoQnk&t=2539s.  As mentioned above, my project connects to a Stripe checkout page that allows the customer to fill in their details.  These details are then checked by Stripe and, if correct, Stripe send a request to my StripeWebhook view which makes the necessary changes to the database.  That is, the user's payment_status attribute in the Host/Worker model is changed to "paid".
+
+Storage
+
+The site uses a relational SQL database (see above for move information about database structure).  For production, the database used was SQLite, however, the database was migrated to a Postgres database hosted on Heroku for deployment.
+
+During production, static and media files were stored inside the Gitpod project itself.  For deployment, however, I created a bucket in S3 to store static and media files as Heroku does not have any permanent file storage.  Inside the S3 bucket, there is one folder for static files (images and css) and one folder for media files (images).  S3 hosting allows access of static files through "{% static path/to/file %}", however, the equivalent does not exist for files stored in the media folder.  Thus, the media files are accessed from the S3 bucket using a hardcoded URL.  This is not best practice so any future versions of this app would look at how to deal with this.
 
 Typography
 The two fonts used in this project were 'Arvo' and 'Poppins-Regular' in order to convey a relaxed but pragmatic feel to the website.

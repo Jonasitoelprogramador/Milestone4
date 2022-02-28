@@ -5,11 +5,14 @@ from django.contrib.auth.forms import UserCreationForm
 from users.models import Host, Worker
 from .models import Role
 
+# This is a standard Django user creation form with password1 and password 2 fields added
 class ExtendedUserCreationForm(UserCreationForm):
+    # extra field
     password1 = forms.CharField(
             label="Password",
             widget=forms.PasswordInput(attrs={'class':'login-inputs', 'type':'password'}),
         )
+    # extra field
     password2 = forms.CharField(
         label="Confirm password",
         widget=forms.PasswordInput(attrs={'class':'login-inputs', 'type':'password'}),
@@ -17,8 +20,10 @@ class ExtendedUserCreationForm(UserCreationForm):
 
     class Meta:
         model = User
+        # define which model fields should have a form input
         fields = ("username", "email", "first_name", "last_name", "password1", "password2")
 
+        # used to style the form inputs using login-inputs css class
         widgets = {
                 'username': forms.TextInput(attrs={'id':"username", 'class': 'login-inputs'}),
                 'email': forms.TextInput(attrs={'id':"email", 'class': 'login-inputs'}),
@@ -37,6 +42,17 @@ class ExtendedUserCreationForm(UserCreationForm):
             user.save()
         return user
 
+# based on Role model
+class RoleForm(ModelForm):
+    class Meta:
+        model = Role
+        # defines the inouts to display
+        fields = ("account_Role",)
+        # used to add styling via host_vs_worker css class
+        widgets = {
+            "account_Role": forms.Select(attrs={'class': 'host_vs_worker'})
+        }
+
 
 class UserEmailForm(ModelForm):
     class Meta:
@@ -45,14 +61,4 @@ class UserEmailForm(ModelForm):
 
         widgets = {
             'email': forms.TextInput(attrs={'id':"email", 'class': 'input3'})
-        }
-
-
-class RoleForm(ModelForm):
-    class Meta:
-        model = Role
-        fields = ("account_Role",)
-
-        widgets = {
-            "account_Role": forms.Select(attrs={'class': 'host_vs_worker'})
         }

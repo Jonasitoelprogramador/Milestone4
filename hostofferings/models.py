@@ -24,6 +24,7 @@ def path_time(instance, filename):
 
 
 # Create your models here.
+# Simple model with 5 attributes that relate to the host's proposal
 class Offering(models.Model):
     work_category = models.CharField(max_length=100)
     work_details = models.TextField()

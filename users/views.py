@@ -15,26 +15,30 @@ def profile(request):
     if str(request.user.role) == "host":
         current_user = request.user
         try:
+            # get the host object associated with the logged in user
             host = Host.objects.get(user=current_user)
         except:
             host = None 
-        # you want to force a 1:1 between offering and host
         try:
             offering = Offering.objects.filter(host=host).first()
         except:
             offering = None 
         
+        # if the request is host, bind the inputted data to...
         if request.method == 'POST':
+            #...HostCreationForm
             host_filled_form = HostCreationForm(request.POST, instance = host)
             if host_filled_form.is_valid():
                 new_host = host_filled_form.save(commit=False)
                 new_host.user = request.user
                 new_host.save()
+            #...OfferingForm
             offering_filled_form = OfferingForm(request.POST, request.FILES, instance = offering)
             if offering_filled_form.is_valid():
                 offering = offering_filled_form.save(commit=False)
                 offering.host = request.user.host
                 offering.save()
+            #...EmailForm
             user_email_filled_form = UserEmailForm(request.POST, instance = request.user)
             if user_email_filled_form.is_valid():
                 user_email_filled_form.save()
@@ -43,6 +47,7 @@ def profile(request):
             host_filled_form = HostCreationForm(instance=host)
             offering_filled_form = OfferingForm(instance=offering)
             user_email_filled_form = UserEmailForm(instance=request.user)
+        # define values for context in order to hide unwanted navbar links
         try: 
             str(request.user.host)
             headerhidden = ""
@@ -76,16 +81,16 @@ def profile(request):
             worker = Worker.objects.get(user=current_user)
         except:
             worker = None 
-        # you want to force a 1:1 between offering and host 
         
+        # if the request is host, bind the inputted data to...
         if request.method == 'POST':
+            #...WorkerCreationForm
             worker_filled_form = WorkerCreationForm(request.POST, request.FILES, instance = worker)
             if worker_filled_form.is_valid():
                 new_worker = worker_filled_form.save(commit=False)
                 new_worker.user = request.user
                 new_worker.save()
-            else:
-                print(worker_filled_form.errors)
+            #...UserEmailForm
             user_email_filled_form = UserEmailForm(request.POST, instance = request.user)
             if user_email_filled_form.is_valid():
                 user_email_filled_form.save()
@@ -93,7 +98,7 @@ def profile(request):
         else:
             worker_filled_form = WorkerCreationForm(instance=worker)
             user_email_filled_form = UserEmailForm(instance=request.user)
-
+        # define values for context in order to hide unwanted navbar links
         try:
             str(request.user.worker)
             headerhidden = ""
@@ -157,15 +162,18 @@ def all_offerings(request):
 
 @login_required()
 def all_workers(request):
+    #get all the instances of the Worker model
     workers = Worker.objects.all()
     lst_workers = list(workers)
     if str(request.user.role) == "worker":
         return HttpResponse("You must be logged in as a host to view this page")
+    # check that user is a host and has paid
     elif str(request.user.role) == "host":
         if str(request.user.host.payment_status) == "paid":
             upgrade_hidden = "hidden"
         else:
             upgrade_hidden = ""
+        # set context to pass navbar values to frontend
         context = {
             "inner_HTML": "Workers",
             'workers': lst_workers,
@@ -203,6 +211,7 @@ def offering_details(request, pk):
     it = iter(result_list)
     zipped_tuples = zip(it, it)
     tuples = list(zipped_tuples)
+    print(f'These a my tuples: {tuples}')
     #randomly select 3 elements from the tuples list
     lst = []
     i = 1

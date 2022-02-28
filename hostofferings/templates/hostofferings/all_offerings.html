@@ -1,20 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
 
-<!-- Marketing messaging and featurettes
-  ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
+<!--This has been taken from Bootstrap-->
 {% block content %}
   <div class="hero-div"></div>
   <div class="container-fluid marketing width-control">
 
-    <!-- Three columns of text below the carousel -->
+    <!-- Three columns of text below the main image -->
     <div class="row">
+      <!--loops through the list of hosts-->
       {% for host, offering in offerings %}
       <div class="col-sm-6 col-md-4 each-offering">
+        <!--displays image of host-->
         <div class="mx-auto circle-container-sm">
           <div style="background-image: url('https://language-stay.s3.amazonaws.com/media/images/{{offering.random_identifier}}')" class="circle-cover-bg"></div>
         </div>
+        <!--title and paragraphs display host details-->
         <h4 class="text-center">{{host.user.username}}</h4>
         <p class="text-center padding-top-7">{{host.first_language}}</p>
         <p class="text-center">{{offering.work_category}}</p>

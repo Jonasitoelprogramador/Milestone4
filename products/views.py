@@ -22,22 +22,17 @@ def Success(request):
 def Cancel(request):
     return render(request, "products/cancel.html")
 
-
-def ProductLanding(request):
-    product = Product.objects.get(name="subscription")
-    print(f"This is the output I'm after {type(product)}")
-    context = {
-        "product": product
-    }
-    return render(request, "products/product-landing.html", context)
-
-
+# inspired by https://www.youtube.com/watch?v=722A27IoQnk&t=2539s
+# This creates the page in which users fill in their details
 class CreateCheckoutSessionView(View):
     def post(self, request, *args, **kwargs):
+        # get the product stored in the db
         product_id = Product.objects.get(name="subscription").id
         product = Product.objects.get(id=product_id)
+        # define where you would like Stripe to redirect to post payment
         YOUR_DOMAIN = "https://language-stay.herokuapp.com"
         checkout_session = stripe.checkout.Session.create(
+            # create a dictionary to pass through to Stripe checjout
             line_items=[
                 {
                     # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
@@ -45,28 +40,26 @@ class CreateCheckoutSessionView(View):
                     'quantity': 1,
                 },
             ],
+            # This is used to identify the user in the webhook view post payment
             metadata={
                 "user_id": request.user.id,
                 "user_role": request.user.role 
             },
             mode='payment',
+            # The exact URL to redirect to depending on success or failure
             success_url=YOUR_DOMAIN + '/success',
             cancel_url=YOUR_DOMAIN + '/cancel',
         )
         return redirect(checkout_session.url, code=303)
 
-
-'''@csrf_exempt
-def StripeWebhook(request):
-    payload = request.body
-    print("just printing this thing out there you go all good")
-    return HttpResponse(status=200)'''
-
+# This recieves the request that is send back from Stripe on successful payment
 @csrf_exempt
 def StripeWebhook(request):
     payload = request.body
+    # required to verify request is coming from Stripe
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
+    # checking request does have correct header
     try:
         event = stripe.Webhook.construct_event(
             payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
@@ -78,9 +71,10 @@ def StripeWebhook(request):
         # Invalid signature
         return HttpResponse(status=400)
     
+    # If the request is correct
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
-
+        # update the payment_status attribute in the Host/Worker model to paid
         customer_id = session["metadata"]["user_id"]
         customer_role = session["metadata"]["user_role"]
         if customer_role == "host":

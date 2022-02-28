@@ -38,7 +38,9 @@
     <!--This code was inspired by https://getbootstrap.com/docs/4.0/examples/carousel/-->
     <body id="body-element">
         <header class="header-style" id="header" {{headerhidden}}>
+            <!--navbar section-->
             <nav class="navbar navbar-style navbar-expand-md fixed-top">
+                <!--this code deals with the 'burger' icon used to toggle the navbar on smaller screen sizes-->
                 <button class="navbar-toggler navbar-toggler-style" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
                         <div></div>
@@ -46,18 +48,23 @@
                         <div></div>
                     </span>
                 </button>
+                <!--dealing with the navbar content-->
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav">
+                        <!--website icon and link-->
                         <a type="button" href="{% url 'homepage' %}"><img src="{% static 'images/globe.png' %}" alt="globe-picture" id="globe"></a>
+                        <!--text in the navbar is either written directly in the HTML or passed through from the view using Jinja.-->
                         <li class="nav-item active" id="nav-home">
                             <a class="nav-link" href="{% url 'homepage' %}">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item" id="profile-list-element" {{hidden}}>
                             <a class="nav-link" href="{% url 'profile' %}" tabindex="-1">{{profile}}</a>
                         </li>
+                        <!--href added by JS-->
                         <li class="nav-item" id="worker-host-list-element" {{hidden}}>
                             <a id="host_or_worker" class="nav-link" href='' tabindex="-1">{{inner_HTML}}</a>
                         </li>
+                        <!--href added by JS-->
                         <li class="nav-item">
                             <a id="login_or_logout" class="nav-link" href='' tabindex="-1">{{login_logout}}</a>
                         </li>
@@ -75,11 +82,13 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
+                    <!--trigger button for modal-->
                     <h5 class="modal-title" id="exampleModalLongTitle">Upgrade Membership</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     </div>
+                    <!--explanation of product inside modal-->
                     <div class="modal-body">
                     Upgrade to our premium membership now in order to access members' email addresses 
                     and get started on your next adventure!
@@ -87,10 +96,12 @@
                     Membership is $20 for a lifetime subscription
                     </div>
                     <div class="modal-footer">
+                    <!--form, includes button that calls the checkout view-->
                     <form action="{% url 'create-session-view' %}" method="POST">
                         {% csrf_token %}
                         <button type="submit" id="checkout-button" class="btn btn-secondary">Checkout</button>
                     </form>
+                    <!--un-toggles modal-->
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -114,88 +125,32 @@
     </body>
 </html>
 
-
 <script>
     window.onload = function() {
-        console.log("hello my friend how are you");
+        /*gets the host/worker or profile navbar elements*/
         the_element = document.getElementById('host_or_worker')
         profile = document.getElementById("profile-list-element")
         worker_host_list_element = document.getElementById("worker-host-list-element")
+        /*if "Workers" assigns correct href and vice-versa */
         if (the_element.innerHTML == "Workers") {
             the_element.href = '/users/all_workers'
         }
         else if (the_element.innerHTML == "Hosts") {
             the_element.href = '/users/all_offerings'
         }
+        /*get login/logout navbar element*/
         the_element_2 = document.getElementById('login_or_logout')
+        /*assigns corresponding href values*/
         if ((the_element.innerHTML == "Hosts") || (the_element.innerHTML == "Workers")) {
             the_element_2.href='/accounts/logout'
         }
         else {
             the_element_2.href = '/accounts/login'
         }
+        /*if header is hidden, throws a JS alert*/
         the_header = document.getElementById('header')
         if (the_header.hidden == true) {
             alert("Please fill in your profile to access this site.")
         }
         }
-
-        /*Calculates width of scroll bar.  Taken from http://www.alexandre-gomes.com/?p=115*/
-        function getScrollBarWidth () {
-            var inner = document.createElement('p');
-            inner.style.width = "100%";
-            inner.style.height = "200px";
-
-            var outer = document.createElement('div');
-            outer.style.position = "absolute";
-            outer.style.top = "0px";
-            outer.style.left = "0px";
-            outer.style.visibility = "hidden";
-            outer.style.width = "200px";
-            outer.style.height = "150px";
-            outer.style.overflow = "hidden";
-            outer.appendChild (inner);
-
-            document.body.appendChild (outer);
-            var w1 = inner.offsetWidth;
-            outer.style.overflow = 'scroll';
-            var w2 = inner.offsetWidth;
-            if (w1 == w2) w2 = outer.clientWidth;
-
-            document.body.removeChild (outer);
-
-            return (w1 - w2);
-        };
-        /*End of borrowed section*/
-
-        var movableDiv = document.getElementById("movable-div");
-        var picColumn = document.getElementById("picture-column");
-        var detailsColumn = document.getElementById("details-column");
-
-        // Create a condition that targets viewports at least 768px wide
-        const mediaQuery1 = window.matchMedia('(min-width: 768px)');
-        const mediaQuery2 = window.matchMedia('(max-width: 767px)');
-
-        function handleTabletChange1(e) {
-        // Check if the media query is true
-        if (e.matches) {
-            // Then 
-            picColumn.appendChild(movableDiv)
-        }
-        }
-
-        function handleTabletChange2(e) {
-        // Check if the media query is true
-        if (e.matches) {
-            // Then 
-            detailsColumn.appendChild(movableDiv)
-        }
-        }
-
-        // Register event listener
-        mediaQuery1.addEventListener("change", handleTabletChange1);
-        mediaQuery2.addEventListener("change", handleTabletChange2);
-
-        // Initial check
-        handleTabletChange1(mediaQuery1)
 </script>

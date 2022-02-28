@@ -2,66 +2,132 @@
 {% extends "base.html" %}
 {% load static %}
 
-    {% block content %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 col-md-6" id="picture-column">
-                <div class="mx-auto circle-container-bg">
-                    <div style="background-image: url('https://language-stay.s3.amazonaws.com/media/images/{{worker_details.random_identifier}}')" class="circle-cover-bg"></div>
-                </div>
+<!--content injcted into base.html-->
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-6" id="picture-column">
+            <!--displays worker image-->
+            <div class="mx-auto circle-container-bg">
+                <div style="background-image: url('https://language-stay.s3.amazonaws.com/media/images/{{worker_details.random_identifier}}')" class="circle-cover-bg"></div>
             </div>
-            <div class="col-12 col-md-6" id="details-column">
-                <div class="details">
-                    <i class="fas fa-user-alt"></i>
-                    <p class="inline"><strong>Name</strong></p>
-                    <p class="wrapable">{{worker_details}}</p>
-                    <hr>
-                    <i class="fas fa-envelope"></i>
-                    <p class="inline"><strong>Email</strong></p>
-                    <p class="wrapable">{{email}}</p>
-                    <hr>
-                    <i class="fas fa-language"></i>
-                    <p class="inline"><strong>Fist Language</strong></p>
-                    <p class="wrapable">{{worker_details.first_language}}</p>
-                    <hr>
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p class="inline"><strong>Desired Language</strong></p>
-                    <p class="wrapable">{{worker_details.desired_language}}</p>
-                    <hr>
-                    <i class="fas fa-globe-europe"></i>
-                    <p class="inline"><strong>Nationality</strong></p>
-                    <p class="wrapable">{{worker_details.nationality}}</p>
-                    <hr>
-                    <i class="fas fa-hands-helping"></i>
-                    <p class="inline"><strong>Work Experience Category</strong></p>
-                    <p class="wrapable">{{worker_details.work_experience_category}}</p>
-                    <hr>
-                    <i class="fas fa-info"></i>
-                    <p class="inline"><strong>Work Experience</strong></p>
-                    <p class="wrapable">{{worker_details.work_experience}}</p>
-                </div>
-                <div id="movable-div">
-                    <div class="more-offerings">More Workers</div>
-                        <div class="details-container">
-                            {% for worker in workers %}
-                                <div>
-                                    <div class="circle-container-details">
-                                        <div style="background-image: url('https://language-stay.s3.amazonaws.com/media/images/{{worker.random_identifier}}')" class="circle-cover-bg"></div>
-                                    </div>
-                                    <div class="text-details">
-                                        <p class="text-center">{{worker}}</p>
-                                        <p class="text-center">I would like to learn: {{worker.desired_language}}</p>
-                                        <p class="text-center"><a class="btn btn-secondary" href="/users/worker_details/{{worker.pk}}">View details &raquo;</a></p>
-                                    </div>
+        </div>
+        <!--div section displaying all information saved in Worker instance-->
+        <div class="col-12 col-md-6" id="details-column">
+            <div class="details">
+                <i class="fas fa-user-alt"></i>
+                <p class="inline"><strong>Name</strong></p>
+                <p class="wrapable">{{worker_details}}</p>
+                <hr>
+                <i class="fas fa-envelope"></i>
+                <p class="inline"><strong>Email</strong></p>
+                <p class="wrapable">{{email}}</p>
+                <hr>
+                <i class="fas fa-language"></i>
+                <p class="inline"><strong>Fist Language</strong></p>
+                <p class="wrapable">{{worker_details.first_language}}</p>
+                <hr>
+                <i class="fas fa-map-marker-alt"></i>
+                <p class="inline"><strong>Desired Language</strong></p>
+                <p class="wrapable">{{worker_details.desired_language}}</p>
+                <hr>
+                <i class="fas fa-globe-europe"></i>
+                <p class="inline"><strong>Nationality</strong></p>
+                <p class="wrapable">{{worker_details.nationality}}</p>
+                <hr>
+                <i class="fas fa-hands-helping"></i>
+                <p class="inline"><strong>Work Experience Category</strong></p>
+                <p class="wrapable">{{worker_details.work_experience_category}}</p>
+                <hr>
+                <i class="fas fa-info"></i>
+                <p class="inline"><strong>Work Experience</strong></p>
+                <p class="wrapable">{{worker_details.work_experience}}</p>
+            </div>
+            <div id="movable-div">
+                <div class="more-offerings">More Workers</div>
+                    <div class="details-container">
+                        <!--loops thorugh the list of other workers-->
+                        {% for worker in workers %}
+                            <div>
+                                <!--display worker image-->
+                                <div class="circle-container-details">
+                                    <div style="background-image: url('https://language-stay.s3.amazonaws.com/media/images/{{worker.random_identifier}}')" class="circle-cover-bg"></div>
                                 </div>
-                            {% endfor %}
-                        </div>
+                                <!--displays worker information-->
+                                <div class="text-details">
+                                    <p class="text-center">{{worker}}</p>
+                                    <p class="text-center">I would like to learn: {{worker.desired_language}}</p>
+                                    <p class="text-center"><a class="btn btn-secondary" href="/users/worker_details/{{worker.pk}}">View details &raquo;</a></p>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
-                </div>  
-            </div>
-        </div>   
-    </div>
+                </div>
+            </div>  
+        </div>
+    </div>   
+</div>
 
+    <script>
+            /*Calculates width of scroll bar.  Taken from http://www.alexandre-gomes.com/?p=115*/
+            function getScrollBarWidth () {
+                var inner = document.createElement('p');
+                inner.style.width = "100%";
+                inner.style.height = "200px";
+    
+                var outer = document.createElement('div');
+                outer.style.position = "absolute";
+                outer.style.top = "0px";
+                outer.style.left = "0px";
+                outer.style.visibility = "hidden";
+                outer.style.width = "200px";
+                outer.style.height = "150px";
+                outer.style.overflow = "hidden";
+                outer.appendChild (inner);
+    
+                document.body.appendChild (outer);
+                var w1 = inner.offsetWidth;
+                outer.style.overflow = 'scroll';
+                var w2 = inner.offsetWidth;
+                if (w1 == w2) w2 = outer.clientWidth;
+    
+                document.body.removeChild (outer);
+    
+                return (w1 - w2);
+            };
+            /*End of borrowed section*/
+    
+            var movableDiv = document.getElementById("movable-div");
+            var picColumn = document.getElementById("picture-column");
+            var detailsColumn = document.getElementById("details-column");
+    
+            // Create a condition that targets viewports at least 768px wide
+            const mediaQuery1 = window.matchMedia('(min-width: 768px)');
+            const mediaQuery2 = window.matchMedia('(max-width: 767px)');
+    
+            function handleTabletChange1(e) {
+            // Check if the media query is true
+            if (e.matches) {
+                // Then 
+                picColumn.appendChild(movableDiv)
+            }
+            }
+    
+            function handleTabletChange2(e) {
+            // Check if the media query is true
+            if (e.matches) {
+                // Then 
+                detailsColumn.appendChild(movableDiv)
+            }
+            }
+    
+            // Register event listener
+            mediaQuery1.addEventListener("change", handleTabletChange1);
+            mediaQuery2.addEventListener("change", handleTabletChange2);
+    
+            // Initial check
+            handleTabletChange1(mediaQuery1)
+    </script>
     
     {% endblock %}
 

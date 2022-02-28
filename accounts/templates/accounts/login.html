@@ -26,28 +26,36 @@
             <section class="login-section">
                 <div>
                     <div class="signup-form">
+                        <!--Sign in title-->
                         <h2 class="signin-title">Sign In</h2>
+                        <!--Form-->
                         <form method="POST" class="login-form text-center">
                             {% csrf_token %}
                             <div class="form-flex">
+                                <!--div with username input-->
                                 <div class="form-group login-group">
                                     <label for="your_name">Username</label>
                                     <input type="text" name="your_name" id="your_name" placeholder="Username" class="login-inputs" required>
                                 </div>
+                                <!--div with password input-->
                                 <div class="form-group login-group">
                                     <label for="your_pass">Password</label>
                                     <input type="password" name="your_pass" id="your_pass" placeholder="Password" class="login-inputs" required>
                                 </div>
+                                <!--submit button-->
                                 <div class="form-group form-button">
                                     <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" required>
                                 </div>
                             </div>
+                            <!--link to signup page-->
                             <div class="padding-bottom-30">
                                 <a href="/accounts/signup" class="signup-image-link" id="already-account">Register</a>
                             </div>
+                            <!--link back to homepage-->
                             <div class="padding-bottom-30">
                                 <a href="/" class="signup-image-link" id="already-account">Home</a>
                             </div>
+                            <!--div where authentication errors are displayed-->
                             <div class="authentication-errors">
                                 {{errors}}
                             </div>

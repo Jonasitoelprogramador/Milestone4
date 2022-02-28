@@ -23,11 +23,14 @@ def path_time(instance, filename):
 
 
 # Create your models here.
+# Model with 5 attribues
 class Host(models.Model):
+    # user field has one-to-one relationship User model
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     nationality = models.CharField(max_length=100)
     first_language = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
+    # define the options available in the payment_status attribute
     account_choices = [
         ('paid', 'paid'),
         ('nonpaid', 'nonpaid')]
@@ -39,15 +42,18 @@ class Host(models.Model):
         return self.user.username
     
 
+# Model with 9 attribues
 class Worker(models.Model):
+    # user field has one-to-one relationship User model
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     nationality = models.CharField(max_length=100)
     first_language = models.CharField(max_length=100)
     desired_language = models.CharField(max_length=100)
     work_experience_category = models.CharField(max_length=100)
-    work_experience = models.CharField(max_length=100)
+    work_experience = models.TextField()
     worker_image = models.ImageField(upload_to=path_time, default='default.jpg')
     random_identifier = models.CharField(max_length=100)
+    # define the options available in the payment_status attribute
     account_choices = [
         ('paid', 'paid'),
         ('nonpaid', 'nonpaid')]
