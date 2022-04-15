@@ -25,14 +25,13 @@ def Cancel(request):
 # inspired by https://www.youtube.com/watch?v=722A27IoQnk&t=2539s
 # This creates the page in which users fill in their details
 def CreateCheckoutSessionView(request):
-        print(request.POST)
         # get the product stored in the db
-        product_id = Product.objects.get(name="subscription").id
+        product_id = Product.objects.get(name=request.POST.get('products')).id
         product = Product.objects.get(id=product_id)
         # define where you would like Stripe to redirect to post payment
         YOUR_DOMAIN = "https://language-stay.herokuapp.com"
         checkout_session = stripe.checkout.Session.create(
-            # create a dictionary to pass through to Stripe checjout
+            # create a dictionary to pass through to Stripe checkout
             line_items=[
                 {
                     # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
