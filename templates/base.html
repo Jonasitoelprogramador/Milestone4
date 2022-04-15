@@ -99,6 +99,12 @@
                     <!--form, includes button that calls the checkout view-->
                     <form action="{% url 'create-session-view' %}" method="POST">
                         {% csrf_token %}
+                        <input type="radio" id="html" name="products" value="SixMonth">
+                        <label for="html">HTML</label><br>
+                        <input type="radio" id="css" name="products" value="OneYear">
+                        <label for="css">CSS</label><br>
+                        <input type="radio" id="javascript" name="products" value="TwoYear">
+                        <label for="javascript">JavaScript</label>
                         <button type="submit" id="checkout-button" class="btn btn-secondary">Checkout</button>
                     </form>
                     <!--un-toggles modal-->

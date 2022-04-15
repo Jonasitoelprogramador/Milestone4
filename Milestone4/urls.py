@@ -29,7 +29,7 @@ urlpatterns = [
     path('accounts/', include(urls_accounts)),
     path('users/', include(urls_users)),
     path('', homepage, name='homepage'),
-    path('create-session-view', CreateCheckoutSessionView.as_view(), name='create-session-view'),
+    path('create-session-view/', CreateCheckoutSessionView, name='create-session-view'),
     path('cancel/', Cancel, name='cancel'),
     path('success/', Success, name='success'),
     path('webhooks/stripe', StripeWebhook, name='stripe-webhook')

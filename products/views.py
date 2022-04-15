@@ -24,8 +24,8 @@ def Cancel(request):
 
 # inspired by https://www.youtube.com/watch?v=722A27IoQnk&t=2539s
 # This creates the page in which users fill in their details
-class CreateCheckoutSessionView(View):
-    def post(self, request, *args, **kwargs):
+def CreateCheckoutSessionView(request):
+        print(request.POST)
         # get the product stored in the db
         product_id = Product.objects.get(name="subscription").id
         product = Product.objects.get(id=product_id)
