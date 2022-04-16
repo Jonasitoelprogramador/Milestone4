@@ -4,10 +4,9 @@
 
 {% block content %}
     {% for f, i in forms_list %}
-    <form action="{% url 'product-admin' %}" method="POST"></form>
+    <form action="{% url 'product-admin' i %}" method="POST">
     {% csrf_token %}
         <p>{{f}}</p>
-        <p>{{i}}</p>
     <input class="btn btn-secondary" role="button" type="submit" value="Update">
     </form>    
     {% endfor %} 

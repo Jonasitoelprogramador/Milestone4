@@ -90,14 +90,27 @@ def StripeWebhook(request):
     return HttpResponse(status=200)
 
 
-def ProductView(request):
+def ProductView(request, pk=None):
     forms_list = []
+    print("posting")
     if request.method == 'POST':
-        product_instance = Product.objects.get(id=current_user)
-        namey = request.POST.getlist('name')
-        print(f'It is you Im looking for babe {type(namey[0])}')
-        #product_filled_form = ProductForm(request.POST, instance=)
-        #product_filled_form.save()
+        print("post")
+        product_instance = Product.objects.get(id=pk)
+        product_filled_form = ProductForm(request.POST, instance=product_instance)
+        product_filled_form.save()
+    instances = list(Product.objects.all())
+    # loop through all the instances
+    for i in range(len(instances)):
+        # get each instance
+        instancey = Product.objects.get(name=instances[i])
+        print(f'this is the instance:  {instancey.pk}')
+        # bind each instance to a form
+        forms_list.append([ProductForm(instance=instancey), instancey.pk])
+    return render(request, "products/product-admin.html", {'forms_list': forms_list})
+
+
+def ProductDisplay(request):
+    forms_list = []
     instances = list(Product.objects.all())
     # loop through all the instances
     for i in range(len(instances)):
