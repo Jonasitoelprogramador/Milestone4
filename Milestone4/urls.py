@@ -21,7 +21,7 @@ from users import urls as urls_users
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import homepage
-from products.views import CreateCheckoutSessionView, Cancel, Success, StripeWebhook
+from products.views import CreateCheckoutSessionView, Cancel, Success, StripeWebhook, ProductView
 
 
 urlpatterns = [
@@ -32,7 +32,8 @@ urlpatterns = [
     path('create-session-view/', CreateCheckoutSessionView, name='create-session-view'),
     path('cancel/', Cancel, name='cancel'),
     path('success/', Success, name='success'),
-    path('webhooks/stripe', StripeWebhook, name='stripe-webhook')
+    path('webhooks/stripe', StripeWebhook, name='stripe-webhook'),
+    path('product-admin/', ProductView, name='product-admin'),
 ]
 
 if settings.DEBUG:

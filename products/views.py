@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from accounts.models import Payment
 from users.models import Host, Worker
+from .forms import ProductForm
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -87,3 +88,16 @@ def StripeWebhook(request):
             
     # Passed signature verification
     return HttpResponse(status=200)
+
+
+def ProductView(request):
+    forms_list = []
+    instances = list(Product.objects.all())
+    # loop through all the instances
+    for i in range(len(instances)):
+        # get each instance
+        instancey = Product.objects.get(name=instances[i])
+        print(f'this is the instance: {type(instancey)}')
+        # bind each instance to a form
+        forms_list.append(ProductForm(instance=instancey))
+    return render(request, "products/product-admin.html", {'forms_list': forms_list})
