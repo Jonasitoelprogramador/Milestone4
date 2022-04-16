@@ -3,7 +3,12 @@
 {% load static %}
 
 {% block content %}
-{% for i in forms_list %}
-<p>{{i}}</p>
-{% endfor %}
+    {% for f, i in forms_list %}
+    <form action="{% url 'product-admin' %}" method="POST"></form>
+    {% csrf_token %}
+        <p>{{f}}</p>
+        <p>{{i}}</p>
+    <input class="btn btn-secondary" role="button" type="submit" value="Update">
+    </form>    
+    {% endfor %} 
 {% endblock %}
