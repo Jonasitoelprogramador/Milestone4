@@ -102,7 +102,7 @@ def ProductView(request, pk=None):
     # loop through all the instances
     for i in range(len(instances)):
         # get each instance
-        instancey = Product.objects.get(name=instances[i])
+        instancey = Product.objects.get(pk=instances[i].pk)
         print(f'this is the instance:  {instancey.pk}')
         # bind each instance to a form
         forms_list.append([ProductForm(instance=instancey), instancey.pk])
