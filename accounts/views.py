@@ -9,8 +9,17 @@ from .forms import ExtendedUserCreationForm, RoleForm
 from django.contrib.auth.forms import AuthenticationForm
 from users.views import all_offerings, all_workers, profile
 from django.urls import reverse
+from django.contrib.auth.decorators import user_passes_test
 
 
+def logged_in_check(user):
+    if user.is_authenticated:
+        return False
+    else:
+        return True
+
+
+@user_passes_test(logged_in_check, login_url="/")
 # Create your views here.
 def signup(request):
     form1 = ExtendedUserCreationForm()
@@ -36,7 +45,7 @@ def signup(request):
     return render(request, 'accounts/sign_up.html', {"form1": form1, "form2": form2})
 
 
-
+@user_passes_test(logged_in_check, login_url="/")
 def login(request):
     """A view that manages the login form"""
     authentication_form = AuthenticationForm()

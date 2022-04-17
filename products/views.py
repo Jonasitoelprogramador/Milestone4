@@ -6,9 +6,10 @@ from django.shortcuts import render, redirect
 from .models import Product
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
-from accounts.models import Payment
 from users.models import Host, Worker
 from .forms import ProductForm
+from django.contrib.auth.decorators import user_passes_test
+
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -90,6 +91,7 @@ def StripeWebhook(request):
     return HttpResponse(status=200)
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def ProductView(request, pk=None):
     forms_list = []
     print("posting")
@@ -109,12 +111,14 @@ def ProductView(request, pk=None):
     return render(request, "products/product-admin.html", {'forms_list': forms_list})
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def ProductDelete(request, pk):
     product_instance = Product.objects.get(id=pk)
     product_instance.delete()
     return redirect(ProductView)
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def ProductAdd(request):
     Product.objects.create()
     return redirect(ProductView)

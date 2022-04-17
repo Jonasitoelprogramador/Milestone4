@@ -15,17 +15,7 @@ class Role(models.Model):
     def __str__(self):
         return self.account_Role
 
-# Payment model contains user field (1-to-1) and payment status field (two options: paid/nonpaid)
-class Payment(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, default=1)
-    account_choices = [
-        ('paid', 'paid'),
-        ('unpaid', 'unpaid')]
-    payment_status = models.CharField(
-        max_length=6,
-        choices=account_choices)
-    def __str__(self):
-        return self.payment_status
+
 
         
         
