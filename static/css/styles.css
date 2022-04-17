@@ -417,5 +417,26 @@ hr {
 .footer {
   background-color: #a4b0c0;
   padding: 15px;
+  position: absolute;
+  bottom: 0;
 }
+
+/*----------------product admin-----------------*/
+
+.admin-form {
+  display: block;
+  width: 100%;
+  background: transparent;
+  font-family: Poppins-Regular;
+  font-size: 15px;
+  line-height: 1.2;
+  padding: 0 5px;
+  font: inherit;
+  color: #6666; 
+}
+
+.admin-form-div {
+  padding: 20px;
+}
+
 

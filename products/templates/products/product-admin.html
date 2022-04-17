@@ -3,19 +3,21 @@
 {% load static %}
 
 {% block content %}
-    {% for f, i in forms_list %}
-    <form action="{% url 'product-admin' i %}" method="POST">
-        {% csrf_token %}
-            <p>{{f}}</p>
-        <input class="btn btn-secondary" role="button" type="submit" value="Update">
-    </form>
-    <form action="{% url 'product-delete' i %}" method="POST">
-        {% csrf_token %}
-        <input class="btn btn-secondary" role="button" type="submit" value="Delete">
-    </form>
-    {% endfor %} 
-    <form action="{% url 'product-add' %}" method="POST">
-        {% csrf_token %}
-        <input class="btn btn-secondary" role="button" type="submit" value="Add">
-    </form>
+    <div class="admin-form-div">
+        {% for f, i in forms_list %}
+        <form action="{% url 'product-admin' i %}" method="POST">
+            {% csrf_token %}
+                <p>{{f}}</p>
+            <input class="btn btn-secondary" role="button" type="submit" value="Update">
+        </form>
+        <form action="{% url 'product-delete' i %}" method="POST">
+            {% csrf_token %}
+            <input class="btn btn-secondary" role="button" type="submit" value="Delete">
+        </form>
+        {% endfor %} 
+        <form action="{% url 'product-add' %}" method="POST">
+            {% csrf_token %}
+            <input class="btn btn-secondary" role="button" type="submit" value="Add">
+        </form>
+    </div>
 {% endblock %}

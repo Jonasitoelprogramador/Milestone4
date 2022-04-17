@@ -8,3 +8,9 @@ class ProductForm(ModelForm):
         model = Product
         # Define the inputs to display
         fields = ('name', 'price', 'price_id')
+
+        widgets = {
+            'name': forms.TextInput(attrs={'id':"product-name", 'class': 'admin-form'}),
+            'price': forms.TextInput(attrs={'id':"product-price", 'class': 'admin-form'}),
+            'price_id': forms.TextInput(attrs={'id':"product-price-id", 'class': 'admin-form'}),
+        }

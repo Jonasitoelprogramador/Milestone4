@@ -6,7 +6,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     price = models.IntegerField(default=500)
     price_id = models.CharField(max_length=100)
-
+    
     def __str__(self):
         return self.name
     # used to change the price from cents (as in Stripe) to dollars
