@@ -13,12 +13,23 @@ from django.contrib.auth.decorators import user_passes_test
 
 def host_worker_exist(user):
     try: 
+        if user.worker:
+            return True
+    except:
+        if user.host:
+            return True
+    else:
+        return False
+
+
+def host_check(user):
+    try: 
         if user.host:
             return True
     except:
         return False
 
-        
+
 @login_required()
 def profile(request):
     if str(request.user.role) == "host":
@@ -134,7 +145,7 @@ def profile(request):
         return render(request, 'users/worker_profile.html', context)
 
 
-@user_passes_test(host_worker_exist, login_url="users/profile")
+@user_passes_test(host_worker_exist, login_url="/users/profile")
 @login_required()
 def all_offerings(request):
     #get all the instances of the Host model
@@ -169,8 +180,8 @@ def all_offerings(request):
         }
     return render(request, "hostofferings/all_offerings.html", context)
 
-
-@user_passes_test(host_worker_exist, login_url="users/profile")
+@user_passes_test(host_check, login_url="/")
+@user_passes_test(host_worker_exist, login_url="/users/profile")
 @login_required()
 def all_workers(request):
     #get all the instances of the Worker model
@@ -195,7 +206,7 @@ def all_workers(request):
     return render(request, "hostofferings/all_workers.html", context)
 
 
-@user_passes_test(host_worker_exist, login_url="users/profile")
+@user_passes_test(host_worker_exist, login_url="/users/profile")
 @login_required()
 def offering_details(request, pk):
     #get all of the instances of the Offering model
@@ -256,7 +267,8 @@ def offering_details(request, pk):
     return render(request, "hostofferings/offering_details.html", context)
 
 
-@user_passes_test(host_worker_exist, login_url="users/profile")
+#@user_passes_test(host_check, login_url="/")
+@user_passes_test(host_worker_exist, login_url="/users/profile")
 @login_required()
 def worker_details(request, pk):
     all_workers = Worker.objects.all()

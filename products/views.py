@@ -18,19 +18,30 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 #The below is created following a tutorial that can be found here: https://www.youtube.com/watch?v=722A27IoQnk&t=716s
 
 
-@user_passes_test(host_worker_exist, login_url="users/profile")
+def user_paid(user):
+    try: 
+        if user.host.payment_status == "paid":
+            return False
+    except:
+        return True
+
+
+@user_passes_test(user_paid, login_url="/")
+@user_passes_test(host_worker_exist, login_url="/users/profile")
 def Success(request):
     return render(request, "products/success.html")
 
 
-@user_passes_test(host_worker_exist, login_url="users/profile")
+@user_passes_test(user_paid, login_url="/")
+@user_passes_test(host_worker_exist, login_url="/users/profile")
 def Cancel(request):
     return render(request, "products/cancel.html")
 
 
 # inspired by https://www.youtube.com/watch?v=722A27IoQnk&t=2539s
 # This creates the page in which users fill in their details
-@user_passes_test(host_worker_exist, login_url="users/profile")
+@user_passes_test(user_paid, login_url="/")
+@user_passes_test(host_worker_exist, login_url="/users/profile")
 def CreateCheckoutSessionView(request):
         # get the product stored in the db
         product_id = Product.objects.get(name=request.POST.get('products')).id
@@ -59,7 +70,8 @@ def CreateCheckoutSessionView(request):
         return redirect(checkout_session.url, code=303)
 
 # This recieves the request that is send back from Stripe on successful payment
-@user_passes_test(host_worker_exist, login_url="users/profile")
+@user_passes_test(user_paid, login_url="/")
+@user_passes_test(host_worker_exist, login_url="/users/profile")
 @csrf_exempt
 def StripeWebhook(request):
     payload = request.body
@@ -97,7 +109,7 @@ def StripeWebhook(request):
     return HttpResponse(status=200)
 
 
-@user_passes_test(host_worker_exist, login_url="users/profile")
+@user_passes_test(host_worker_exist, login_url="/users/profile")
 @user_passes_test(lambda u: u.is_superuser)
 def ProductView(request, pk=None):
     forms_list = []
@@ -118,7 +130,7 @@ def ProductView(request, pk=None):
     return render(request, "products/product-admin.html", {'forms_list': forms_list})
 
 
-@user_passes_test(host_worker_exist, login_url="users/profile")
+@user_passes_test(host_worker_exist, login_url="/users/profile")
 @user_passes_test(lambda u: u.is_superuser)
 def ProductDelete(request, pk):
     product_instance = Product.objects.get(id=pk)
@@ -126,7 +138,7 @@ def ProductDelete(request, pk):
     return redirect(ProductView)
 
 
-@user_passes_test(host_worker_exist, login_url="users/profile")
+@user_passes_test(host_worker_exist, login_url="/users/profile")
 @user_passes_test(lambda u: u.is_superuser)
 def ProductAdd(request):
     Product.objects.create()
