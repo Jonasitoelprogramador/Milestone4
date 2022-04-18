@@ -1,7 +1,10 @@
 from django.shortcuts import render
 import os
+from django.contrib.auth.decorators import user_passes_test
+from users.views import host_worker_exist
 
 
+@user_passes_test(host_worker_exist, login_url="users/profile")
 def homepage(request):
     worker = "worker"
     host = "host"

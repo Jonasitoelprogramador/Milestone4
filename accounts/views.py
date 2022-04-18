@@ -10,6 +10,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from users.views import all_offerings, all_workers, profile
 from django.urls import reverse
 from django.contrib.auth.decorators import user_passes_test
+from users.views import host_worker_exist
 
 
 def logged_in_check(user):
