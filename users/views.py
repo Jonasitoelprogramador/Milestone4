@@ -30,6 +30,14 @@ def host_check(user):
         return False
 
 
+def worker_check(user):
+    try: 
+        if user.worker:
+            return True
+    except:
+        return False
+
+
 @login_required()
 def profile(request):
     if str(request.user.role) == "host":
@@ -145,6 +153,7 @@ def profile(request):
         return render(request, 'users/worker_profile.html', context)
 
 
+@user_passes_test(worker_check, login_url="/")
 @user_passes_test(host_worker_exist, login_url="/users/profile")
 @login_required()
 def all_offerings(request):
@@ -180,6 +189,7 @@ def all_offerings(request):
         }
     return render(request, "hostofferings/all_offerings.html", context)
 
+
 @user_passes_test(host_check, login_url="/")
 @user_passes_test(host_worker_exist, login_url="/users/profile")
 @login_required()
@@ -206,6 +216,7 @@ def all_workers(request):
     return render(request, "hostofferings/all_workers.html", context)
 
 
+@user_passes_test(worker_check, login_url="/")
 @user_passes_test(host_worker_exist, login_url="/users/profile")
 @login_required()
 def offering_details(request, pk):
@@ -267,7 +278,7 @@ def offering_details(request, pk):
     return render(request, "hostofferings/offering_details.html", context)
 
 
-#@user_passes_test(host_check, login_url="/")
+@user_passes_test(host_check, login_url="/")
 @user_passes_test(host_worker_exist, login_url="/users/profile")
 @login_required()
 def worker_details(request, pk):
