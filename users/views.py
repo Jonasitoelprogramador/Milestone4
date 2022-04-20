@@ -9,31 +9,45 @@ from accounts.forms import UserEmailForm
 from django.forms.models import model_to_dict
 import random
 from django.contrib.auth.decorators import user_passes_test
+from products.models import Product
 
 
 def host_worker_exist(user):
     try: 
-        if user.worker:
+        user.role
+        host = ""
+        worker = ""
+        try: 
+            user.worker
+            worker = "yes"
+        except:
+            worker = "no"
+        try: 
+            user.host
+            host = "yes"
+        except:
+            host = "no"
+        if host == "yes" or worker == "yes":
             return True
+        else:
+            return False
     except:
-        if user.host:
-            return True
-    else:
-        return False
+        return True
+        
 
 
 def host_check(user):
     try: 
-        if user.host:
-            return True
+        user.host
+        return True
     except:
         return False
 
 
 def worker_check(user):
     try: 
-        if user.worker:
-            return True
+        user.worker
+        return True
     except:
         return False
 
@@ -97,7 +111,8 @@ def profile(request):
             "upgradeHidden": upgrade_hidden,
             "profile": "Profile",
             "login_logout": "Logout",
-            "headerhidden": headerhidden
+            "headerhidden": headerhidden,
+            "products": Product.objects.all()
         }
 
         return render(request, 'users/host_profile.html', context)
@@ -147,7 +162,8 @@ def profile(request):
             "upgradeHidden": upgrade_hidden,
             "profile": "Profile",
             "login_logout": "Logout",
-            "headerhidden": headerhidden
+            "headerhidden": headerhidden,
+            "products": Product.objects.all()
         }
         
         return render(request, 'users/worker_profile.html', context)
@@ -185,7 +201,8 @@ def all_offerings(request):
             'offerings': tuples,
             "upgradeHidden": upgrade_hidden,
             "profile": "Profile",
-            "login_logout": "Logout"
+            "login_logout": "Logout",
+            "products": Product.objects.all()
         }
     return render(request, "hostofferings/all_offerings.html", context)
 
@@ -211,7 +228,8 @@ def all_workers(request):
             'workers': lst_workers,
             "upgradeHidden": upgrade_hidden,
             "profile": "Profile",
-            "login_logout": "Logout"
+            "login_logout": "Logout",
+            "products": Product.objects.all()
             }
     return render(request, "hostofferings/all_workers.html", context)
 
@@ -273,7 +291,8 @@ def offering_details(request, pk):
             'email': email_parameter,
             "upgradeHidden": upgrade_hidden,
             "profile": "Profile",
-            "login_logout": "Logout"
+            "login_logout": "Logout",
+            "products": Product.objects.all()
         }
     return render(request, "hostofferings/offering_details.html", context)
 
@@ -317,7 +336,8 @@ def worker_details(request, pk):
             'email': email_parameter,
             "upgradeHidden": upgrade_hidden,
             "profile": "Profile",
-            "login_logout": "Logout"
+            "login_logout": "Logout",
+            "products": Product.objects.all()
             }
     return render(request, "users/worker_details.html", context)
 

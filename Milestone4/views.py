@@ -2,6 +2,7 @@ from django.shortcuts import render
 import os
 from django.contrib.auth.decorators import user_passes_test
 from users.views import host_worker_exist
+from products.models import Product
 
 
 @user_passes_test(host_worker_exist, login_url="users/profile")
@@ -42,10 +43,11 @@ def homepage(request):
             "inner_HTML": inner_HTML,
             "upgradeHidden": upgrade_hidden,
             "profile": profile,
-            "login_logout": logout
+            "login_logout": logout,
+            "products": Product.objects.all()
         }
         return render(request, 'accounts/homepage.html', context)
     else:
         # if user is not logged in
-        return render(request, 'accounts/homepage.html', {"login_logout": "Login", "hidden": "hidden", "upgradeHidden": "hidden"})    
+        return render(request, 'accounts/homepage.html', {"login_logout": "Login", "hidden": "hidden", "upgradeHidden": "hidden", "products": Product.objects.all()})    
 
