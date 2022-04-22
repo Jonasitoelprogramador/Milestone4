@@ -14,10 +14,18 @@
             {% csrf_token %}
             <input class="btn btn-secondary" role="button" type="submit" value="Delete">
         </form>
-        {% endfor %} 
-        <form action="{% url 'product-add' %}" method="POST">
-            {% csrf_token %}
-            <input class="btn btn-secondary" role="button" type="submit" value="Add">
-        </form>
+        {% endfor %}
+        <div> 
+            <form action="{% url 'product-add' %}" method="POST" hidden id="new-product-form">
+                {% csrf_token %}
+                {{product_form}}
+                <input class="btn btn-secondary" role="button" type="submit" value="Submit" onclick="myFunction()">
+                <button class="btn btn-secondary" onclick="hide_form()">Cancel</button>
+            </form>
+        </div>
+        <button class="btn btn-secondary" role="button" onclick="show_form()">Add Product</button>
     </div>
 {% endblock %}
+
+
+

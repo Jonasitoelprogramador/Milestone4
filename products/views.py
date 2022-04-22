@@ -127,7 +127,7 @@ def ProductView(request, pk=None):
         print(f'this is the instance:  {instancey.pk}')
         # bind each instance to a form
         forms_list.append([ProductForm(instance=instancey), instancey.pk])
-    return render(request, "products/product-admin.html", {'forms_list': forms_list})
+    return render(request, "products/product-admin.html", {'forms_list': forms_list, 'product_form': ProductForm})
 
 
 @user_passes_test(host_worker_exist, login_url="/users/profile")
@@ -141,7 +141,9 @@ def ProductDelete(request, pk):
 @user_passes_test(host_worker_exist, login_url="/users/profile")
 @user_passes_test(lambda u: u.is_superuser)
 def ProductAdd(request):
-    Product.objects.create()
+    product_filled_form = ProductForm(request.POST)
+    if product_filled_form.is_valid():
+            product_filled_form.save()
     return redirect(ProductView)
 
 

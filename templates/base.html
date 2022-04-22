@@ -157,4 +157,13 @@
             alert("Please fill in your profile to access this site.")
         }
         }
+        function hide_form () {
+            form = document.getElementById("new-product-form")
+            form.hidden = true
+        }
+        function show_form () {
+            form = document.getElementById("new-product-form")
+            console.log(form)
+            form.hidden = false
+        }
 </script>
