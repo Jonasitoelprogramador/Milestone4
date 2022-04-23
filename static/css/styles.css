@@ -43,6 +43,10 @@ body {
   display: inline;
 }
 
+.inline-block {
+  display: inline-block
+}
+
 .input3 {
   display: block;
   width: 100%;
@@ -423,9 +427,7 @@ hr {
 
 /*----------------product admin-----------------*/
 
-.admin-form {
-  display: block;
-  width: 100%;
+.admin-form {  
   background: transparent;
   font-family: Poppins-Regular;
   font-size: 15px;

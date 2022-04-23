@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block content %}
-    <div class="admin-form-div">
+    <div class="admin-form-div" inline-block>
         {% for f, i in forms_list %}
         <form action="{% url 'product-admin' i %}" method="POST">
             {% csrf_token %}
@@ -16,7 +16,7 @@
         </form>
         {% endfor %}
         <div> 
-            <form action="{% url 'product-add' %}" method="POST" hidden id="new-product-form">
+            <form action="{% url 'product-add' %}" method="POST" hidden id="new-product-form" inline-block>
                 {% csrf_token %}
                 {{product_form}}
                 <input class="btn btn-secondary" role="button" type="submit" value="Submit" onclick="myFunction()">
