@@ -455,8 +455,8 @@ hr {
   margin: auto;
   width: 100%;
   background-color: #a4b0c0;
-  border-radius: 10%;
-  color: #fff;
+  border-radius: 2%;
+  color: seashell;
 }
 
 .product-form-para {
