@@ -9,11 +9,15 @@
             <form action="{% url 'product-admin' i %}" method="POST">
                 {% csrf_token %}
                     <p class="product-form-para">{{f}}</p>
-                    <input class="btn btn-secondary" role="button" type="submit" value="Update">
+                    <div>
+                        <input class="btn btn-secondary" role="button" type="submit" value="Update" class="product-form-buttons">
+                    </div>
             </form>
             <form action="{% url 'product-delete' i %}" method="POST">
                 {% csrf_token %}
-                <input class="btn btn-secondary" role="button" type="submit" value="Delete">
+                <div>
+                    <input class="btn btn-secondary" role="button" type="submit" value="Delete" class="product-form-buttons">
+                </div>
             </form>
             {% endfor %}
             <div> 
