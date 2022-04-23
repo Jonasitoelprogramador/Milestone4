@@ -459,7 +459,8 @@ hr {
 }
 
 .product-form-para {
-  font-size: 25px;
+  font-size: 15px;
+  font-family: 'Arvo', serif;
 }
 
 .product-form .form-control {
@@ -476,3 +477,8 @@ hr {
   }
 }
 
+
+@media only screen and (min-width: 750px) {
+.product-form-para {
+  font-size: 25px;
+}

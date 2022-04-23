@@ -127,7 +127,7 @@ def ProductView(request, pk=None):
         print(f'this is the instance:  {instancey.pk}')
         # bind each instance to a form
         forms_list.append([ProductForm(instance=instancey), instancey.pk])
-    return render(request, "products/product-admin.html", {'forms_list': forms_list, 'product_form': ProductForm})
+    return render(request, "products/product-admin.html", {'forms_list': forms_list, 'product_form': ProductForm, 'upgradeHidden': 'hidden'})
 
 
 @user_passes_test(host_worker_exist, login_url="/users/profile")
