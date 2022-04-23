@@ -462,7 +462,7 @@ hr {
   font-size: 25px;
 }
 
-.product-form-buttons {
+.product-form .form-control {
   margin: auto;
   width: 50px;
 }

@@ -6,18 +6,14 @@
     <div class="product-details">
         <div class="admin-form-div" inline-block>
             {% for f, i in forms_list %}
-            <form action="{% url 'product-admin' i %}" method="POST">
+            <form action="{% url 'product-admin' i %}" method="POST" class="product-form">
                 {% csrf_token %}
-                    <p class="product-form-para">{{f}}</p>
-                    <div>
-                        <input class="btn btn-secondary" role="button" type="submit" value="Update" class="product-form-buttons">
-                    </div>
+                <p class="product-form-para">{{f}}</p>
+                <input class="btn btn-secondary" role="button" type="submit" value="Update" class="form-control">
             </form>
-            <form action="{% url 'product-delete' i %}" method="POST">
+            <form action="{% url 'product-delete' i %}" method="POST" class="product-form">
                 {% csrf_token %}
-                <div>
-                    <input class="btn btn-secondary" role="button" type="submit" value="Delete" class="product-form-buttons">
-                </div>
+                <input class="btn btn-secondary" role="button" type="submit" value="Delete" class="form-control">
             </form>
             {% endfor %}
             <div> 
