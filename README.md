@@ -213,7 +213,7 @@ Fix:  Originally, I was passing values through from views.py to my javascript vi
 
 Technologies
 Languages
-HTML5 was used in order to provide the text content the structure of the site.
+HTML5 was used in order to provide the text content as well as to provide the overall structure of the site.
 CSS3 was used to add styling. Javascript (ECMAScript 2018) was used in order to assign the correct href values to the navbar links. Jinja template language was used in order to inject the content from the database into the HTML templates so that it could be displayed to the user. Python programming language was used in order to be able to run the Django framework.
 
 Frameworks, Libraries and Programs
@@ -262,5 +262,3 @@ In addition, there are several input fields in the site, each of which correspon
 Content
 Please see the inline comments across the CSS, HTML, python and JS files for any code that has been taken from third parties. Any borrowed code is clearly labelled as such.
 
-
-Use the following code to run the project in server: python3 -m http.server
