@@ -452,11 +452,20 @@ hr {
   margin: auto;
   margin-top: 20px;
   padding: 20px;
+  margin: auto;
+  width: 100%;
+  background-color: #a4b0c0;
+  border-radius: 10%;
+  color: #fff;
 }
 
 .product-form-para {
   font-size: 25px;
 }
 
-
+@media only screen and (min-width: 855px) {
+  .product-details {
+    width: 85%;
+  }
+}
 
