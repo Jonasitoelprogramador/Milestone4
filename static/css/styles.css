@@ -454,9 +454,7 @@ hr {
   padding: 20px;
   margin: auto;
   width: 100%;
-  background-color: #a4b0c0;
-  border-radius: 2%;
-  color: seashell;
+  background-color: seashell;
 }
 
 .product-form-para {
@@ -466,6 +464,9 @@ hr {
 @media only screen and (min-width: 855px) {
   .product-details {
     width: 85%;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    border-radius: 2%;
   }
 }
 
