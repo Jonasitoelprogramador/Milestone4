@@ -44,6 +44,7 @@ def Cancel(request):
 @user_passes_test(host_worker_exist, login_url="/users/profile")
 def CreateCheckoutSessionView(request):
     # get the product stored in the db
+    print(f'These are the products: {request.POST}')
     product_id = Product.objects.get(name=request.POST.get('products')).id
     product = Product.objects.get(id=product_id)
     # define where you would like Stripe to redirect to post payment

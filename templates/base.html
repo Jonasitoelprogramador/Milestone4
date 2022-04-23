@@ -101,8 +101,10 @@
                         <div>
                             {% csrf_token %}
                             {% for p in products %}
-                                <input type="radio" id="{{p.id}}" name="products" value="{{p.id}}">
-                                <label for="{{p.id}}">{{p}}</label>
+                                <div>
+                                    <input type="radio" id="{{p}}" name="products" value="{{p}}">
+                                    <label for="{{p.id}}">{{p}}</label>
+                                </div>
                             {% endfor %}
                         </div>
                         <div>
