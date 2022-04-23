@@ -439,11 +439,18 @@ hr {
   padding: 0 5px;
   font: inherit;
   color: #6666;
-  width: 20vw; 
+  width: 20%; 
 }
 
 .admin-form-div {
   padding: 20px;
 }
 
+.product-details {
+  width: auto;
+  height: auto;
+  margin: auto;
+  margin-top: 20px;
+  padding: 20px;
+}
 

@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block content %}
-    <div class="details">
+    <div class="product-details">
         <div class="admin-form-div" inline-block>
             {% for f, i in forms_list %}
             <form action="{% url 'product-admin' i %}" method="POST">
