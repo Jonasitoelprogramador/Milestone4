@@ -43,31 +43,31 @@ def Cancel(request):
 @user_passes_test(user_paid, login_url="/")
 @user_passes_test(host_worker_exist, login_url="/users/profile")
 def CreateCheckoutSessionView(request):
-        # get the product stored in the db
-        product_id = Product.objects.get(name=request.POST.get('products')).id
-        product = Product.objects.get(id=product_id)
-        # define where you would like Stripe to redirect to post payment
-        YOUR_DOMAIN = "https://language-stay.herokuapp.com"
-        checkout_session = stripe.checkout.Session.create(
-            # create a dictionary to pass through to Stripe checkout
-            line_items=[
-                {
-                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                    'price': product.price_id,
-                    'quantity': 1,
-                },
-            ],
-            # This is used to identify the user in the webhook view post payment
-            metadata={
-                "user_id": request.user.id,
-                "user_role": request.user.role 
+    # get the product stored in the db
+    product_id = Product.objects.get(name=request.POST.get('products')).id
+    product = Product.objects.get(id=product_id)
+    # define where you would like Stripe to redirect to post payment
+    YOUR_DOMAIN = "https://language-stay.herokuapp.com"
+    checkout_session = stripe.checkout.Session.create(
+        # create a dictionary to pass through to Stripe checkout
+        line_items=[
+            {
+                # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                'price': product.price_id,
+                'quantity': 1,
             },
-            mode='payment',
-            # The exact URL to redirect to depending on success or failure
-            success_url=YOUR_DOMAIN + '/success',
-            cancel_url=YOUR_DOMAIN + '/cancel',
-        )
-        return redirect(checkout_session.url, code=303)
+        ],
+        # This is used to identify the user in the webhook view post payment
+        metadata={
+            "user_id": request.user.id,
+            "user_role": request.user.role 
+        },
+        mode='payment',
+        # The exact URL to redirect to depending on success or failure
+        success_url=YOUR_DOMAIN + '/success',
+        cancel_url=YOUR_DOMAIN + '/cancel',
+    )
+    return redirect(checkout_session.url, code=303)
 
 # This recieves the request that is send back from Stripe on successful payment
 @user_passes_test(user_paid, login_url="/")

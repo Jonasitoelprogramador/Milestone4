@@ -483,3 +483,9 @@ hr {
   font-size: 25px;
 }
 }
+
+/*-----------------------upgrade modal------------------------*/
+
+.upgrade-modal {
+  font-family: 'Arvo', serif;
+}

@@ -96,13 +96,18 @@
                     Membership is $20 for a lifetime subscription
                     
                     <!--form, includes button that calls the checkout view-->
+                    <hr>
                     <form action="{% url 'create-session-view' %}" method="POST">
-                        {% csrf_token %}
-                        {% for p in products %}
-                            <input type="radio" id="{{p.id}}" name="products" value="{{p.id}}" style="display: block;">
-                            <label for="{{p.id}}">{{p}}</label>
-                        {% endfor %}
-                        <button type="submit" id="checkout-button" class="btn btn-secondary">Checkout</button>
+                        <div>
+                            {% csrf_token %}
+                            {% for p in products %}
+                                <input type="radio" id="{{p.id}}" name="products" value="{{p.id}}">
+                                <label for="{{p.id}}">{{p}}</label>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            <button type="submit" id="checkout-button" class="btn btn-secondary">Checkout</button>
+                        </div>
                     </form>
                     <!--un-toggles modal-->
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
