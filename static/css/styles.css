@@ -438,7 +438,7 @@ hr {
   line-height: 1.2;
   padding: 0 5px;
   font: inherit;
-  color: #6666;
+  color: #666666;
   width: 20%; 
 }
 
@@ -455,10 +455,16 @@ hr {
   margin: auto;
   width: 100%;
   background-color: seashell;
+  margin-top: -20px;
 }
 
 .product-form-para {
   font-size: 25px;
+}
+
+.product-form-buttons {
+  margin: auto;
+  width: 50px;
 }
 
 @media only screen and (min-width: 855px) {
