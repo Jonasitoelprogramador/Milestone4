@@ -2,21 +2,22 @@
 
 So you've been learning Spanish for a while now and you have a strong grasp of the vocabularly and grammar.  You decide to spend a few months in Madrid and you'll be fluent in no time, right?  Wrong.  In reality you spend your entire time with English-speaking friends and, even worse, whenever you speak to the waiter in Spanish, you are replied to in English.  Well, look no further than Language-Stay.  This is the app that allows you to integrate seemlessly into a linguistic community and, by speaking the target language 24/7 you are ACTUALLY fluent in a matter of months.
 
-This site targets targets anyone and everyone who has ever tried to learn a language and although they have put however many hours in on Duolingo or evening classes, the waiter still replies to them in English.
+This site targets targets anyone and everyone who has ever tried to learn a language but, despite the hours invested in Duolingo or evening classes, to whom the waiter still replies in English.
 
 The site aims to achieve its goal by having good, crisp UX which produces a positive reaction in the user, a well-designed database of "hosts" and "volunteers" and wide-ranging functionality.
 
 ## User Stories
-First-time-users
-As a first time user, I want to have a positive emotional response when visiting the site (be impressed with the quality of the website) so that I am encourgaed to return.
-As a first time user, I want to be able to easily understand the aim and idea behind the site.
-As a first time user, I want to be able to navigate through the site and to create an account and a profile.
-As a first time user, I would like to be able to navigate to and look through the lists of "Workers" or "Hosts".
-Returning-users
-As a Returning visitor, I would like to be able to login using my username and password and then to be able to look at the details of a Host/Worker.
-As a Returning visitor, I would like to be able to buy a subscription to Language-Stay.
+First-time-users  
+As a first time user, I want to have a positive emotional response when visiting the site (be impressed with the quality of the website) so that I am encourgaed to return.  
+As a first time user, I want to be able to easily understand the aim and idea behind the site.  
+As a first time user, I want to be able to navigate through the site and to create an account and a profile.  
+As a first time user, I would like to be able to navigate to and look through the lists of "Workers" or "Hosts".    
+Returning-users  
+As a Returning visitor, I would like to be able to login using my username and password and then to be able to look at the details of a Host/Worker.    
+As a Returning visitor, I would like to be able to buy a subscription to Language-Stay.  
 As a Returning Visitor, I want to be able to find a Host/Worker and access their email address after paying.
-As a Returning Visitor, I want to be able to access the website on various different screen sizes and for it to evoke a positive response.
+As a Returning Visitor, and with admin access, I want to be able to perform CRUD operations on the subscriptions (products) that are availiable to non-admin users.  
+As a Returning Visitor, I want to be able to access the website on various different screen sizes and for it to evoke a positive response.  
 
 ## Features
 The site is formed of five pages each of which have a header, footer and main body.
@@ -188,8 +189,17 @@ The navbar displays a clear "upgrade" button that triggers a modal.  The objecti
 [(screenshot evidence)](testing/images/nonpaid-host.png)
 [(screenshot evidence)](testing/images/modal.png)
 
+As a Returning Visitor, and with admin access, I want to be able to perform CRUD operations on the subscriptions (products) that are availiable to non-admin users.  
+For users who have "superuser" status, an "Admin Access" link will be visible in the footer.  Clicking this will take the superuser to the "Products" page where they can see the current products and perform CRUD operations on said products.   
+[(screenshot evidence)](testing/images/products-page.png)
+[(screenshot evidence)](testing/images/admin-access.png)
 
-As a Returning Visitor, I want to be able to access the website on various different screen sizes and for it to evoke a positive response.
+
+As a Returning Visitor, I want to be able to access the website on various different screen sizes and for it to evoke a positive response.  
+A combination of bootstrap and media queries are employed in order to ensure high UX quality across all screen sizes.
+[(screenshot evidence)](testing/images/homepage-wide.png)
+[(screenshot evidence)](testing/images/homepage-mid.png)
+[(screenshot evidence)](testing/images/homepage-small.png)
 
 ## Features
 
@@ -229,7 +239,7 @@ Django framework (written in Python programming language): is used to run the ba
 
 Stripe API: an integration with Stripe was used in this project in order to be able to take payments from customers.  My Stripe inegration was set up by roughly following the steps in this tutorial: https://www.youtube.com/watch?v=722A27IoQnk&t=2539s.  As mentioned above, my project connects to a Stripe checkout page that allows the customer to fill in their details.  These details are then checked by Stripe and, if correct, Stripe send a request to my StripeWebhook view which makes the necessary changes to the database.  That is, the user's payment_status attribute in the Host/Worker model is changed to "paid".
 
-## Storage
+## Storage
 
 The site uses a relational SQL database (see above for move information about database structure).  For production, the database used was SQLite, however, the database was migrated to a Postgres database hosted on Heroku for deployment.
 
@@ -247,10 +257,10 @@ There are three main colours: white, dark grey, blue/grey. These colours was cho
 ## Deployment
 The project was deployed to Heroku via Github pages using the following steps...
 
-Create a file called requirements.txt (pip3 freeze --local > requirements.txt). See file here for contents of this file. This is a list of the dependencies that are required to run Flask.
-Create a file called Procfile and write the following into the file: web: python app.py (echo web: python app.py). This tells Heroku which file is responsible for running the app.
-Create an account for Heroku and from the dashboard click 'new' -> 'create a new app'.
-Give your app a name and chose the corresponding region.
+Create a file called requirements.txt (pip3 freeze --local > requirements.txt). This is a list of the dependencies that are required to run Django.    
+Create a file called Procfile and write the following into the file: web: python app.py (echo web: python app.py). This tells Heroku which file is responsible for running the app.  
+Create an account for Heroku and from the dashboard click 'new' -> 'create a new app'.  
+Give your app a name and chose the corresponding region.  
 Set up automatic deployment from our Github repository by clicking "connect to Github" and folloing the steps to search for and connect to the app.
 
 ## Accessibility

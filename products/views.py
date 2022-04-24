@@ -44,7 +44,6 @@ def Cancel(request):
 @user_passes_test(host_worker_exist, login_url="/users/profile")
 def CreateCheckoutSessionView(request):
     # get the product stored in the db
-    print(f'These are the products: {request.POST}')
     product_id = Product.objects.get(name=request.POST.get('products')).id
     product = Product.objects.get(id=product_id)
     # define where you would like Stripe to redirect to post payment
@@ -114,7 +113,6 @@ def StripeWebhook(request):
 @user_passes_test(lambda u: u.is_superuser)
 def ProductView(request, pk=None):
     forms_list = []
-    print("posting")
     if request.method == 'POST':
         product_instance = Product.objects.get(id=pk)
         product_filled_form = ProductForm(request.POST, instance=product_instance)
@@ -125,10 +123,9 @@ def ProductView(request, pk=None):
     for i in range(len(instances)):
         # get each instance
         instancey = Product.objects.get(pk=instances[i].pk)
-        print(f'this is the instance:  {instancey.pk}')
         # bind each instance to a form
         forms_list.append([ProductForm(instance=instancey), instancey.pk])
-    return render(request, "products/product-admin.html", {'forms_list': forms_list, 'product_form': ProductForm, 'upgradeHidden': 'hidden'})
+    return render(request, "products/product-admin.html", {'forms_list': forms_list, 'product_form': ProductForm, 'upgradeHidden': 'hidden', 'admin': 'Admin Access'})
 
 
 @user_passes_test(host_worker_exist, login_url="/users/profile")

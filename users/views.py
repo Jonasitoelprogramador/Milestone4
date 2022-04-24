@@ -11,7 +11,8 @@ import random
 from django.contrib.auth.decorators import user_passes_test
 from products.models import Product
 
-
+# The below functions are used in the docators that I have added in order to ensure good defensive design
+# Checks if an instance of either a worker or host model exists
 def host_worker_exist(user):
     try: 
         user.role
@@ -35,7 +36,7 @@ def host_worker_exist(user):
         return True
         
 
-
+# Checks if the user is associated with a host model instance
 def host_check(user):
     try: 
         user.host
@@ -44,6 +45,7 @@ def host_check(user):
         return False
 
 
+# Checks if the user is associated with a worker model instance
 def worker_check(user):
     try: 
         user.worker
@@ -114,6 +116,8 @@ def profile(request):
             "headerhidden": headerhidden,
             "products": Product.objects.all()
         }
+        if request.user.is_superuser:
+            context['admin'] = "Admin Access"
 
         return render(request, 'users/host_profile.html', context)
     
@@ -165,7 +169,9 @@ def profile(request):
             "headerhidden": headerhidden,
             "products": Product.objects.all()
         }
-        
+        if request.user.is_superuser:
+            context['admin'] = "Admin Access"
+
         return render(request, 'users/worker_profile.html', context)
 
 
@@ -204,6 +210,8 @@ def all_offerings(request):
             "login_logout": "Logout",
             "products": Product.objects.all()
         }
+        if request.user.is_superuser:
+            context['admin'] = "Admin Access"
     return render(request, "hostofferings/all_offerings.html", context)
 
 
@@ -231,6 +239,8 @@ def all_workers(request):
             "login_logout": "Logout",
             "products": Product.objects.all()
             }
+        if request.user.is_superuser:
+            context['admin'] = "Admin Access"
     return render(request, "hostofferings/all_workers.html", context)
 
 
@@ -240,9 +250,6 @@ def all_workers(request):
 def offering_details(request, pk):
     #get all of the instances of the Offering model
     all_offerings = Offering.objects.all()
-    #print out the primary key of all of the Offering model instances
-    for o in all_offerings:
-        print(o.pk)
     #get the offering instance with pk passed through the request
     offering_details = get_object_or_404(Offering, pk=pk)
     #get all of the Host model instances
@@ -263,7 +270,6 @@ def offering_details(request, pk):
     it = iter(result_list)
     zipped_tuples = zip(it, it)
     tuples = list(zipped_tuples)
-    print(f'These a my tuples: {tuples}')
     #randomly select 3 elements from the tuples list
     lst = []
     i = 1
@@ -294,6 +300,8 @@ def offering_details(request, pk):
             "login_logout": "Logout",
             "products": Product.objects.all()
         }
+        if request.user.is_superuser:
+            context['admin'] = "Admin Access"
     return render(request, "hostofferings/offering_details.html", context)
 
 
@@ -303,11 +311,7 @@ def offering_details(request, pk):
 def worker_details(request, pk):
     all_workers = Worker.objects.all()
     all_workers_list = list(all_workers)
-    print(all_workers_list)
     worker_details = get_object_or_404(Worker, pk=pk)
-    #print out the primary key of all of the Offering model instances
-    for w in all_workers:
-        print(w.pk)
     #randomly select 3 elements from the tuples list
     lst = []
     i = 1
@@ -316,7 +320,6 @@ def worker_details(request, pk):
         if all_workers_list[ran_num] not in lst and all_workers_list[ran_num] != worker_details:
             lst.append(all_workers_list[ran_num])
             i += 1
-    print(f"this is the list: {all_workers_list[0]}")
     image = '/media/images/default.jpg'
     if str(request.user.role) == "worker":
         return HttpResponse("You must be logged in as a host to view this page")
@@ -339,6 +342,8 @@ def worker_details(request, pk):
             "login_logout": "Logout",
             "products": Product.objects.all()
             }
+        if request.user.is_superuser:
+            context['admin'] = "Admin Access"
     return render(request, "users/worker_details.html", context)
 
 

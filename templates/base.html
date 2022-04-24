@@ -93,7 +93,7 @@
                     Upgrade to our premium membership now in order to access members' email addresses 
                     and get started on your next adventure!
 
-                    Membership is $20 for a lifetime subscription
+                    Choose your membership type below!
                     
                     <!--form, includes button that calls the checkout view-->
                     <hr>
@@ -126,7 +126,7 @@
 
         <!--Footer-->
         <footer class="container-fluid footer">
-            <p class="float-right back-to-top"><a href="#">Back to top</a></p>
+            <p class="float-right back-to-top" id="admin-footer"><a id="admin" href="">{{admin}}</a></p>
             <h6 class="homepage-text">Contact</h6>
             <p>Email: info@languagestay.com<p>
             <p>Phone: 43040913930932</p>
@@ -161,6 +161,13 @@
         the_header = document.getElementById('header')
         if (the_header.hidden == true) {
             alert("Please fill in your profile to access this site.")
+        }
+        admin = document.getElementById('admin')
+        if (admin.innerHTML == "Admin Access") {
+            admin.href = "/product-admin/"
+        }
+        else {
+            admin.hidden = true
         }
         }
         function hide_form () {

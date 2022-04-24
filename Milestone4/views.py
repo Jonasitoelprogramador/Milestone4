@@ -46,6 +46,8 @@ def homepage(request):
             "login_logout": logout,
             "products": Product.objects.all()
         }
+        if request.user.is_superuser:
+            context['admin'] = "Admin Access"
         return render(request, 'accounts/homepage.html', context)
     else:
         # if user is not logged in

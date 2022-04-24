@@ -248,6 +248,7 @@ hr {
   background-repeat: no-repeat;
   background-position: center;
   padding-bottom: 100px;
+  margin-top: -20px;
 }
 
 .profile-container {
@@ -429,6 +430,10 @@ hr {
   bottom: 0;
 }
 
+#admin-footer {
+  margin-bottom: 20px;
+}
+
 /*----------------product admin-----------------*/
 
 .admin-form {  
@@ -455,6 +460,7 @@ hr {
   margin: auto;
   width: 100%;
   background-color: seashell;
+  margin-top: -20px;
 }
 
 .product-form-para {
@@ -482,6 +488,7 @@ hr {
   font-size: 25px;
 }
 }
+
 
 /*-----------------------upgrade modal------------------------*/
 
