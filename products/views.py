@@ -40,8 +40,8 @@ def Cancel(request):
 
 # inspired by https://www.youtube.com/watch?v=722A27IoQnk&t=2539s
 # This creates the page in which users fill in their details
-@user_passes_test(user_paid, login_url="/")
-@user_passes_test(host_worker_exist, login_url="/users/profile")
+#@user_passes_test(user_paid, login_url="/")
+#@user_passes_test(host_worker_exist, login_url="/users/profile")
 def CreateCheckoutSessionView(request):
     print('hello')
     # get the product stored in the db
