@@ -11,6 +11,7 @@ import random
 from django.contrib.auth.decorators import user_passes_test
 from products.models import Product
 
+
 # The below functions are used in the docators that I have added in order to ensure good defensive design
 # Checks if an instance of either a worker or host model exists
 def host_worker_exist(user):
@@ -34,7 +35,7 @@ def host_worker_exist(user):
             return False
     except:
         return True
-        
+
 
 # Checks if the user is associated with a host model instance
 def host_check(user):
