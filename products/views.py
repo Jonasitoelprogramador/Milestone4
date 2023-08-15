@@ -21,7 +21,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 def user_paid(user):
     print(f'payment status: {user.host.payment_status}')
     try:
-        return user.host.payment_status == "paid"
+        return user.host.payment_status == "nonpaid"
     except AttributeError:
         print('getting to here')
         return False
