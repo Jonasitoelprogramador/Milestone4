@@ -20,12 +20,11 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def user_paid(user):
     print(f'payment status: {user.host.payment_status}')
-    try: 
-        if user.host.payment_status == "paid":
-            return False
-    except:
-        print('this is getting to here')
-        return True
+    try:
+        return user.host.payment_status == "paid"
+    except AttributeError:
+        print('getting to here')
+        return False
 
 
 @user_passes_test(user_paid, login_url="/")
