@@ -43,11 +43,12 @@ def Cancel(request):
 @user_passes_test(user_paid, login_url="/")
 @user_passes_test(host_worker_exist, login_url="/users/profile")
 def CreateCheckoutSessionView(request):
+    print('hello')
     # get the product stored in the db
     product_id = Product.objects.get(name=request.POST.get('products')).id
     product = Product.objects.get(id=product_id)
     # define where you would like Stripe to redirect to post payment
-    YOUR_DOMAIN = "https://language-stay.herokuapp.com"
+    YOUR_DOMAIN = "https://language-stay-2.herokuapp.com"
     checkout_session = stripe.checkout.Session.create(
         # create a dictionary to pass through to Stripe checkout
         line_items=[
