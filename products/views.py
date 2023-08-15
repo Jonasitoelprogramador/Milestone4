@@ -24,6 +24,7 @@ def user_paid(user):
         if user.host.payment_status == "paid":
             return False
     except:
+        print('this is getting to here')
         return True
 
 
