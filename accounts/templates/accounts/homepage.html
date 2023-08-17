@@ -3,74 +3,91 @@
 
 <!--Content that will be injected into the base.html-->
 {% block content %}
-<div class="hero-div no-margin"></div>
+<!--<div class="hero-div no-margin"> 
+    <div class="hero-div no-margin"></div>
+</div>-->   
 <!-- This Bootstrap form was taken from https://getbootstrap.com/docs/4.0/components/navbar/-->
-	<div class="container-fluid homepage-text">
+    <div class="header-break"></div> 
+    <div class="container-fluid homepage-text">
         <!--First BS row-->
         <div class="row">
             <!--image div of Jonah-->
-            <div class="col-12 col-md-5 col-lg-4 text-center">
-                <img src="{% static 'images/jonah-photo.jpeg' %}" alt="Jonah ie. picture of a man" width="300" height="300" id="jonah-photo">
+            <div class="col-12 col-md-5 col-lg-4 sage-background">
+                <div class="vertical-alignment row-padding">
+                    <img src="{% static 'images/jonah-photo.jpeg' %}" alt="Jonah ie. picture of a man" width="300" height="300" id="jonah-photo">
+                </div>
             </div>
             <!--text div-->
-            <div class="col-12 col-md-7 col-lg-8 jonahs-story">
-                <h2 class="text-center homepage-titles padding-top-15">Jonah's Story</h2>
-                <p class="text-inherit paragraph-padding">This a picture of a man.  That man’s name is Jonah.
-                    Jonah loves learning languages.  Jonah speaks five languages and has 
-                    spent extended periods of time in different countries, meeting people
-                    and practising his languages.  Jonah has loved every minute of his experiences,
-                    however, one element of his travels has always been particularly challenging:
-                    making lasting friendships.  Now, I know what you are thinking; maybe Jonah is
-                    a werido. This is possible, however, as far as we can tell, Jonah is quite
-                    normal (apart from his obsession with language-learning).  The simple truth
-                    is that people are often so busy with their own lives that they don’t have time
-                    to make friends with travelling weirdos like Jonah.  This is where we come in. 
-                </p>
+            <div class="col-12 col-md-7 col-lg-8 grey-background">
+                <div class="vertical-alignment white-text">
+                    <h2 class="text-center homepage-titles">Jonah's Story</h2>
+                    <p class="text-inherit white-text">This a picture of a man.  That man’s name is Jonah.
+                        Jonah loves learning languages.  Jonah speaks five languages and has 
+                        spent extended periods of time in different countries, meeting people
+                        and practising his languages.  Jonah has loved every minute of his experiences,
+                        however, one element of his travels has always been particularly challenging:
+                        making lasting friendships.  Now, I know what you are thinking; maybe Jonah is
+                        a werido. This is possible, however, as far as we can tell, Jonah is quite
+                        normal (apart from his obsession with language-learning).  The simple truth
+                        is that people are often so busy with their own lives that they don’t have time
+                        to make friends with travelling weirdos like Jonah.  This is where we come in. 
+                    </p>
+                </div>
             </div>
         </div>
         <!--Second BS row-->
-        <div class="row homepage-quote-row middle-row-white">
+        <div class="row">
             <!--quoted text div-->
-            <div class="container_hp">
-                <h3 class="homepage-quote"><q>Language learning is preocupied with giving students a base in a language,
-                think Duolingo, Memrise, Italki.  Language Stay represents the next step in
-                the road to proficiency.</q></h3>
+            <div class="col-12 col-md-5 order-md-12 text-center white-text grey-background">
+                <div class="container_hp_quote">
+                    <h3 class="homepage-quote"><q>Language learning is preocupied with giving students a base in a language,
+                    think Duolingo, Memrise, Italki.  Language Stay represents the next step in
+                    the road to proficiency.</q></h3>
+                </div>
             </div>
             <!--text div-->
-            <div class="col-12 col-md-7 order-md-1 padding-bottom-10">
-                <h2 class="text-center homepage-titles padding-top-15">The Concept</h2>
-                <p class="text-inherit paragraph-padding middle-row-white">Our aim is to facilitate the process of making
-                    target-language-speaking friends by putting you right in the heart 
-                    of a family or household.  You will live, work, eat and, most importantly,
-                    converse(!) with your host(s) everyday and, before long, you’ll be
-                    nattering away in Finish or French or Farsi as part of the family.  
-                    Gone are the days of spending inordinate sums on language courses
-                    abroad only to learn from a textbook and speak English with the
-                    other foreign students or of spending days off wandering around 
-                    with no-one to talk to!
-                </p>
+            <div class="col-12 col-md-7 order-md-1 padding-bottom-10 sage-background" id="left-side-middle">
+                <div class="line-break-concept"></div>
+                <div class="vertical-alignment">
+                    <h2 class="text-center homepage-titles padding-top-15">The Concept</h2>
+                    <p class="text-inherit paragraph-padding">Our aim is to facilitate the process of making
+                        target-language-speaking friends by putting you right in the heart 
+                        of a family or household.  You will live, work, eat and, most importantly,
+                        converse(!) with your host(s) everyday and, before long, you’ll be
+                        nattering away in Finish or French or Farsi as part of the family.  
+                        Gone are the days of spending inordinate sums on language courses
+                        abroad only to learn from a textbook and speak English with the
+                        other foreign students or of spending days off wandering around 
+                        with no-one to talk to!
+                    </p>
+                </div>
             </div>
         </div>
         <!--Third BS row-->
         <div class="row">
             <!--Image div-->
-            <div class="col-12 col-md-5 col-lg-4 text-center">
-                <img src="{% static 'images/daniela_gabeiele.jpg' %}" alt="Picture of people on holiday" width="300" height="300" style="border-radius: 50%;">
+            <div class="col-12 col-md-5 col-lg-4 order-2 text-center grey-background">
+                <div class="vertical-alignment row-padding">
+                    <img src="{% static 'images/daniela_gabeiele.jpg' %}" alt="Picture of people on holiday" width="300" height="300" style="border-radius: 50%;">
+                </div>
             </div>
             <!--text div-->
-            <div class="col-12 col-md-7 col-lg-8 jonahs-story">
-                <h2 class="text-center homepage-titles padding-top-15">The Deal</h2>
-                <p class="text-inherit paragraph-padding">  You can sign up either as a “host” or as a “worker”.
-                A subscription to this website as a “worker” will allow you to make a profile,
-                search through host “offerings” and contact the hosts with whom you would like
-                to stay.  A subscription as a “host” will allow you to create an “offering”
-                and to search for and contact workers who you think would be a good fit for your
-                residence.  Generally, a worker would be required to work a certain number of
-                hours per day in exchange for meals and lodging (provided by the host).  A
-                host must also bear in mind that the principal reason for the worker’s stay
-                is to learn the language, so including the worker in the day-to-day rhythms
-                of the family is paramount (mealtimes, games, trips).
-                </p>
+            <div class="col-12 col-md-7 col-lg-8 order-1 sage-background">
+                <div class="vertical-alignment">
+                    <h2 class="text-center homepage-titles padding-top-15">The Deal</h2>
+                    <p class="text-inherit paragraph-padding">  
+                        You can sign up either as a “host” or as a “worker”.
+                        A subscription to this website as a “worker” will allow you to make a profile,
+                        search through host “offerings” and contact the hosts with whom you would like
+                        to stay.  A subscription as a “host” will allow you to create an “offering”
+                        and to search for and contact workers who you think would be a good fit for your
+                        residence.  Generally, a worker would be required to work a certain number of
+                        hours per day in exchange for meals and lodging (provided by the host).  A
+                        host must also bear in mind that the principal reason for the worker’s stay
+                        is to learn the language, so including the worker in the day-to-day rhythms
+                        of the family is paramount (mealtimes, games, trips).
+                    </p>
+                </div>
             </div>
         </div>
     </div>

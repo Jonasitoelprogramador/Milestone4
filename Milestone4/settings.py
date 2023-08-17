@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-jonasitoelpr-milestone4-nv2ck94wuw8.ws-eu103.gitpod.io', 'language-stay-2.herokuapp.com']
+ALLOWED_HOSTS = ['8000-jonasitoelpr-milestone4-xe9m2o65j4l.ws-eu104.gitpod.io', 'language-stay-2.herokuapp.com']
 CSRF_TRUSTED_ORIGINS = ['https://8000-jonasitoelpr-milestone4-nv2ck94wuw8.ws-eu103.gitpod.io']
 
 # Application definition
@@ -128,41 +128,42 @@ USE_L10N = True
 
 USE_TZ = True
 
-'''
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-'''
+
 
 
 #This will only run if USE_AWS is included in the environment variables
 
 
+value = os.environ.get('USE_AWS')
+if value:
+    # Cache control	
+    AWS_S3_OBJECT_PARAMETERS = {	
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',	
+        'CacheControl': 'max-age=94608000',	
+    }	
 
-# Cache control	
-AWS_S3_OBJECT_PARAMETERS = {	
-    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',	
-    'CacheControl': 'max-age=94608000',	
-}	
+    AWS_STORAGE_BUCKET_NAME = 'language-stay'
+    AWS_S3_REGION_NAME = 'eu-west-2'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY_ID')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
-AWS_STORAGE_BUCKET_NAME = 'language-stay'
-AWS_S3_REGION_NAME = 'eu-west-2'
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY_ID')
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+    STATICFILES_LOCATION = 'static'
 
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-MEDIAFILES_LOCATION = 'media'
-STATICFILES_LOCATION = 'static'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
-
-LOGIN_URL = 'login'
+    LOGIN_URL = 'login'
 
 
 # Default primary key field type
