@@ -125,6 +125,14 @@ img {
   width: 20px !important;
 }
 
+.fixed-break-header {
+  position: fixed;
+  top: 76px;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
 /*------------offering details---------------------------*/
 
 .circle-container-bg {
@@ -348,8 +356,9 @@ hr {
 
 /*---------------------Homepage-------------------------*/
 
-#jonah-photo {
-  border-radius: 50%;
+.homepage-pics {
+  border-radius: 20%;
+  border: 3px solid #000;
 }
 
 #daniela-photo {
@@ -364,7 +373,7 @@ hr {
   align-items: center;
 }
 
-.container_hp_quote {
+.container-hp-quote {
   display: flex;
   justify-content: center; /* align horizontally */
   align-items: center;     /* align vertically */
@@ -380,10 +389,6 @@ hr {
 .header-break {
   background-color: black;
   height: 3px;
-}
-
-.homepage-text {
-  font-family: 'Arvo', serif;
 }
 
 .homepage-titles {
@@ -410,25 +415,78 @@ hr {
   font-size: 25px;
 }
 
+.homepage-text {
+  font-size: 18px;
+  font-family: 'Arvo', serif;
+}
+
+@media only screen and (max-width: 1180px) {
+  .homepage-quote q {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 1530px) {
+  .homepage-text {
+    font-size: 1rem;
+  }
+}
+
 @media only screen and (min-width: 1030px) {
   .jonahs-story {
     padding-top: 15px;
   }
 }
 
+@media only screen and (max-width: 1061px) {
+  .homepage-right-text {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+}
+
 @media only screen and (max-width: 767px) {
-  #left-side-middle {
+  .homepage-left-text {
     margin-bottom: 20px;
   }
   .line-break-concept {
     display: block;
 }
+  .homepage-right-text {
+    padding-left: 100px;
+  }
 }
 
-  
+@media only screen and (max-width: 876px) {
+  .container-hp-quote {
+    height: 100% !important;
+  }
+}
+
 .row-padding {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.left-padding {
+  padding-left: 35px;
+}
+
+
+.right-padding {
+  padding-right: 15px;
+}
+
+.column-level-quote {
+  padding-right: 60px;
+}
+
+.homepage-right-text{
+  padding-right: 100px;
+}
+
+.homepage-left-text {
+  padding-left: 40px;
 }
 
 /*----------------footer----------------------------*/

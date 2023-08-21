@@ -6,22 +6,21 @@
 <!--<div class="hero-div no-margin"> 
     <div class="hero-div no-margin"></div>
 </div>-->   
-<!-- This Bootstrap form was taken from https://getbootstrap.com/docs/4.0/components/navbar/-->
-    <div class="header-break"></div> 
+<!-- This Bootstrap form was taken from https://getbootstrap.com/docs/4.0/components/navbar/--> 
     <div class="container-fluid homepage-text">
         <!--First BS row-->
         <div class="row">
             <!--image div of Jonah-->
-            <div class="col-12 col-md-5 col-lg-4 sage-background">
-                <div class="vertical-alignment row-padding">
-                    <img src="{% static 'images/jonah-photo.jpeg' %}" alt="Jonah ie. picture of a man" width="300" height="300" id="jonah-photo">
+            <div class="col-12 col-md-5 col-lg-4">
+                <div class="vertical-alignment row-padding left-padding">
+                    <img src="{% static 'images/jonah-photo.jpeg' %}" alt="Jonah ie. picture of a man" width="300" height="300" class="homepage-pics">
                 </div>
             </div>
             <!--text div-->
-            <div class="col-12 col-md-7 col-lg-8 grey-background">
-                <div class="vertical-alignment white-text">
+            <div class="col-12 col-md-7 col-lg-8 homepage-right-text">
+                <div class="vertical-alignment">
                     <h2 class="text-center homepage-titles">Jonah's Story</h2>
-                    <p class="text-inherit white-text">This a picture of a man.  That man’s name is Jonah.
+                    <p class="text-inherit homepage-text">This a picture of a man.  That man’s name is Jonah.
                         Jonah loves learning languages.  Jonah speaks five languages and has 
                         spent extended periods of time in different countries, meeting people
                         and practising his languages.  Jonah has loved every minute of his experiences,
@@ -38,19 +37,22 @@
         <!--Second BS row-->
         <div class="row">
             <!--quoted text div-->
-            <div class="col-12 col-md-5 order-md-12 text-center white-text grey-background">
-                <div class="container_hp_quote">
-                    <h3 class="homepage-quote"><q>Language learning is preocupied with giving students a base in a language,
+            <div class="col-12 col-md-4 order-md-12 text-center white-text grey-background column-level-quote">
+                <div class="container-hp-quote">
+                    <h3 class="homepage-quote">
+                        <q>Language learning is preocupied with giving students a base in a language,
                     think Duolingo, Memrise, Italki.  Language Stay represents the next step in
-                    the road to proficiency.</q></h3>
+                    the road to proficiency.
+                        </q>
+                </h3>
                 </div>
             </div>
             <!--text div-->
-            <div class="col-12 col-md-7 order-md-1 padding-bottom-10 sage-background" id="left-side-middle">
+            <div class="col-12 col-md-8 order-md-1 padding-bottom-10 grey-background homepage-left-text">
                 <div class="line-break-concept"></div>
                 <div class="vertical-alignment">
-                    <h2 class="text-center homepage-titles padding-top-15">The Concept</h2>
-                    <p class="text-inherit paragraph-padding">Our aim is to facilitate the process of making
+                    <h2 class="text-center homepage-titles padding-top-15 white-text">The Concept</h2>
+                    <p class="text-inherit paragraph-padding white-text homepage-text">Our aim is to facilitate the process of making
                         target-language-speaking friends by putting you right in the heart 
                         of a family or household.  You will live, work, eat and, most importantly,
                         converse(!) with your host(s) everyday and, before long, you’ll be
@@ -66,16 +68,16 @@
         <!--Third BS row-->
         <div class="row">
             <!--Image div-->
-            <div class="col-12 col-md-5 col-lg-4 order-2 text-center grey-background">
-                <div class="vertical-alignment row-padding">
-                    <img src="{% static 'images/daniela_gabeiele.jpg' %}" alt="Picture of people on holiday" width="300" height="300" style="border-radius: 50%;">
+            <div class="col-12 col-md-5 col-lg-4 order-1 text-center">
+                <div class="vertical-alignment row-padding left-padding">
+                    <img src="{% static 'images/daniela_gabeiele.jpg' %}" alt="Picture of people on holiday" width="300" height="300" class="homepage-pics">
                 </div>
             </div>
             <!--text div-->
-            <div class="col-12 col-md-7 col-lg-8 order-1 sage-background">
+            <div class="col-12 col-md-7 col-lg-8 order-2 homepage-right-text">
                 <div class="vertical-alignment">
                     <h2 class="text-center homepage-titles padding-top-15">The Deal</h2>
-                    <p class="text-inherit paragraph-padding">  
+                    <p class="text-inherit paragraph-padding homepage-text">  
                         You can sign up either as a “host” or as a “worker”.
                         A subscription to this website as a “worker” will allow you to make a profile,
                         search through host “offerings” and contact the hosts with whom you would like

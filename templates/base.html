@@ -39,7 +39,7 @@
     <body id="body-element">
         <header class="header-style" id="header" {{headerhidden}}>
             <!--navbar section-->
-            <nav class="navbar navbar-style navbar-expand-md fixed-top">
+            <nav class="navbar navbar-style navbar-expand-md fixed-top grey-background">
                 <!--this code deals with the 'burger' icon used to toggle the navbar on smaller screen sizes-->
                 <button class="navbar-toggler navbar-toggler-style" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
@@ -77,6 +77,7 @@
                     <!-- Modal -->
                 </div>
             </nav> 
+            <div class="header-break fixed-break-header"></div>
             <!--Taken from: https://getbootstrap.com/docs/4.0/components/modal/-->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -126,7 +127,8 @@
         {% endblock %}
 
         <!--Footer-->
-        <footer class="container-fluid footer">
+        <div class="header-break"></div>
+        <footer class="container-fluid footer"> 
             <p class="float-right back-to-top" id="admin-footer"><a id="admin" href="">{{admin}}</a></p>
             <h6 class="homepage-text">Contact</h6>
             <p>Email: info@languagestay.com<p>
