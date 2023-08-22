@@ -48,16 +48,16 @@
                     <div class="details-container">
                         <!--loops thorugh the list of other hosts-->
                         {% for host, offering in offerings %}
-                            <div>
+                            <div class="individual-worker-offering">
                                 <!--display host image-->
                                 <div class="circle-container-details">
                                     <div style="background-image: url('https://language-stay.s3.amazonaws.com/media/images/{{offering.random_identifier}}')" class="circle-cover-bg"></div>
                                 </div>
                                 <!--displays host information-->
-                                <div class="text-details">
+                                <div class="text-details-offering text-details bottom-div">
                                     <p class="text-center">{{host.user.username}}</p>
                                     <p class="text-center">{{host.location}}</p>
-                                    <p class="text-center"><a class="btn btn-secondary" href="/users/offering_details/{{offering.pk}}" type="button">View details &raquo;</a></p>
+                                    <p class="text-center bottom-button"><a class="btn btn-secondary" href="/users/offering_details/{{offering.pk}}" type="button">View details &raquo;</a></p>
                                 </div>
                             </div>
                         {% endfor %}

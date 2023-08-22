@@ -72,8 +72,14 @@ img {
   padding-top: 7px;
 }
 
-.text-details {
+.text-details-offering {
   width: 150px;
+  height: 90px;
+}
+
+.text-details-worker {
+  width: 150px;
+  height: 150px;
 }
 
 .text-details p, p a {
@@ -133,6 +139,12 @@ img {
   z-index: 1030;
 }
 
+@media only screen and (max-width: 767px) {
+  .fixed-break-header {
+  top: 56px;
+}
+}
+
 /*------------offering details---------------------------*/
 
 .circle-container-bg {
@@ -184,13 +196,30 @@ hr {
 
 .more-offerings {
   text-align: center;
-  margin: 12px auto;
+  margin-top: 12px;
   font-family: 'Arvo', serif;
   font-size: 1.5rem;
 }
 
+.individual-worker-offering {
+  margin-top: 15px;
+}
+
 #movable-div {
   margin-bottom: 20px;
+}
+
+.positioning-all-host-worker {
+  margin-top: 50px;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+@media only screen and (max-width: 1051px) {
+.positioning-all-host-worker {
+  padding-left: 10%;
+  padding-right: 10%;
+}
 }
 
 @media only screen and (min-width: 320px) {
@@ -294,6 +323,19 @@ hr {
 
 .padding-top-15 {
   padding-top: 15px;
+}
+
+.bottom-div {
+  position: relative;
+}
+
+.bottom-button {
+  position: absolute;
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 @media (max-width:660px) and (min-width:480px) {

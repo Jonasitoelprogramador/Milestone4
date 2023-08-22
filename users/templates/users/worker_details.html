@@ -48,16 +48,16 @@
                     <div class="details-container">
                         <!--loops thorugh the list of other workers-->
                         {% for worker in workers %}
-                            <div>
+                            <div class="individual-worker-offering">
                                 <!--display worker image-->
                                 <div class="circle-container-details">
                                     <div style="background-image: url('https://language-stay.s3.amazonaws.com/media/images/{{worker.random_identifier}}')" class="circle-cover-bg"></div>
                                 </div>
                                 <!--displays worker information-->
-                                <div class="text-details">
+                                <div class="text-details-worker text-details bottom-div">
                                     <p class="text-center">{{worker}}</p>
                                     <p class="text-center">I would like to learn: {{worker.desired_language}}</p>
-                                    <p class="text-center"><a class="btn btn-secondary" href="/users/worker_details/{{worker.pk}}">View details &raquo;</a></p>
+                                    <p class="text-center bottom-button"><a class="btn btn-secondary" href="/users/worker_details/{{worker.pk}}">View details &raquo;</a></p>
                                 </div>
                             </div>
                         {% endfor %}
