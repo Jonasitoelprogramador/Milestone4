@@ -420,6 +420,32 @@ hr {
   font-family: 'Arvo', serif;
 }
 
+.row-padding {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.left-padding {
+  padding-left: 35px;
+}
+
+
+.right-padding {
+  padding-right: 15px;
+}
+
+.column-level-quote {
+  padding-right: 60px;
+}
+
+.homepage-right-text{
+  padding-right: 100px;
+}
+
+.homepage-left-text {
+  padding-left: 40px;
+}
+
 @media only screen and (max-width: 1180px) {
   .homepage-quote q {
     font-size: 18px;
@@ -448,12 +474,19 @@ hr {
 @media only screen and (max-width: 767px) {
   .homepage-left-text {
     margin-bottom: 20px;
+    padding-bottom: 30px;
+    padding-left: 40px;
   }
   .line-break-concept {
     display: block;
 }
   .homepage-right-text {
     padding-left: 100px;
+  }
+  .column-level-quote {
+    padding-left: 60px;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 }
 
@@ -463,30 +496,18 @@ hr {
   }
 }
 
-.row-padding {
+@media only screen and (max-width: 620px) {
+  .homepage-right-text {
+    padding-left: 55px;
+    padding-right: 25px;
+  }
+}
+
+@media only screen and (max-width: 985px) {
+  .homepage-left-text {
+  padding-bottom: 20px;
   padding-top: 15px;
-  padding-bottom: 15px;
-}
-
-.left-padding {
-  padding-left: 35px;
-}
-
-
-.right-padding {
-  padding-right: 15px;
-}
-
-.column-level-quote {
-  padding-right: 60px;
-}
-
-.homepage-right-text{
-  padding-right: 100px;
-}
-
-.homepage-left-text {
-  padding-left: 40px;
+  }
 }
 
 /*----------------footer----------------------------*/
