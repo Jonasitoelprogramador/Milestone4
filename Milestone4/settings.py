@@ -93,7 +93,7 @@ if "DATABASE_URL" in os.environ:
     }
 else:
     DATABASES = {
-        'default': dj_database_url.parse('postgres://xcexqnpjyhqwll:adcd4f53dc9043049f89e5d0e691bb97bf4d9ddb5dbed2e3d27b004b2236d09c@ec2-54-228-97-176.eu-west-1.compute.amazonaws.com:5432/d40jn6psvhhf0h')
+        'default': dj_database_url.parse('postgres://apebjfaehgyqhl:4c1dbaaab936a3bd76ed7ae76f55c8925646c174d386437c3d6ea8a07d3525ed@ec2-18-203-205-71.eu-west-1.compute.amazonaws.com:5432/df9juh0g220166')
     }
 
 # Password validation
