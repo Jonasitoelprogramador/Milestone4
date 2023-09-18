@@ -84,18 +84,19 @@ WSGI_APPLICATION = 'Milestone4.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-'''if "DATABASE_URL" in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:'''
+#if "DATABASE_URL" in os.environ:
 
 DATABASES = {
-    'default': dj_database_url.parse('postgres://apebjfaehgyqhl:4c1dbaaab936a3bd76ed7ae76f55c8925646c174d386437c3d6ea8a07d3525ed@ec2-18-203-205-71.eu-west-1.compute.amazonaws.com:5432/df9juh0g220166')
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+#else:
+
+'''DATABASES = {
+    'default': dj_database_url.parse('postgres://apebjfaehgyqhl:4c1dbaaab936a3bd76ed7ae76f55c8925646c174d386437c3d6ea8a07d3525ed@ec2-18-203-205-71.eu-west-1.compute.amazonaws.com:5432/df9juh0g220166')
+}'''
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
