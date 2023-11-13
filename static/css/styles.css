@@ -3,10 +3,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
 
 /*---------General CSS (CSS that occurs in more than one page))----------------------------------------*/
+
+.main {
+  min-height: calc(100vh - 76px - 154px)
+}
+
 body {
   overflow-x: hidden;
   padding-top: 0;
-  height: auto;
+  /*height: auto;*/
   padding-bottom: 10px;
 }
 
@@ -281,23 +286,30 @@ hr {
 }
 
 .profile-background {
-  background-image: linear-gradient(rgba(240, 240, 240, 0.55), rgba(240, 240, 240, 0.55)),  url('/static/images/three_little_birds.jpg');
+  /*background-image: linear-gradient(rgba(240, 240, 240, 0.55), rgba(240, 240, 240, 0.55)),  url('/static/images/three_little_birds.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
-  padding-bottom: 100px;
-  margin-top: -20px;
+  background-position: center;*/
+  background-color: #c7d6da;
+  min-height: calc(100vh - 76px - 154px)
+  /*padding-bottom: 100px;
+  /*margin-top: -20px;*/
 }
 
 .profile-container {
   width: 75vw;
   margin: auto;
-  border-radius: 2%;
+  border-radius: 10px;
   padding: 5px 10px;
   background-color: seashell;
   border: seashell solid 2px;
-  margin-bottom: 250px;
-  margin-top: 20px;
+  /*margin-bottom: 20px;
+  margin-top: 20px;*/
+}
+
+.profile-padding {
+  padding-bottom: 80px;
+  padding-top: 20px;
 }
 
 .profile-edit a {
@@ -318,7 +330,7 @@ hr {
 }
 
 .profile-title-div {
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 .padding-top-15 {
