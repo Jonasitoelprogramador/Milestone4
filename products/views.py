@@ -11,6 +11,9 @@ from .forms import ProductForm
 from django.contrib.auth.decorators import user_passes_test
 from users.views import host_worker_exist
 
+import pdb
+
+
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 

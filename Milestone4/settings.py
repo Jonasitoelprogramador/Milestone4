@@ -28,8 +28,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-jonasitoelpr-milestone4-9isami7hasg.ws-eu105.gitpod.io', 'language-stay-2.herokuapp.com']
-CSRF_TRUSTED_ORIGINS = ['https://8000-jonasitoelpr-milestone4-9isami7hasg.ws-eu105.gitpod.io']
+ALLOWED_HOSTS = ['8000-jonasitoelpr-milestone4-oz9bx3xrzbz.ws-eu106.gitpod.io', 'language-stay-2.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://8000-jonasitoelpr-milestone4-oz9bx3xrzbz.ws-eu106.gitpod.io']
 
 # Application definition
 
@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'Milestone4.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-'''if "DATABASE_URL" in os.environ:
+if "DATABASE_URL" in os.environ:
     print("that's the one")
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
