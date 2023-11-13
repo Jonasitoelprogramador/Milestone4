@@ -46,7 +46,6 @@ def homepage(request):
             "login_logout": logout,
             "products": Product.objects.all()
         }
-        print(f"these are the products: {len(context['products'])}")
         if request.user.is_superuser:
             context['admin'] = "Admin Access"
         return render(request, 'accounts/homepage.html', context)

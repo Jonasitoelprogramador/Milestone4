@@ -144,6 +144,22 @@ img {
   z-index: 1030;
 }
 
+.upgrade-button {
+  background-color: #c7d6da;
+  border-color: #c7d6da;
+  color: #666666;
+}
+
+.upgrade-button:hover {
+  background-color: white;
+  border-color: white;
+  color: #666666;
+}
+
+.btn:focus {
+  box-shadow: inset 0 0 0 2px white;
+}
+
 @media only screen and (max-width: 767px) {
   .fixed-break-header {
   top: 56px;
