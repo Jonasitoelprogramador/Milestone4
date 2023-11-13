@@ -144,9 +144,9 @@ MEDIA_URL = '/media/'
 #This will only run if USE_AWS is included in the environment variables
 
 
-'''
+
 value = os.environ.get('USE_AWS')
-print(f'this is the value: {value}')
+
 if value:
     # Cache control	
     AWS_S3_OBJECT_PARAMETERS = {	
@@ -169,7 +169,7 @@ if value:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
     LOGIN_URL = 'login'
-'''
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
