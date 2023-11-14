@@ -50,7 +50,7 @@ def CreateCheckoutSessionView(request):
     product_id = Product.objects.get(name=request.POST.get('products')).id
     product = Product.objects.get(id=product_id)
     # define where you would like Stripe to redirect to post payment
-    YOUR_DOMAIN = "https://8000-jonasitoelpr-milestone4-oz9bx3xrzbz.ws-eu106.gitpod.io"
+    YOUR_DOMAIN = "https://language-stay-2.herokuapp.com/"
     checkout_session = stripe.checkout.Session.create(
         # create a dictionary to pass through to Stripe checkout
         line_items=[
