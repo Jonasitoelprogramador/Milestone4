@@ -11,7 +11,6 @@ from .forms import ProductForm
 from django.contrib.auth.decorators import user_passes_test
 from users.views import host_worker_exist
 
-import pdb
 
 
 
@@ -51,7 +50,7 @@ def CreateCheckoutSessionView(request):
     product_id = Product.objects.get(name=request.POST.get('products')).id
     product = Product.objects.get(id=product_id)
     # define where you would like Stripe to redirect to post payment
-    YOUR_DOMAIN = "https://language-stay-2.herokuapp.com"
+    YOUR_DOMAIN = "https://8000-jonasitoelpr-milestone4-oz9bx3xrzbz.ws-eu106.gitpod.io"
     checkout_session = stripe.checkout.Session.create(
         # create a dictionary to pass through to Stripe checkout
         line_items=[
@@ -74,11 +73,12 @@ def CreateCheckoutSessionView(request):
     return redirect(checkout_session.url, code=303)
 
 # This recieves the request that is send back from Stripe on successful payment
-@user_passes_test(user_paid, login_url="/")
-@user_passes_test(host_worker_exist, login_url="/users/profile")
+#@user_passes_test(user_paid, login_url="/")
+#@user_passes_test(host_worker_exist, login_url="/users/profile")
 @csrf_exempt
 def StripeWebhook(request):
-    payload = request.body
+    print('webhook hit')
+    '''payload = request.body
     # required to verify request is coming from Stripe
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
@@ -93,7 +93,7 @@ def StripeWebhook(request):
     except stripe.error.SignatureVerificationError as e:
         # Invalid signature
         return HttpResponse(status=400)
-    
+    '''
     # If the request is correct
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
@@ -109,9 +109,13 @@ def StripeWebhook(request):
             obj.payment_status = 'paid'
             obj.save()
             
-    # Passed signature verification
+    # Passed signature verification'''
     return HttpResponse(status=200)
 
+@csrf_exempt
+def Testing(request):
+    print('hello my friend')
+    print(request)
 
 @user_passes_test(host_worker_exist, login_url="/users/profile")
 @user_passes_test(lambda u: u.is_superuser)

@@ -20,6 +20,7 @@ def homepage(request):
             inner_HTML = 'Workers'
             try: 
                 str(request.user.host)
+                print(f'paid or unpaid {request.user.host.payment_status}')
                 if str(request.user.host.payment_status) == "paid":
                     upgrade_hidden = "hidden"
                 else:

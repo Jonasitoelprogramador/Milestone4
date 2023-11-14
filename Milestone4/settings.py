@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-jonasitoelpr-milestone4-oz9bx3xrzbz.ws-eu106.gitpod.io', 'language-stay-2.herokuapp.com']
+ALLOWED_HOSTS = ['8000-jonasitoelpr-milestone4-oz9bx3xrzbz.ws-eu106.gitpod.io', 'language-stay-2.herokuapp.com', '127.0.0.1:8000']
 CSRF_TRUSTED_ORIGINS = ['https://8000-jonasitoelpr-milestone4-oz9bx3xrzbz.ws-eu106.gitpod.io']
 
 # Application definition
@@ -176,9 +176,10 @@ if value:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STRIPE_PUBLIC_KEY = "pk_test_51KOfJ0CS31G6KZO7biEXnTyyKT4G4wDg129iGCnr2LN4FbOXDgDe4i6mDu9LP2GjH7VOYv0o0rurKidobSWOE3k600PhNWTujf"
+STRIPE_PUBLIC_KEY = "pk_test_51KOfJ0CS31G6KZO7cnzaxusvLoRkVBkHRX6Nxwlnj0AOvXlwBtJ47xR4biUnHxcjewky0MH7dOwYzEEldQ93cIw500PEyz16DV"
 STRIPE_SECRET_KEY = "sk_test_51KOfJ0CS31G6KZO7To5bVMrFMhQVaJ0yLi3JaDo5gAgg1h8jsyemik1OUKR08793jT3vD5eUlt6vOU6kNViZWIgR00cuzpa7gC"
-STRIPE_WEBHOOK_SECRET = "whsec_DAvoFYeUPH78YBhhJeHLDwhwLAtkSdbz"
+STRIPE_WEBHOOK_SECRET = "whsec_838e4b302da2ba0b9ea44eb733557d1381bef63e3f329bca27617c9033caaa0c"
+
 
 
 DATABASE_URL = 'postgres://xcexqnpjyhqwll:adcd4f53dc9043049f89e5d0e691bb97bf4d9ddb5dbed2e3d27b004b2236d09c@ec2-54-228-97-176.eu-west-1.compute.amazonaws.com:5432/d40jn6psvhhf0h'
