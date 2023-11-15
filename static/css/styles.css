@@ -17,7 +17,7 @@ body {
 
 .circle-cover-bg {
   height: 100%;
-  border-radius: 10%;
+  border-radius: 10px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -172,7 +172,7 @@ img {
 .circle-container-bg {
   width: 250px;
   height: 250px;
-  margin-top: 30px;
+  padding-left: 30px;
 }
 
 .circle-container-details {
@@ -229,6 +229,7 @@ hr {
 
 #movable-div {
   margin-bottom: 20px;
+  padding-left: 30px;
 }
 
 .positioning-all-host-worker {

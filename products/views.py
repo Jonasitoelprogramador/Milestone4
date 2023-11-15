@@ -19,9 +19,15 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def user_paid(user):
     try:
+        # Check if the user is a host and their payment status is "nonpaid"
         return user.host.payment_status == "nonpaid"
     except AttributeError:
-        return False
+        # The AttributeError suggests user.host does not exist, so check if user is a worker
+        try:
+            return user.worker.payment_status == "nonpaid"
+        except AttributeError:
+            # If both user.host and user.worker lead to an AttributeError, return False
+            return False
 
 
 @user_passes_test(user_paid, login_url="/")
