@@ -11,9 +11,6 @@ from .forms import ProductForm
 from django.contrib.auth.decorators import user_passes_test
 from users.views import host_worker_exist
 
-
-
-
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 # Create your views here.
