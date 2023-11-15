@@ -21,11 +21,9 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 def user_paid(user):
-    print(f'payment status: {user.host.payment_status}')
     try:
         return user.host.payment_status == "nonpaid"
     except AttributeError:
-        print('getting to here')
         return False
 
 
@@ -77,7 +75,6 @@ def CreateCheckoutSessionView(request):
 #@user_passes_test(host_worker_exist, login_url="/users/profile")
 @csrf_exempt
 def StripeWebhook(request):
-    print('webhook hit')
     payload = request.body
     # required to verify request is coming from Stripe
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
@@ -110,11 +107,6 @@ def StripeWebhook(request):
             
     # Passed signature verification'''
     return HttpResponse(status=200)
-
-@csrf_exempt
-def Testing(request):
-    print('hello my friend')
-    print(request)
 
 @user_passes_test(host_worker_exist, login_url="/users/profile")
 @user_passes_test(lambda u: u.is_superuser)
